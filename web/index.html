@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delft Energy Twin</title>
+  <meta name="description" content="A LiDAR energy digital twin of Delft: rooftop solar potential from AHN6, heritage rules and the end of Dutch net metering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top">Delft Energy Twin</a>
+    <nav>
+      <a href="#twin">3D twin</a>
+      <a href="#dashboard">Neighbourhoods</a>
+      <a href="#science">Method &amp; validation</a>
+      <a href="#about">Data &amp; credits</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section id="twin" class="hero">
+      <div id="cesium" class="cesium" aria-label="3D view of Delft buildings coloured by annual roof irradiation"></div>
+      <div class="hero-panel" id="hero-panel"></div>
+      <aside class="inspector" id="inspector" hidden></aside>
+      <div class="legend" id="legend3d"></div>
+    </section>
+
+    <section class="band" id="headline"></section>
+
+    <section id="dashboard" class="section">
+      <div class="section-head">
+        <h2>Neighbourhoods</h2>
+        <p class="lede" id="dash-lede"></p>
+      </div>
+      <div class="dash">
+        <div class="dash-map"><div id="map"></div><div class="legend" id="legend2d"></div></div>
+        <div class="dash-side">
+          <label class="field">Show
+            <select id="metric"></select>
+          </label>
+          <div id="buurt-card" class="card muted-card">Click a neighbourhood for its numbers.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="science" class="section"></section>
+    <section id="about" class="section"></section>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

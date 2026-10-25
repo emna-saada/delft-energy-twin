@@ -1,0 +1,2427 @@
+{
+  "epoch": "AHN6 (flown 2025-12-19 / 2026-01-19)",
+  "city": {
+    "n_tiles": 14,
+    "n_buildings_total": 31400,
+    "n_incomplete_skipped": 184,
+    "n_incomplete_in_aoi": 0,
+    "n_buildings_crossing_tile_edges": 412,
+    "aoi_summary": [
+      {
+        "aoi": "binnenstad",
+        "n_buildings": 4220,
+        "n_planes": 39148,
+        "plane_area_3d_km2": 0.5339,
+        "sky_visible_roof_area_3d_km2": 0.4847,
+        "share_flat_area": 0.3373,
+        "roof_kwh_m2_median": 820.291,
+        "loss_all_obstructions": 0.2474,
+        "loss_trees_only": 0.0084
+      },
+      {
+        "aoi": "campus",
+        "n_buildings": 276,
+        "n_planes": 17132,
+        "plane_area_3d_km2": 0.2589,
+        "sky_visible_roof_area_3d_km2": 0.2205,
+        "share_flat_area": 0.5601,
+        "roof_kwh_m2_median": 943.0489,
+        "loss_all_obstructions": 0.2033,
+        "loss_trees_only": 0.0094
+      },
+      {
+        "aoi": "outside_aoi",
+        "n_buildings": 24709,
+        "n_planes": 130870,
+        "plane_area_3d_km2": 1.9343,
+        "sky_visible_roof_area_3d_km2": 1.7437,
+        "share_flat_area": 0.5107,
+        "roof_kwh_m2_median": 994.5191,
+        "loss_all_obstructions": 0.1438,
+        "loss_trees_only": 0.015
+      },
+      {
+        "aoi": "voorhof",
+        "n_buildings": 1420,
+        "n_planes": 11919,
+        "plane_area_3d_km2": 0.2454,
+        "sky_visible_roof_area_3d_km2": 0.2146,
+        "share_flat_area": 0.7891,
+        "roof_kwh_m2_median": 961.3495,
+        "loss_all_obstructions": 0.206,
+        "loss_trees_only": 0.0163
+      }
+    ],
+    "validation": {
+      "binnenstad": {
+        "n_planes_matched": 12298,
+        "slope_median_abs_deg": 0.779227607105041,
+        "slope_mae_deg": 3.407731303885359,
+        "aspect_within_15deg_pitched": 0.9902541814829449,
+        "dz_median_m": 0.0759988751465901,
+        "frac_dz_lt_0p5m": 0.9615384615384616
+      },
+      "campus": {
+        "n_planes_matched": 3016,
+        "slope_median_abs_deg": 1.5701828724283455,
+        "slope_mae_deg": 8.647989662850572,
+        "aspect_within_15deg_pitched": 0.9079089924160346,
+        "dz_median_m": 0.06681904634021496,
+        "frac_dz_lt_0p5m": 0.9001989389920424
+      },
+      "outside_aoi": {
+        "n_planes_matched": 37323,
+        "slope_median_abs_deg": 0.49135087346100903,
+        "slope_mae_deg": 3.7851991003547827,
+        "aspect_within_15deg_pitched": 0.9957192633150821,
+        "dz_median_m": 0.046163656643511075,
+        "frac_dz_lt_0p5m": 0.9413766310318035
+      },
+      "voorhof": {
+        "n_planes_matched": 2957,
+        "slope_median_abs_deg": 0.803919126492455,
+        "slope_mae_deg": 5.216261881638242,
+        "aspect_within_15deg_pitched": 0.9880952380952381,
+        "dz_median_m": 0.06140889587289733,
+        "frac_dz_lt_0p5m": 0.7700371998647277
+      },
+      "all": {
+        "match_rate": 0.9932111337406653,
+        "slope_median_abs_deg": 0.5974869580758924,
+        "dz_median_m": 0.05344137367535229,
+        "frac_dz_lt_0p5m": 0.9344893333813001,
+        "h70_median_abs_m": 0.05227329136133175,
+        "n_buildings_heights": 30598
+      },
+      "irradiance_vs_pvgis": {
+        "n_planes": 4069,
+        "n_bins": 40,
+        "bias_pct_weighted": -3.60499006809822,
+        "rmse_pct": 3.973075958032236,
+        "max_abs_pct": 6.024426577360231,
+        "tmy_vs_longterm_ghi_ratio": 0.9754865350089766,
+        "bias_pct_tmy_adjusted": -1.182634026809266,
+        "rmse_pct_tmy_adjusted": 1.7622698562070858
+      }
+    }
+  },
+  "tiles": {
+    "83000_444000": {
+      "meta": {
+        "n_points_kept": 34286301,
+        "flight_first": "2025-12-19",
+        "flight_last": "2025-12-19",
+        "n_outliers": 221601,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 5137264,
+        "n_veg_pts": 11824804,
+        "veg_cover_frac": 0.25646425,
+        "density_building_pts_m2": 23.96248852837907
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3870546,
+          "bias": -0.011198820546269417,
+          "rmse": 0.23340454697608948,
+          "mae": 0.012208129279315472,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2783407,
+          "bias": -0.00016493700968567282,
+          "rmse": 0.0033276649191975594,
+          "mae": 0.00016854341083671898,
+          "p95_abs": 1.1920928955078125e-07
+        }
+      },
+      "segment_stats": {
+        "seconds": 13.3,
+        "n_buildings": 3614,
+        "n_crossing_tile_edge": 16,
+        "n_buildings_with_planes": 3557,
+        "n_planes": 14437,
+        "pts_in_footprints": 2969252,
+        "frac_pts_on_planes": 0.8485510828989927,
+        "frac_pts_obstacle": 0.022424502871430246,
+        "median_fit_rmse_m": 0.030387940995761704,
+        "share_flat_area": 0.4226828196767351
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 3540,
+          "n_single_part": 2577,
+          "h70_bias_m": 0.24036496973389285,
+          "h70_rmse_m": 0.7082530639049666,
+          "h70_median_abs_m": 0.02286268091201782,
+          "h70_rmse_m_excl_gt3m": 0.703264739977455,
+          "n_gt3m": 2,
+          "hmax_bias_m": 0.12241677200817802,
+          "hmax_median_abs_m": 0.14723390197753927
+        },
+        "planes": {
+          "n_planes_ge_min_area": 3817,
+          "n_matched": 3776,
+          "match_rate": 0.989258580036678,
+          "slope_mae_deg": 1.9708666321559984,
+          "slope_median_abs_deg": 0.26180411223769473,
+          "slope_bias_deg": 1.0912175967781699,
+          "aspect_median_abs_deg_pitched": 0.18086558330719527,
+          "aspect_within_15deg_pitched": 0.9981634527089073,
+          "n_pitched": 2178,
+          "dz_median_m": 0.021726344083397464,
+          "frac_matched_dz_lt_0p5m": 0.9785487288135594
+        },
+        "n_ref_roof_surfaces": 7714
+      },
+      "solar_stats": {
+        "seconds": 34.3,
+        "n_roof_cells": 549192,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 878.5983162498368,
+        "roof_kwh_m2_p10_p50_p90": [
+          512.3480392383791,
+          966.9204562393908,
+          1120.1567914499976
+        ],
+        "loss_all_obstructions": 0.1511925273701643,
+        "loss_trees_only": 0.0211488346846207
+      }
+    },
+    "83000_445000": {
+      "meta": {
+        "n_points_kept": 39362059,
+        "flight_first": "2025-12-19",
+        "flight_last": "2025-12-19",
+        "n_outliers": 308497,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 5148142,
+        "n_veg_pts": 18452214,
+        "veg_cover_frac": 0.35318025,
+        "density_building_pts_m2": 24.026452637388154
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3858495,
+          "bias": -0.015247335657477379,
+          "rmse": 0.33311837911605835,
+          "mae": 0.016556113958358765,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2736193,
+          "bias": -7.50580002204515e-05,
+          "rmse": 0.002424057573080063,
+          "mae": 7.663170981686562e-05,
+          "p95_abs": 1.1920928955078125e-07
+        }
+      },
+      "segment_stats": {
+        "seconds": 13.4,
+        "n_buildings": 1228,
+        "n_crossing_tile_edge": 33,
+        "n_buildings_with_planes": 1198,
+        "n_planes": 8899,
+        "pts_in_footprints": 3346923,
+        "frac_pts_on_planes": 0.8662508817800708,
+        "frac_pts_obstacle": 0.03587294957189036,
+        "median_fit_rmse_m": 0.03383099657778689,
+        "share_flat_area": 0.7160248440522511
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 1198,
+          "n_single_part": 874,
+          "h70_bias_m": 0.34000288398680484,
+          "h70_rmse_m": 1.1142069448962317,
+          "h70_median_abs_m": 0.03938719587326034,
+          "h70_rmse_m_excl_gt3m": 0.8498566535826324,
+          "n_gt3m": 3,
+          "hmax_bias_m": 0.2130307873308362,
+          "hmax_median_abs_m": 0.17064550971984893
+        },
+        "planes": {
+          "n_planes_ge_min_area": 2522,
+          "n_matched": 2511,
+          "match_rate": 0.9956383822363204,
+          "slope_mae_deg": 5.504625032742304,
+          "slope_median_abs_deg": 0.5520073679577457,
+          "slope_bias_deg": 4.509322033551388,
+          "aspect_median_abs_deg_pitched": 0.23202063904153647,
+          "aspect_within_15deg_pitched": 0.9962406015037594,
+          "n_pitched": 798,
+          "dz_median_m": 0.05039987406612889,
+          "frac_matched_dz_lt_0p5m": 0.8837116686579052
+        },
+        "n_ref_roof_surfaces": 2936
+      },
+      "solar_stats": {
+        "seconds": 29.7,
+        "n_roof_cells": 646923,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 859.9583204903709,
+        "roof_kwh_m2_p10_p50_p90": [
+          478.2011828988146,
+          959.1553546435878,
+          1075.5764132381605
+        ],
+        "loss_all_obstructions": 0.19789747371838573,
+        "loss_trees_only": 0.02279675540934345
+      }
+    },
+    "83000_446000": {
+      "meta": {
+        "n_points_kept": 26249721,
+        "flight_first": "2025-12-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 177221,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 5177205,
+        "n_veg_pts": 8073700,
+        "veg_cover_frac": 0.21951275,
+        "density_building_pts_m2": 20.405673317199682
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3830742,
+          "bias": -0.008428340777754784,
+          "rmse": 0.2508971095085144,
+          "mae": 0.009563355706632137,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2627754,
+          "bias": -0.00011040044773835689,
+          "rmse": 0.002732563763856888,
+          "mae": 0.00011224227637285367,
+          "p95_abs": 2.9802322387695312e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 44.5,
+        "n_buildings": 2382,
+        "n_crossing_tile_edge": 36,
+        "n_buildings_with_planes": 2344,
+        "n_planes": 13188,
+        "pts_in_footprints": 3150861,
+        "frac_pts_on_planes": 0.8640333546925745,
+        "frac_pts_obstacle": 0.02763403399896092,
+        "median_fit_rmse_m": 0.03152287361776139,
+        "share_flat_area": 0.5752921619780311
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 2344,
+          "n_single_part": 1624,
+          "h70_bias_m": 0.09370064151240667,
+          "h70_rmse_m": 0.4512720806587814,
+          "h70_median_abs_m": 0.03190106582641561,
+          "h70_rmse_m_excl_gt3m": 0.4406630120361439,
+          "n_gt3m": 1,
+          "hmax_bias_m": -0.0473358073088863,
+          "hmax_median_abs_m": 0.1725471982955935
+        },
+        "planes": {
+          "n_planes_ge_min_area": 3901,
+          "n_matched": 3892,
+          "match_rate": 0.9976928992566009,
+          "slope_mae_deg": 4.210840998847185,
+          "slope_median_abs_deg": 0.5289609730630715,
+          "slope_bias_deg": 3.2287294093058674,
+          "aspect_median_abs_deg_pitched": 0.23504864859256713,
+          "aspect_within_15deg_pitched": 0.9964230965763924,
+          "n_pitched": 1957,
+          "dz_median_m": 0.045489759259079054,
+          "frac_matched_dz_lt_0p5m": 0.9347379239465571
+        },
+        "n_ref_roof_surfaces": 6168
+      },
+      "solar_stats": {
+        "seconds": 34.0,
+        "n_roof_cells": 703146,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 903.4825876192383,
+        "roof_kwh_m2_p10_p50_p90": [
+          578.3162890465242,
+          995.5372686839435,
+          1098.2039273832056
+        ],
+        "loss_all_obstructions": 0.14646017645705833,
+        "loss_trees_only": 0.013719730827120524
+      }
+    },
+    "83000_447000": {
+      "meta": {
+        "n_points_kept": 32262346,
+        "flight_first": "2026-01-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 248114,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 6871773,
+        "n_veg_pts": 10636352,
+        "veg_cover_frac": 0.24460275,
+        "density_building_pts_m2": 23.604890138484077
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3890359,
+          "bias": -0.011292017996311188,
+          "rmse": 0.2695688307285309,
+          "mae": 0.012332862243056297,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2528095,
+          "bias": -8.372028969461098e-05,
+          "rmse": 0.0024616902228444815,
+          "mae": 8.465995051665232e-05,
+          "p95_abs": 2.9802322387695312e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 62.3,
+        "n_buildings": 4443,
+        "n_crossing_tile_edge": 56,
+        "n_buildings_with_planes": 4258,
+        "n_planes": 21676,
+        "pts_in_footprints": 4074881,
+        "frac_pts_on_planes": 0.8188808458455596,
+        "frac_pts_obstacle": 0.025596821109622588,
+        "median_fit_rmse_m": 0.03101312485291927,
+        "share_flat_area": 0.3806241435692862
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 4257,
+          "n_single_part": 2604,
+          "h70_bias_m": 0.2147780644470245,
+          "h70_rmse_m": 0.7107757698233496,
+          "h70_median_abs_m": 0.053742652893066234,
+          "h70_rmse_m_excl_gt3m": 0.695970443621219,
+          "n_gt3m": 6,
+          "hmax_bias_m": -0.02360133739451028,
+          "hmax_median_abs_m": 0.21672288513183702
+        },
+        "planes": {
+          "n_planes_ge_min_area": 6241,
+          "n_matched": 6230,
+          "match_rate": 0.9982374619452011,
+          "slope_mae_deg": 2.704099788807532,
+          "slope_median_abs_deg": 0.5538667845681937,
+          "slope_bias_deg": 1.200196556252422,
+          "aspect_median_abs_deg_pitched": 0.2518445427630809,
+          "aspect_within_15deg_pitched": 0.995992987728525,
+          "n_pitched": 3993,
+          "dz_median_m": 0.05418177148504899,
+          "frac_matched_dz_lt_0p5m": 0.9656500802568219
+        },
+        "n_ref_roof_surfaces": 12765
+      },
+      "solar_stats": {
+        "seconds": 36.9,
+        "n_roof_cells": 749498,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 861.7590927344771,
+        "roof_kwh_m2_p10_p50_p90": [
+          513.9048530559925,
+          931.1746208260557,
+          1103.1789550905485
+        ],
+        "loss_all_obstructions": 0.1693402511323705,
+        "loss_trees_only": 0.015118928798686149
+      }
+    },
+    "83000_448000": {
+      "meta": {
+        "n_points_kept": 25891087,
+        "flight_first": "2026-01-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 118071,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 3825897,
+        "n_veg_pts": 5916769,
+        "veg_cover_frac": 0.153263,
+        "density_building_pts_m2": 23.596874840989727
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3716524,
+          "bias": -0.010878273285925388,
+          "rmse": 0.240476593375206,
+          "mae": 0.011423994787037373,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2868866,
+          "bias": -0.0001791079412214458,
+          "rmse": 0.0046662334352731705,
+          "mae": 0.000181094859726727,
+          "p95_abs": 2.9802322387695312e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 35.1,
+        "n_buildings": 958,
+        "n_crossing_tile_edge": 23,
+        "n_buildings_with_planes": 917,
+        "n_planes": 7397,
+        "pts_in_footprints": 2268919,
+        "frac_pts_on_planes": 0.8559781111621878,
+        "frac_pts_obstacle": 0.030746800568905282,
+        "median_fit_rmse_m": 0.031913144965182105,
+        "share_flat_area": 0.5004846077944766
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 916,
+          "n_single_part": 653,
+          "h70_bias_m": 0.041779710013014386,
+          "h70_rmse_m": 0.5178178465949382,
+          "h70_median_abs_m": 0.0491571769714354,
+          "h70_rmse_m_excl_gt3m": 0.34895301208781027,
+          "n_gt3m": 4,
+          "hmax_bias_m": -0.04829801455240152,
+          "hmax_median_abs_m": 0.16031339263916067
+        },
+        "planes": {
+          "n_planes_ge_min_area": 2048,
+          "n_matched": 2036,
+          "match_rate": 0.994140625,
+          "slope_mae_deg": 4.8986610229870955,
+          "slope_median_abs_deg": 0.7364079141678535,
+          "slope_bias_deg": 3.691480319511666,
+          "aspect_median_abs_deg_pitched": 0.1818072563619353,
+          "aspect_within_15deg_pitched": 0.9855818743563337,
+          "n_pitched": 971,
+          "dz_median_m": 0.05120067965006436,
+          "frac_matched_dz_lt_0p5m": 0.9430255402750491
+        },
+        "n_ref_roof_surfaces": 3007
+      },
+      "solar_stats": {
+        "seconds": 19.0,
+        "n_roof_cells": 413506,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 861.5027175002659,
+        "roof_kwh_m2_p10_p50_p90": [
+          477.3822224259576,
+          958.3028009490343,
+          1088.7187435515075
+        ],
+        "loss_all_obstructions": 0.1773354510202959,
+        "loss_trees_only": 0.01519731303209737
+      }
+    },
+    "84000_444000": {
+      "meta": {
+        "n_points_kept": 32938547,
+        "flight_first": "2025-12-19",
+        "flight_last": "2025-12-19",
+        "n_outliers": 210489,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 4961858,
+        "n_veg_pts": 10848159,
+        "veg_cover_frac": 0.25087025,
+        "density_building_pts_m2": 22.945777372883022
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3840993,
+          "bias": -0.00979595072567463,
+          "rmse": 0.21861805021762848,
+          "mae": 0.010590808466076851,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2708212,
+          "bias": -0.00030367387807928026,
+          "rmse": 0.005244733765721321,
+          "mae": 0.00030830534524284303,
+          "p95_abs": 1.1920928955078125e-07
+        }
+      },
+      "segment_stats": {
+        "seconds": 42.3,
+        "n_buildings": 3583,
+        "n_crossing_tile_edge": 3,
+        "n_buildings_with_planes": 3529,
+        "n_planes": 12689,
+        "pts_in_footprints": 2774674,
+        "frac_pts_on_planes": 0.8834832488429272,
+        "frac_pts_obstacle": 0.013851717354903675,
+        "median_fit_rmse_m": 0.027680041927263296,
+        "share_flat_area": 0.39777999107109174
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 3528,
+          "n_single_part": 2578,
+          "h70_bias_m": 0.30516594669765246,
+          "h70_rmse_m": 0.822738874701796,
+          "h70_median_abs_m": 0.02700488605499296,
+          "h70_rmse_m_excl_gt3m": 0.8159795856353337,
+          "n_gt3m": 3,
+          "hmax_bias_m": 0.16012890076130434,
+          "hmax_median_abs_m": 0.12328765201568626
+        },
+        "planes": {
+          "n_planes_ge_min_area": 4345,
+          "n_matched": 4329,
+          "match_rate": 0.9963176064441888,
+          "slope_mae_deg": 1.8373463013831692,
+          "slope_median_abs_deg": 0.3010721618508412,
+          "slope_bias_deg": 0.775743477975359,
+          "aspect_median_abs_deg_pitched": 0.20961807411558198,
+          "aspect_within_15deg_pitched": 0.9979267449896337,
+          "n_pitched": 2894,
+          "dz_median_m": 0.02232139149510637,
+          "frac_matched_dz_lt_0p5m": 0.9808269808269808
+        },
+        "n_ref_roof_surfaces": 7886
+      },
+      "solar_stats": {
+        "seconds": 4.2,
+        "n_roof_cells": 553339,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 890.1547108140674,
+        "roof_kwh_m2_p10_p50_p90": [
+          552.4090410011761,
+          974.0662228618697,
+          1106.40649665635
+        ],
+        "loss_all_obstructions": 0.14602804645856926,
+        "loss_trees_only": 0.025877497339901745
+      }
+    },
+    "84000_445000": {
+      "meta": {
+        "n_points_kept": 32481743,
+        "flight_first": "2025-12-19",
+        "flight_last": "2025-12-19",
+        "n_outliers": 250720,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 6281444,
+        "n_veg_pts": 11685244,
+        "veg_cover_frac": 0.2588345,
+        "density_building_pts_m2": 25.29413375426841
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3831085,
+          "bias": -0.018363194540143013,
+          "rmse": 0.37854447960853577,
+          "mae": 0.019206220284104347,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2552319,
+          "bias": -6.851251237094402e-05,
+          "rmse": 0.0021831125486642122,
+          "mae": 7.02031611581333e-05,
+          "p95_abs": 1.1920928955078125e-07
+        }
+      },
+      "segment_stats": {
+        "seconds": 73.5,
+        "n_buildings": 978,
+        "n_crossing_tile_edge": 14,
+        "n_buildings_with_planes": 967,
+        "n_planes": 10082,
+        "pts_in_footprints": 5063314,
+        "frac_pts_on_planes": 0.8876271548633958,
+        "frac_pts_obstacle": 0.02032364573873949,
+        "median_fit_rmse_m": 0.03467826259297206,
+        "share_flat_area": 0.6832170867401841
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 967,
+          "n_single_part": 857,
+          "h70_bias_m": 0.11319005294844875,
+          "h70_rmse_m": 0.6408184640862736,
+          "h70_median_abs_m": 0.04130197906494093,
+          "h70_rmse_m_excl_gt3m": 0.4899593139359546,
+          "n_gt3m": 4,
+          "hmax_bias_m": 0.18823359086385322,
+          "hmax_median_abs_m": 0.08683012771606435
+        },
+        "planes": {
+          "n_planes_ge_min_area": 2526,
+          "n_matched": 2519,
+          "match_rate": 0.9972288202692003,
+          "slope_mae_deg": 10.742336120624454,
+          "slope_median_abs_deg": 2.081894372510531,
+          "slope_bias_deg": 10.229410823543176,
+          "aspect_median_abs_deg_pitched": 0.10595455794148734,
+          "aspect_within_15deg_pitched": 0.976,
+          "n_pitched": 250,
+          "dz_median_m": 0.13301313715870045,
+          "frac_matched_dz_lt_0p5m": 0.5883287018658198
+        },
+        "n_ref_roof_surfaces": 1583
+      },
+      "solar_stats": {
+        "seconds": 43.4,
+        "n_roof_cells": 901632,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 948.1942441004139,
+        "roof_kwh_m2_p10_p50_p90": [
+          664.6384388861345,
+          1030.5491860815432,
+          1087.843751980217
+        ],
+        "loss_all_obstructions": 0.11793303546150513,
+        "loss_trees_only": 0.009776643909837457
+      }
+    },
+    "84000_446000": {
+      "meta": {
+        "n_points_kept": 22466859,
+        "flight_first": "2025-12-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 181926,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 7354804,
+        "n_veg_pts": 3978071,
+        "veg_cover_frac": 0.118473,
+        "density_building_pts_m2": 21.56938385581707
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3691219,
+          "bias": -0.011193986982107162,
+          "rmse": 0.24132807552814484,
+          "mae": 0.012210328131914139,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2159574,
+          "bias": -9.339260577689856e-05,
+          "rmse": 0.004973961506038904,
+          "mae": 9.421594586456195e-05,
+          "p95_abs": 2.9802322387695312e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 32.2,
+        "n_buildings": 2169,
+        "n_crossing_tile_edge": 39,
+        "n_buildings_with_planes": 2138,
+        "n_planes": 20571,
+        "pts_in_footprints": 4868838,
+        "frac_pts_on_planes": 0.8389808820913738,
+        "frac_pts_obstacle": 0.03494386134843673,
+        "median_fit_rmse_m": 0.032247315633909555,
+        "share_flat_area": 0.5410820224168134
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 2135,
+          "n_single_part": 1441,
+          "h70_bias_m": 0.28185012032610723,
+          "h70_rmse_m": 1.3011649092333062,
+          "h70_median_abs_m": 0.03336919708251962,
+          "h70_rmse_m_excl_gt3m": 0.6736370887589577,
+          "n_gt3m": 15,
+          "hmax_bias_m": 0.1746978755561907,
+          "hmax_median_abs_m": 0.13116752624511818
+        },
+        "planes": {
+          "n_planes_ge_min_area": 4626,
+          "n_matched": 4600,
+          "match_rate": 0.9943795936013835,
+          "slope_mae_deg": 5.119329962495661,
+          "slope_median_abs_deg": 0.9096260026631067,
+          "slope_bias_deg": 3.962477279196507,
+          "aspect_median_abs_deg_pitched": 0.246285748221311,
+          "aspect_within_15deg_pitched": 0.9866310160427807,
+          "n_pitched": 1496,
+          "dz_median_m": 0.06469367597394582,
+          "frac_matched_dz_lt_0p5m": 0.8969565217391304
+        },
+        "n_ref_roof_surfaces": 6214
+      },
+      "solar_stats": {
+        "seconds": 47.7,
+        "n_roof_cells": 951651,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 883.6363933697966,
+        "roof_kwh_m2_p10_p50_p90": [
+          478.69054145651273,
+          998.3057679663117,
+          1097.516143549959
+        ],
+        "loss_all_obstructions": 0.16765067727162852,
+        "loss_trees_only": 0.005152062328115381
+      }
+    },
+    "84000_447000": {
+      "meta": {
+        "n_points_kept": 26245693,
+        "flight_first": "2026-01-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 274816,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 11226369,
+        "n_veg_pts": 5337335,
+        "veg_cover_frac": 0.1456175,
+        "density_building_pts_m2": 23.38890219943457
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3733261,
+          "bias": -0.011646187864243984,
+          "rmse": 0.25734856724739075,
+          "mae": 0.01374269649386406,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 1700853,
+          "bias": -0.0002915871737059206,
+          "rmse": 0.010157965123653412,
+          "mae": 0.0002939189726021141,
+          "p95_abs": 5.960464477539063e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 32.1,
+        "n_buildings": 4101,
+        "n_crossing_tile_edge": 86,
+        "n_buildings_with_planes": 4051,
+        "n_planes": 35798,
+        "pts_in_footprints": 7481332,
+        "frac_pts_on_planes": 0.7642556165132092,
+        "frac_pts_obstacle": 0.043438655041642314,
+        "median_fit_rmse_m": 0.03257681090530527,
+        "share_flat_area": 0.33975259023727494
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 4050,
+          "n_single_part": 2036,
+          "h70_bias_m": 0.14922469683063896,
+          "h70_rmse_m": 0.5850477373143395,
+          "h70_median_abs_m": 0.06848274993896464,
+          "h70_rmse_m_excl_gt3m": 0.5120334999759163,
+          "n_gt3m": 10,
+          "hmax_bias_m": -0.23226232911392294,
+          "hmax_median_abs_m": 0.35254140853881655
+        },
+        "planes": {
+          "n_planes_ge_min_area": 11022,
+          "n_matched": 10972,
+          "match_rate": 0.9954636182181092,
+          "slope_mae_deg": 3.0291411372629593,
+          "slope_median_abs_deg": 0.7781047469029572,
+          "slope_bias_deg": 1.6647521829596794,
+          "aspect_median_abs_deg_pitched": 0.2266654608816907,
+          "aspect_within_15deg_pitched": 0.9919482386772106,
+          "n_pitched": 6955,
+          "dz_median_m": 0.08397632468382055,
+          "frac_matched_dz_lt_0p5m": 0.9701968647466278
+        },
+        "n_ref_roof_surfaces": 20066
+      },
+      "solar_stats": {
+        "seconds": 65.5,
+        "n_roof_cells": 1347175,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 767.2472062027437,
+        "roof_kwh_m2_p10_p50_p90": [
+          325.86877613875487,
+          818.9921089393237,
+          1089.627070479116
+        ],
+        "loss_all_obstructions": 0.244449527859659,
+        "loss_trees_only": 0.006318685274198765
+      }
+    },
+    "84000_448000": {
+      "meta": {
+        "n_points_kept": 34929323,
+        "flight_first": "2026-01-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 283258,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 5750760,
+        "n_veg_pts": 14170512,
+        "veg_cover_frac": 0.2910555,
+        "density_building_pts_m2": 22.92082300787077
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3800915,
+          "bias": -0.010378621518611908,
+          "rmse": 0.24353446066379547,
+          "mae": 0.011322959326207638,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2598694,
+          "bias": -0.00018504270701669157,
+          "rmse": 0.004260002635419369,
+          "mae": 0.0001874225417850539,
+          "p95_abs": 5.960464477539063e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 48.0,
+        "n_buildings": 3139,
+        "n_crossing_tile_edge": 44,
+        "n_buildings_with_planes": 3107,
+        "n_planes": 15539,
+        "pts_in_footprints": 3122043,
+        "frac_pts_on_planes": 0.8506067981767067,
+        "frac_pts_obstacle": 0.02613384889317668,
+        "median_fit_rmse_m": 0.02939111063218285,
+        "share_flat_area": 0.35945148878330774
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 3106,
+          "n_single_part": 2222,
+          "h70_bias_m": 0.20428490925021617,
+          "h70_rmse_m": 1.0481409951201452,
+          "h70_median_abs_m": 0.048209881591795956,
+          "h70_rmse_m_excl_gt3m": 0.7107085884624645,
+          "n_gt3m": 6,
+          "hmax_bias_m": 0.04999210451490362,
+          "hmax_median_abs_m": 0.1444885511398314
+        },
+        "planes": {
+          "n_planes_ge_min_area": 4406,
+          "n_matched": 4397,
+          "match_rate": 0.9979573309123921,
+          "slope_mae_deg": 2.7355964525395158,
+          "slope_median_abs_deg": 0.5008497711922786,
+          "slope_bias_deg": 1.707248403414351,
+          "aspect_median_abs_deg_pitched": 0.21164774192030222,
+          "aspect_within_15deg_pitched": 0.995839636913767,
+          "n_pitched": 2644,
+          "dz_median_m": 0.03705231547492449,
+          "frac_matched_dz_lt_0p5m": 0.9649761200818741
+        },
+        "n_ref_roof_surfaces": 7593
+      },
+      "solar_stats": {
+        "seconds": 29.8,
+        "n_roof_cells": 584035,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 858.7104982979914,
+        "roof_kwh_m2_p10_p50_p90": [
+          489.25436973845285,
+          936.8070652158526,
+          1122.9291612200125
+        ],
+        "loss_all_obstructions": 0.17722986688735076,
+        "loss_trees_only": 0.02424294127296167
+      }
+    },
+    "85000_445000": {
+      "meta": {
+        "n_points_kept": 32299319,
+        "flight_first": "2025-12-19",
+        "flight_last": "2025-12-19",
+        "n_outliers": 195044,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 3509329,
+        "n_veg_pts": 12392902,
+        "veg_cover_frac": 0.2339615,
+        "density_building_pts_m2": 21.349562508840318
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3756854,
+          "bias": -0.011306678876280785,
+          "rmse": 0.2842976450920105,
+          "mae": 0.012224164791405201,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2867292,
+          "bias": -9.171387500828132e-05,
+          "rmse": 0.003024874022230506,
+          "mae": 9.416473767487332e-05,
+          "p95_abs": 1.1920928955078125e-07
+        }
+      },
+      "segment_stats": {
+        "seconds": 40.0,
+        "n_buildings": 329,
+        "n_crossing_tile_edge": 12,
+        "n_buildings_with_planes": 322,
+        "n_planes": 6487,
+        "pts_in_footprints": 2812771,
+        "frac_pts_on_planes": 0.8920743992312208,
+        "frac_pts_obstacle": 0.022535073064959787,
+        "median_fit_rmse_m": 0.033663781987747575,
+        "share_flat_area": 0.6545128757611776
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 320,
+          "n_single_part": 253,
+          "h70_bias_m": 0.2301621802225297,
+          "h70_rmse_m": 0.8862554962940282,
+          "h70_median_abs_m": 0.04761865234375007,
+          "h70_rmse_m_excl_gt3m": 0.7273615926219181,
+          "n_gt3m": 4,
+          "hmax_bias_m": 0.323190028688824,
+          "hmax_median_abs_m": 0.09897897338867212
+        },
+        "planes": {
+          "n_planes_ge_min_area": 1812,
+          "n_matched": 1799,
+          "match_rate": 0.9928256070640177,
+          "slope_mae_deg": 8.800320986032967,
+          "slope_median_abs_deg": 2.628540043406995,
+          "slope_bias_deg": 6.977981650998894,
+          "aspect_median_abs_deg_pitched": 0.18624635310126791,
+          "aspect_within_15deg_pitched": 0.9505208333333334,
+          "n_pitched": 384,
+          "dz_median_m": 0.05841789127257657,
+          "frac_matched_dz_lt_0p5m": 0.9355197331851028
+        },
+        "n_ref_roof_surfaces": 1207
+      },
+      "solar_stats": {
+        "seconds": 6.2,
+        "n_roof_cells": 553907,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 914.4657562627102,
+        "roof_kwh_m2_p10_p50_p90": [
+          570.3592845239054,
+          1010.6560844739699,
+          1104.627531458553
+        ],
+        "loss_all_obstructions": 0.15075726602189898,
+        "loss_trees_only": 0.013940451575829571
+      }
+    },
+    "85000_446000": {
+      "meta": {
+        "n_points_kept": 40860782,
+        "flight_first": "2025-12-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 325574,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 8929330,
+        "n_veg_pts": 13651927,
+        "veg_cover_frac": 0.23494775,
+        "density_building_pts_m2": 30.853750713740883
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3844724,
+          "bias": -0.0168488547205925,
+          "rmse": 0.36191561818122864,
+          "mae": 0.018665045499801636,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2568934,
+          "bias": -0.00013449971447698772,
+          "rmse": 0.003009450389072299,
+          "mae": 0.00013688323087990284,
+          "p95_abs": 5.960464477539063e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 93.6,
+        "n_buildings": 1932,
+        "n_crossing_tile_edge": 32,
+        "n_buildings_with_planes": 1915,
+        "n_planes": 20484,
+        "pts_in_footprints": 5955553,
+        "frac_pts_on_planes": 0.8464572475469533,
+        "frac_pts_obstacle": 0.03198779357685172,
+        "median_fit_rmse_m": 0.03214524505368378,
+        "share_flat_area": 0.4780971411342366
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 1915,
+          "n_single_part": 1337,
+          "h70_bias_m": 0.214076125111042,
+          "h70_rmse_m": 0.7689891965335732,
+          "h70_median_abs_m": 0.040697433471679645,
+          "h70_rmse_m_excl_gt3m": 0.6313730498334187,
+          "n_gt3m": 12,
+          "hmax_bias_m": 0.012589854946298844,
+          "hmax_median_abs_m": 0.15593933486938472
+        },
+        "planes": {
+          "n_planes_ge_min_area": 4177,
+          "n_matched": 4160,
+          "match_rate": 0.9959300933684463,
+          "slope_mae_deg": 5.533614831677083,
+          "slope_median_abs_deg": 0.43910475198717186,
+          "slope_bias_deg": 3.2782569588420785,
+          "aspect_median_abs_deg_pitched": 0.17609338987219303,
+          "aspect_within_15deg_pitched": 0.9655942806076855,
+          "n_pitched": 2238,
+          "dz_median_m": 0.039749876363734504,
+          "frac_matched_dz_lt_0p5m": 0.9278846153846154
+        },
+        "n_ref_roof_surfaces": 5620
+      },
+      "solar_stats": {
+        "seconds": 6.1,
+        "n_roof_cells": 855802,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 865.7274909094142,
+        "roof_kwh_m2_p10_p50_p90": [
+          510.4172307333384,
+          950.9606106606802,
+          1089.4489661656073
+        ],
+        "loss_all_obstructions": 0.1786946410402046,
+        "loss_trees_only": 0.01124636743391294
+      }
+    },
+    "85000_447000": {
+      "meta": {
+        "n_points_kept": 36966046,
+        "flight_first": "2026-01-19",
+        "flight_last": "2026-01-19",
+        "n_outliers": 261973,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 6019902,
+        "n_veg_pts": 13720716,
+        "veg_cover_frac": 0.24912625,
+        "density_building_pts_m2": 27.164427557903025
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3793468,
+          "bias": -0.010742849670350552,
+          "rmse": 0.25963589549064636,
+          "mae": 0.011885435320436954,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 2714424,
+          "bias": -0.00021788002050016075,
+          "rmse": 0.0057408432476222515,
+          "mae": 0.00021996173018123955,
+          "p95_abs": 5.960464477539063e-08
+        }
+      },
+      "segment_stats": {
+        "seconds": 50.1,
+        "n_buildings": 2227,
+        "n_crossing_tile_edge": 15,
+        "n_buildings_with_planes": 2193,
+        "n_planes": 13094,
+        "pts_in_footprints": 3282784,
+        "frac_pts_on_planes": 0.8361122754345093,
+        "frac_pts_obstacle": 0.026830580385428952,
+        "median_fit_rmse_m": 0.029920431552227032,
+        "share_flat_area": 0.42311955459764294
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 2193,
+          "n_single_part": 1376,
+          "h70_bias_m": 0.3631420015805457,
+          "h70_rmse_m": 1.066982175394524,
+          "h70_median_abs_m": 0.05065797500610347,
+          "h70_rmse_m_excl_gt3m": 0.9307982554912222,
+          "n_gt3m": 10,
+          "hmax_bias_m": 0.11520274952088223,
+          "hmax_median_abs_m": 0.24256095123291033
+        },
+        "planes": {
+          "n_planes_ge_min_area": 3666,
+          "n_matched": 3588,
+          "match_rate": 0.9787234042553191,
+          "slope_mae_deg": 2.763588144944303,
+          "slope_median_abs_deg": 0.5142621459172055,
+          "slope_bias_deg": 1.842310087208328,
+          "aspect_median_abs_deg_pitched": 0.2281097016197009,
+          "aspect_within_15deg_pitched": 0.9958120055839925,
+          "n_pitched": 2149,
+          "dz_median_m": 0.06996954073497008,
+          "frac_matched_dz_lt_0p5m": 0.9581939799331104
+        },
+        "n_ref_roof_surfaces": 6512
+      },
+      "solar_stats": {
+        "seconds": 3.8,
+        "n_roof_cells": 523207,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 863.5469100197405,
+        "roof_kwh_m2_p10_p50_p90": [
+          496.21177876793496,
+          948.5396177101136,
+          1113.8072615424583
+        ],
+        "loss_all_obstructions": 0.17367590429880875,
+        "loss_trees_only": 0.01656425300787423
+      }
+    },
+    "86000_445000": {
+      "meta": {
+        "n_points_kept": 24443697,
+        "flight_first": "2025-12-19",
+        "flight_last": "2025-12-19",
+        "n_outliers": 118144,
+        "res_m": 0.5,
+        "shape": [
+          2000,
+          2000
+        ],
+        "n_building_pts": 2965464,
+        "n_veg_pts": 5047706,
+        "veg_cover_frac": 0.1250685,
+        "density_building_pts_m2": 23.06717409102135
+      },
+      "qa_rasters": {
+        "dsm_vs_official": {
+          "n": 3702297,
+          "bias": -0.0035541648976504803,
+          "rmse": 0.12261494994163513,
+          "mae": 0.003861228236928582,
+          "p95_abs": 0.0
+        },
+        "dtm_vs_official": {
+          "n": 3001398,
+          "bias": -0.00026542687555775046,
+          "rmse": 0.004433571361005306,
+          "mae": 0.0002682397607713938,
+          "p95_abs": 2.384185791015625e-07
+        }
+      },
+      "segment_stats": {
+        "seconds": 20.5,
+        "n_buildings": 133,
+        "n_crossing_tile_edge": 3,
+        "n_buildings_with_planes": 129,
+        "n_planes": 3558,
+        "pts_in_footprints": 1426115,
+        "frac_pts_on_planes": 0.8856789249113851,
+        "frac_pts_obstacle": 0.022455412081073406,
+        "median_fit_rmse_m": 0.03367291003530794,
+        "share_flat_area": 0.7302206635075484
+      },
+      "validation": {
+        "reference": "Kadaster 3D Basisvoorziening 2025 (roofer on AHN5 2023)",
+        "heights": {
+          "n_matched": 129,
+          "n_single_part": 99,
+          "h70_bias_m": 0.12805457601450915,
+          "h70_rmse_m": 0.6044429009364953,
+          "h70_median_abs_m": 0.04058381652832033,
+          "h70_rmse_m_excl_gt3m": 0.6044429009364953,
+          "n_gt3m": 0,
+          "hmax_bias_m": 0.2697160565391069,
+          "hmax_median_abs_m": 0.12518849182128733
+        },
+        "planes": {
+          "n_planes_ge_min_area": 865,
+          "n_matched": 785,
+          "match_rate": 0.9075144508670521,
+          "slope_mae_deg": 9.710721042631993,
+          "slope_median_abs_deg": 7.455484324071687,
+          "slope_bias_deg": 9.281615074173237,
+          "aspect_median_abs_deg_pitched": 0.1568237257150713,
+          "aspect_within_15deg_pitched": 0.9714285714285714,
+          "n_pitched": 35,
+          "dz_median_m": 0.06489788045361422,
+          "frac_matched_dz_lt_0p5m": 0.9439490445859873
+        },
+        "n_ref_roof_surfaces": 408
+      },
+      "solar_stats": {
+        "seconds": 2.1,
+        "n_roof_cells": 275730,
+        "weather": {
+          "ghi_kwh": 1086.692,
+          "dhi_kwh": 564.068,
+          "dhi_isotropic_kwh": 451.30517672863147,
+          "dni_kwh": 1023.9775899999999,
+          "sky_model": "Hay-Davies",
+          "n_sun_bins": 959
+        },
+        "tmy": {
+          "radiation_db": "PVGIS-SARAH3",
+          "meteo_db": "ERA5",
+          "year_min": 2005,
+          "year_max": 2023,
+          "use_horizon": false,
+          "horizon_db": null
+        },
+        "roof_kwh_m2_mean": 981.121517453713,
+        "roof_kwh_m2_p10_p50_p90": [
+          725.9021672063693,
+          1062.9322180490885,
+          1090.5938513401172
+        ],
+        "loss_all_obstructions": 0.09301820800875915,
+        "loss_trees_only": 0.0031431784505118188
+      }
+    }
+  },
+  "tree_sensitivity": [
+    {
+      "scenario": "base",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 0.0,
+      "aoi": "binnenstad",
+      "roof_irradiation_gwh": 301.6774,
+      "tree_loss": 0.00839,
+      "share_bldg_tree_loss_gt10pct": 0.03815,
+      "share_bldg_tree_loss_gt25pct": 0.00735
+    },
+    {
+      "scenario": "base",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 0.0,
+      "aoi": "campus",
+      "roof_irradiation_gwh": 171.57808,
+      "tree_loss": 0.00939,
+      "share_bldg_tree_loss_gt10pct": 0.18841,
+      "share_bldg_tree_loss_gt25pct": 0.0471
+    },
+    {
+      "scenario": "base",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 0.0,
+      "aoi": "voorhof",
+      "roof_irradiation_gwh": 178.88678,
+      "tree_loss": 0.01633,
+      "share_bldg_tree_loss_gt10pct": 0.12887,
+      "share_bldg_tree_loss_gt25pct": 0.0338
+    },
+    {
+      "scenario": "base",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 0.0,
+      "aoi": "all",
+      "roof_irradiation_gwh": 652.14225,
+      "tree_loss": 0.01084,
+      "share_bldg_tree_loss_gt10pct": 0.06694,
+      "share_bldg_tree_loss_gt25pct": 0.01555
+    },
+    {
+      "scenario": "opaque",
+      "tau_on": 0.0,
+      "tau_off": 0.0,
+      "crown_dilation_m": 0.0,
+      "aoi": "binnenstad",
+      "roof_irradiation_gwh": 299.64783,
+      "tree_loss": 0.01506,
+      "share_bldg_tree_loss_gt10pct": 0.08507,
+      "share_bldg_tree_loss_gt25pct": 0.02133
+    },
+    {
+      "scenario": "opaque",
+      "tau_on": 0.0,
+      "tau_off": 0.0,
+      "crown_dilation_m": 0.0,
+      "aoi": "campus",
+      "roof_irradiation_gwh": 170.23953,
+      "tree_loss": 0.01712,
+      "share_bldg_tree_loss_gt10pct": 0.31522,
+      "share_bldg_tree_loss_gt25pct": 0.13406
+    },
+    {
+      "scenario": "opaque",
+      "tau_on": 0.0,
+      "tau_off": 0.0,
+      "crown_dilation_m": 0.0,
+      "aoi": "voorhof",
+      "roof_irradiation_gwh": 176.54341,
+      "tree_loss": 0.02922,
+      "share_bldg_tree_loss_gt10pct": 0.24014,
+      "share_bldg_tree_loss_gt25pct": 0.08239
+    },
+    {
+      "scenario": "opaque",
+      "tau_on": 0.0,
+      "tau_off": 0.0,
+      "crown_dilation_m": 0.0,
+      "aoi": "all",
+      "roof_irradiation_gwh": 646.43077,
+      "tree_loss": 0.01951,
+      "share_bldg_tree_loss_gt10pct": 0.13303,
+      "share_bldg_tree_loss_gt25pct": 0.04124
+    },
+    {
+      "scenario": "dense",
+      "tau_on": 0.1,
+      "tau_off": 0.5,
+      "crown_dilation_m": 0.0,
+      "aoi": "binnenstad",
+      "roof_irradiation_gwh": 300.76094,
+      "tree_loss": 0.0114,
+      "share_bldg_tree_loss_gt10pct": 0.06232,
+      "share_bldg_tree_loss_gt25pct": 0.01469
+    },
+    {
+      "scenario": "dense",
+      "tau_on": 0.1,
+      "tau_off": 0.5,
+      "crown_dilation_m": 0.0,
+      "aoi": "campus",
+      "roof_irradiation_gwh": 170.98518,
+      "tree_loss": 0.01281,
+      "share_bldg_tree_loss_gt10pct": 0.23551,
+      "share_bldg_tree_loss_gt25pct": 0.09058
+    },
+    {
+      "scenario": "dense",
+      "tau_on": 0.1,
+      "tau_off": 0.5,
+      "crown_dilation_m": 0.0,
+      "aoi": "voorhof",
+      "roof_irradiation_gwh": 177.824,
+      "tree_loss": 0.02218,
+      "share_bldg_tree_loss_gt10pct": 0.18873,
+      "share_bldg_tree_loss_gt25pct": 0.05634
+    },
+    {
+      "scenario": "dense",
+      "tau_on": 0.1,
+      "tau_off": 0.5,
+      "crown_dilation_m": 0.0,
+      "aoi": "all",
+      "roof_irradiation_gwh": 649.57012,
+      "tree_loss": 0.01475,
+      "share_bldg_tree_loss_gt10pct": 0.10074,
+      "share_bldg_tree_loss_gt25pct": 0.02823
+    },
+    {
+      "scenario": "sparse",
+      "tau_on": 0.5,
+      "tau_off": 0.9,
+      "crown_dilation_m": 0.0,
+      "aoi": "binnenstad",
+      "roof_irradiation_gwh": 302.59385,
+      "tree_loss": 0.00538,
+      "share_bldg_tree_loss_gt10pct": 0.02038,
+      "share_bldg_tree_loss_gt25pct": 0.00237
+    },
+    {
+      "scenario": "sparse",
+      "tau_on": 0.5,
+      "tau_off": 0.9,
+      "crown_dilation_m": 0.0,
+      "aoi": "campus",
+      "roof_irradiation_gwh": 172.17097,
+      "tree_loss": 0.00596,
+      "share_bldg_tree_loss_gt10pct": 0.12319,
+      "share_bldg_tree_loss_gt25pct": 0.02174
+    },
+    {
+      "scenario": "sparse",
+      "tau_on": 0.5,
+      "tau_off": 0.9,
+      "crown_dilation_m": 0.0,
+      "aoi": "voorhof",
+      "roof_irradiation_gwh": 179.94956,
+      "tree_loss": 0.01049,
+      "share_bldg_tree_loss_gt10pct": 0.07606,
+      "share_bldg_tree_loss_gt25pct": 0.01127
+    },
+    {
+      "scenario": "sparse",
+      "tau_on": 0.5,
+      "tau_off": 0.9,
+      "crown_dilation_m": 0.0,
+      "aoi": "all",
+      "roof_irradiation_gwh": 654.71438,
+      "tree_loss": 0.00694,
+      "share_bldg_tree_loss_gt10pct": 0.03854,
+      "share_bldg_tree_loss_gt25pct": 0.00541
+    },
+    {
+      "scenario": "crown+1m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 1.0,
+      "aoi": "binnenstad",
+      "roof_irradiation_gwh": 300.45995,
+      "tree_loss": 0.01239,
+      "share_bldg_tree_loss_gt10pct": 0.07986,
+      "share_bldg_tree_loss_gt25pct": 0.02346
+    },
+    {
+      "scenario": "crown+1m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 1.0,
+      "aoi": "campus",
+      "roof_irradiation_gwh": 171.03426,
+      "tree_loss": 0.01253,
+      "share_bldg_tree_loss_gt10pct": 0.27174,
+      "share_bldg_tree_loss_gt25pct": 0.10145
+    },
+    {
+      "scenario": "crown+1m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 1.0,
+      "aoi": "voorhof",
+      "roof_irradiation_gwh": 177.91745,
+      "tree_loss": 0.02166,
+      "share_bldg_tree_loss_gt10pct": 0.21197,
+      "share_bldg_tree_loss_gt25pct": 0.07042
+    },
+    {
+      "scenario": "crown+1m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 1.0,
+      "aoi": "all",
+      "roof_irradiation_gwh": 649.41167,
+      "tree_loss": 0.01499,
+      "share_bldg_tree_loss_gt10pct": 0.12052,
+      "share_bldg_tree_loss_gt25pct": 0.03837
+    },
+    {
+      "scenario": "crown+2m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 2.0,
+      "aoi": "binnenstad",
+      "roof_irradiation_gwh": 298.27707,
+      "tree_loss": 0.01957,
+      "share_bldg_tree_loss_gt10pct": 0.14194,
+      "share_bldg_tree_loss_gt25pct": 0.06161
+    },
+    {
+      "scenario": "crown+2m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 2.0,
+      "aoi": "campus",
+      "roof_irradiation_gwh": 170.27472,
+      "tree_loss": 0.01691,
+      "share_bldg_tree_loss_gt10pct": 0.36957,
+      "share_bldg_tree_loss_gt25pct": 0.21014
+    },
+    {
+      "scenario": "crown+2m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 2.0,
+      "aoi": "voorhof",
+      "roof_irradiation_gwh": 176.4352,
+      "tree_loss": 0.02982,
+      "share_bldg_tree_loss_gt10pct": 0.29577,
+      "share_bldg_tree_loss_gt25pct": 0.14085
+    },
+    {
+      "scenario": "crown+2m",
+      "tau_on": 0.3,
+      "tau_off": 0.7,
+      "crown_dilation_m": 2.0,
+      "aoi": "all",
+      "roof_irradiation_gwh": 644.987,
+      "tree_loss": 0.0217,
+      "share_bldg_tree_loss_gt10pct": 0.18949,
+      "share_bldg_tree_loss_gt25pct": 0.08756
+    }
+  ],
+  "change": {
+    "thresholds": {
+      "new_h5_max": 1.5,
+      "new_h6_min": 2.5,
+      "change_m": 1.0,
+      "change_area_m2": 10.0
+    },
+    "noise_unchanged_buildings": {
+      "median_m": -0.002000093460083008,
+      "nmad_m": 0.031134817749261856
+    },
+    "building_change_counts": {
+      "unchanged": 30597,
+      "raised_or_extended": 412,
+      "new_since_2023": 85,
+      "lowered": 81
+    },
+    "building_change_by_aoi": {
+      "binnenstad": {
+        "lowered": 27,
+        "new_since_2023": 5,
+        "raised_or_extended": 113,
+        "unchanged": 4107
+      },
+      "campus": {
+        "lowered": 8,
+        "new_since_2023": 6,
+        "raised_or_extended": 17,
+        "unchanged": 253
+      },
+      "outside_aoi": {
+        "lowered": 37,
+        "new_since_2023": 52,
+        "raised_or_extended": 256,
+        "unchanged": 24860
+      },
+      "voorhof": {
+        "lowered": 9,
+        "new_since_2023": 22,
+        "raised_or_extended": 26,
+        "unchanged": 1377
+      }
+    },
+    "validation_new": {
+      "n_bag_bouwjaar_ge_2024": 106,
+      "recall_new_for_bouwjaar_ge_2024": 0.5849056603773585,
+      "n_bouwjaar_ge_2024_ge30m2_empty_site_2023": 52,
+      "recall_new_ge30m2_empty_site_2023": 0.9423076923076923,
+      "share_bouwjaar_ge_2024_with_structure_in_2023": 0.2358490566037736,
+      "n_detected_new": 85,
+      "detected_new_with_bouwjaar_ge_2023": 0.9647058823529412,
+      "detected_new_status_counts": {
+        "Pand in gebruik": 85
+      }
+    },
+    "demolitions": {
+      "n_2023_footprints_not_in_current_bag": 219,
+      "n_confirmed_demolished": 60,
+      "area_confirmed_m2": 9243.241945499709,
+      "n_footprint_replaced_rebuilt": 72
+    },
+    "pv_flat_roofs": {
+      "installed_2023_2026": {
+        "n": 354,
+        "area_m2": 6386.0
+      },
+      "present_2023": {
+        "n": 620,
+        "area_m2": 22940.0
+      },
+      "unclear": {
+        "n": 84,
+        "area_m2": 2506.0
+      }
+    }
+  },
+  "pv": {
+    "prices_eur_kwh": {
+      "supply_incl_vat": 0.14625000000000002,
+      "energy_tax_incl_vat": 0.11385250000000002,
+      "months": "2025MM10..2026MM09",
+      "supply_excl_vat": 0.12085833333333333,
+      "energy_tax_excl_vat": 0.09409249999999998,
+      "retail_marginal": 0.2601025,
+      "export_2027": 0.060429166666666666
+    },
+    "east_west_factor_vs_horizontal": 0.9880799019806112,
+    "specific_yield_kwh_kwp": {
+      "median": 786.1739684563581,
+      "p10": 579.767273985684,
+      "p90": 897.7844965794142,
+      "share_within_10pct_of_875": 0.49116571892770106
+    },
+    "by_aoi": {
+      "binnenstad": {
+        "n_buildings": 4259,
+        "n_with_pv_potential": 2456,
+        "kwp_total": 24681.056610301683,
+        "gwh_yr": 18.653037973818428,
+        "dwellings": 8521,
+        "residential_demand_gwh": 18.32852,
+        "residential_pv_gwh": 12.7806138678848,
+        "residential_coverage": 0.6973074676997816,
+        "scr_aggregate": 0.3749535228364295,
+        "scr_aggregate_battery": 0.5843825860397511,
+        "value_2026_meur": 2.6341932679075173,
+        "value_2027_meur": 1.729183653123195,
+        "value_2027_battery_meur": 2.24565974038931,
+        "value_change_2027_pct": -34.35623444225187
+      },
+      "campus": {
+        "n_buildings": 284,
+        "n_with_pv_potential": 191,
+        "kwp_total": 15420.736858975712,
+        "gwh_yr": 11.481488519909403,
+        "dwellings": 2650,
+        "residential_demand_gwh": 4.13166,
+        "residential_pv_gwh": 1.8298705271689866,
+        "residential_coverage": 0.4428899103917037,
+        "scr_aggregate": 0.5592716502532061,
+        "scr_aggregate_battery": 0.7703134341453839,
+        "value_2026_meur": 0.4323600407900799,
+        "value_2027_meur": 0.3149221840221866,
+        "value_2027_battery_meur": 0.38943884797723277,
+        "value_change_2027_pct": -27.162051459078285
+      },
+      "outside_aoi": {
+        "n_buildings": 25239,
+        "n_with_pv_potential": 12779,
+        "kwp_total": 148623.79448666377,
+        "gwh_yr": 115.98167934967226,
+        "dwellings": 30033,
+        "residential_demand_gwh": 63.44826,
+        "residential_pv_gwh": 64.76121793539295,
+        "residential_coverage": 1.0206933639376865,
+        "scr_aggregate": 0.3193456963000494,
+        "scr_aggregate_battery": 0.5109222189040155,
+        "value_2026_meur": 12.470253020297083,
+        "value_2027_meur": 8.042953815147607,
+        "value_2027_battery_meur": 10.436934435213201,
+        "value_change_2027_pct": -35.50288192182971
+      },
+      "voorhof": {
+        "n_buildings": 1434,
+        "n_with_pv_potential": 886,
+        "kwp_total": 20042.20471303582,
+        "gwh_yr": 15.080233065452173,
+        "dwellings": 8767,
+        "residential_demand_gwh": 19.56377,
+        "residential_pv_gwh": 11.053057249946752,
+        "residential_coverage": 0.564975832876115,
+        "scr_aggregate": 0.4616576099841253,
+        "scr_aggregate_battery": 0.641151641842426,
+        "value_2026_meur": 2.334375735019521,
+        "value_2027_meur": 1.686805746194477,
+        "value_2027_battery_meur": 2.0696276355513152,
+        "value_change_2027_pct": -27.740606583182657
+      }
+    }
+  },
+  "heritage": {
+    "rules": {
+      "front_ray_m": 15.0,
+      "front_setback_m": 4.0,
+      "downslope_search_m": 20.0,
+      "front_band_m": 1.0
+    },
+    "buildings": {
+      "binnenstad": {
+        "n": 4259,
+        "in_view": 4156,
+        "monuments": 562
+      },
+      "campus": {
+        "n": 284,
+        "in_view": 116,
+        "monuments": 14
+      },
+      "outside_aoi": {
+        "n": 25239,
+        "in_view": 668,
+        "monuments": 15
+      },
+      "voorhof": {
+        "n": 1434,
+        "in_view": 0,
+        "monuments": 0
+      }
+    },
+    "usable_cell_categories": {
+      "binnenstad": {
+        "not_permitted": 0.2056,
+        "permit_required": 0.2075,
+        "permitted": 0.5869
+      },
+      "campus": {
+        "not_permitted": 0.0988,
+        "permit_required": 0.0529,
+        "permitted": 0.8484
+      },
+      "outside_aoi": {
+        "not_permitted": 0.0064,
+        "permit_required": 0.0047,
+        "permitted": 0.9889
+      },
+      "voorhof": {
+        "not_permitted": 0.0,
+        "permit_required": 0.0,
+        "permitted": 1.0
+      }
+    },
+    "by_aoi": {
+      "binnenstad": {
+        "technical": {
+          "kwp": 24681.056610301683,
+          "gwh_yr": 18.653037973818428,
+          "n_buildings_with_pv": 2456,
+          "residential_coverage": 0.6973074676997816,
+          "value_2027_meur": 1.729183653123195
+        },
+        "permitted_incl_permit": {
+          "kwp": 19180.106596429363,
+          "gwh_yr": 14.514387440889468,
+          "n_buildings_with_pv": 1956,
+          "residential_coverage": 0.5222888974327317,
+          "value_2027_meur": 1.3573516057927826,
+          "share_of_technical": 0.7781245854569102
+        },
+        "permitted_no_permit": {
+          "kwp": 14101.571428284358,
+          "gwh_yr": 10.702039266567882,
+          "n_buildings_with_pv": 1605,
+          "residential_coverage": 0.38322771263354594,
+          "value_2027_meur": 1.0242360327755848,
+          "share_of_technical": 0.5737424263859517
+        }
+      },
+      "campus": {
+        "technical": {
+          "kwp": 15420.736858975712,
+          "gwh_yr": 11.481488519909403,
+          "n_buildings_with_pv": 191,
+          "residential_coverage": 0.4428899103917037,
+          "value_2027_meur": 0.3149221840221866
+        },
+        "permitted_incl_permit": {
+          "kwp": 13844.86088987257,
+          "gwh_yr": 10.309837417507376,
+          "n_buildings_with_pv": 179,
+          "residential_coverage": 0.34041400687974366,
+          "value_2027_meur": 0.2618594567440282,
+          "share_of_technical": 0.8979530310577472
+        },
+        "permitted_no_permit": {
+          "kwp": 12987.428693977918,
+          "gwh_yr": 9.627773754895609,
+          "n_buildings_with_pv": 167,
+          "residential_coverage": 0.31483780473575657,
+          "value_2027_meur": 0.24173457679858837,
+          "share_of_technical": 0.8385475226666497
+        }
+      },
+      "outside_aoi": {
+        "technical": {
+          "kwp": 148623.79448666377,
+          "gwh_yr": 115.98167934967226,
+          "n_buildings_with_pv": 12779,
+          "residential_coverage": 1.0206933639376865,
+          "value_2027_meur": 8.042953815147607
+        },
+        "permitted_incl_permit": {
+          "kwp": 147646.76162700853,
+          "gwh_yr": 115.25003856225173,
+          "n_buildings_with_pv": 12670,
+          "residential_coverage": 1.0122665140183158,
+          "value_2027_meur": 7.9809877411639265,
+          "share_of_technical": 0.993691755529641
+        },
+        "permitted_no_permit": {
+          "kwp": 146854.78249944295,
+          "gwh_yr": 114.65237082814932,
+          "n_buildings_with_pv": 12656,
+          "residential_coverage": 1.0103077589581015,
+          "value_2027_meur": 7.969571055014698,
+          "share_of_technical": 0.9885386336102685
+        }
+      },
+      "voorhof": {
+        "technical": {
+          "kwp": 20042.20471303582,
+          "gwh_yr": 15.080233065452173,
+          "n_buildings_with_pv": 886,
+          "residential_coverage": 0.564975832876115,
+          "value_2027_meur": 1.686805746194477
+        },
+        "permitted_incl_permit": {
+          "kwp": 20042.20471303582,
+          "gwh_yr": 15.080233065452173,
+          "n_buildings_with_pv": 886,
+          "residential_coverage": 0.564975832876115,
+          "value_2027_meur": 1.686805746194477,
+          "share_of_technical": 1.0
+        },
+        "permitted_no_permit": {
+          "kwp": 20042.20471303582,
+          "gwh_yr": 15.080233065452173,
+          "n_buildings_with_pv": 886,
+          "residential_coverage": 0.564975832876115,
+          "value_2027_meur": 1.686805746194477,
+          "share_of_technical": 1.0
+        }
+      }
+    },
+    "front_facade_m": 28030.5681100586,
+    "share_protected_buildings_with_front": {
+      "binnenstad": 0.5844562078922041,
+      "campus": 0.896551724137931,
+      "outside_aoi": 0.594311377245509
+    }
+  },
+  "campus_vs_zhou": {
+    "zhou": {
+      "reference": "Zhou, Verkou, Zeman, Ziar & Isabella, Solar RRL 6(5) 2100478 (2022), doi:10.1002/solr.202100478",
+      "total_roofs_and_facades_gwh": 8.1,
+      "roofs_gwh": 4.7,
+      "campus_demand_gwh": 82.6,
+      "module_wp": 365,
+      "module_area_m2": 2.059802,
+      "min_specific_yield_kwh_kwp": 650
+    },
+    "campus_aoi_nonresidential": {
+      "n_buildings": 178,
+      "n_with_pv": 98,
+      "kwp": 13003.414827546225,
+      "roof_gwh_yr": 9.652088984243598,
+      "ratio_to_zhou_total": 1.1916159239806912,
+      "ratio_to_zhou_roofs": 2.0536359540943825,
+      "share_of_campus_demand": 0.11685337753321548
+    },
+    "campus_aoi_plus_delftech_nonresidential": {
+      "n_buildings": 207,
+      "n_with_pv": 123,
+      "kwp": 14274.190828787016,
+      "roof_gwh_yr": 10.646980140133772,
+      "ratio_to_zhou_total": 1.3144419926091078,
+      "ratio_to_zhou_roofs": 2.2653149234327175,
+      "share_of_campus_demand": 0.12889806465052994
+    },
+    "zhou_like_steps": [
+      {
+        "step": "ours (technical, 2026 campus)",
+        "n_buildings": 178,
+        "kwp": 13003.4148,
+        "roof_gwh_yr": 9.6521,
+        "ratio_to_zhou_roofs": 2.0536
+      },
+      {
+        "step": "+ Zhou module density (177 vs 221 Wp/m2)",
+        "n_buildings": 178,
+        "kwp": 10449.3906,
+        "roof_gwh_yr": 7.7563,
+        "ratio_to_zhou_roofs": 1.6503
+      },
+      {
+        "step": "+ Zhou threshold (>= 650 kWh/kWp)",
+        "n_buildings": 178,
+        "kwp": 8468.2376,
+        "roof_gwh_yr": 6.5631,
+        "ratio_to_zhou_roofs": 1.3964
+      },
+      {
+        "step": "+ only buildings built <= 2014 (AHN3 campus)",
+        "n_buildings": 127,
+        "kwp": 8016.3954,
+        "roof_gwh_yr": 6.2051,
+        "ratio_to_zhou_roofs": 1.3202
+      }
+    ]
+  },
+  "uncertainty": {
+    "config": {
+      "n_geometry": 30,
+      "cell_fraction": 0.1,
+      "sigma_height_m": 0.27,
+      "sigma_tilt_deg": 1.5,
+      "pr_range": [
+        0.75,
+        0.85
+      ],
+      "gcr_range": [
+        0.55,
+        0.75
+      ],
+      "n_draws": 2000,
+      "seed": 42
+    },
+    "n_cells_geometry": 320700,
+    "by_aoi": {
+      "binnenstad": {
+        "flat_share_of_yield": 0.42635767641570566,
+        "factor_5_50_95": [
+          0.8914745335229263,
+          0.9895911729147793,
+          1.1085236329566985
+        ],
+        "one_at_a_time_5_95": {
+          "geometry": [
+            0.9965259071057823,
+            0.9974681695842695
+          ],
+          "weather_year": [
+            0.9760255963216462,
+            1.141356522476602
+          ],
+          "performance_ratio": [
+            0.9434594124743192,
+            1.0564447269706276
+          ],
+          "trees": [
+            0.9972422551261078,
+            1.0027295686094255
+          ],
+          "flat_layout": [
+            0.9145375344974833,
+            1.0240548160260865
+          ]
+        },
+        "technical_gwh_5_50_95": [
+          16.628371948162947,
+          18.458508326444075,
+          20.67691514337443
+        ],
+        "technical_gwh_point": 18.65266064578536,
+        "permitted_incl_permit_gwh_5_50_95": [
+          12.938834749315381,
+          14.362896722496473,
+          16.089078894779888
+        ],
+        "permitted_incl_permit_gwh_point": 14.513970127877611,
+        "permitted_no_permit_gwh_5_50_95": [
+          9.540275678125132,
+          10.59028860974568,
+          11.863065804393758
+        ],
+        "permitted_no_permit_gwh_point": 10.701680552134116
+      },
+      "campus": {
+        "flat_share_of_yield": 0.7061099471039946,
+        "factor_5_50_95": [
+          0.8526134267198331,
+          0.9675183975004795,
+          1.1117257700080008
+        ],
+        "one_at_a_time_5_95": {
+          "geometry": [
+            0.9972562233175599,
+            1.0000191915252696
+          ],
+          "weather_year": [
+            0.9741731967316355,
+            1.1356698134292904
+          ],
+          "performance_ratio": [
+            0.9442708571745642,
+            1.0558212764974486
+          ],
+          "trees": [
+            0.9969536253125518,
+            1.0031313137966889
+          ],
+          "flat_layout": [
+            0.8588504788845898,
+            1.040024080796671
+          ]
+        },
+        "technical_gwh_5_50_95": [
+          9.789631609942681,
+          11.108960275011178,
+          12.764736513156562
+        ],
+        "technical_gwh_point": 11.481911148884043,
+        "permitted_incl_permit_gwh_5_50_95": [
+          8.79067422953602,
+          9.975375447968663,
+          11.462192325915304
+        ],
+        "permitted_incl_permit_gwh_point": 10.310269524320566,
+        "permitted_no_permit_gwh_5_50_95": [
+          8.209107411856541,
+          9.315432057626541,
+          10.703885222210411
+        ],
+        "permitted_no_permit_gwh_point": 9.628170463416872
+      },
+      "voorhof": {
+        "flat_share_of_yield": 0.897018824308387,
+        "factor_5_50_95": [
+          0.8201720609228139,
+          0.9553580966484985,
+          1.1076440844690736
+        ],
+        "one_at_a_time_5_95": {
+          "geometry": [
+            0.9957057011246951,
+            0.998133476265995
+          ],
+          "weather_year": [
+            0.973994818679113,
+            1.1029009829485434
+          ],
+          "performance_ratio": [
+            0.9437315275223945,
+            1.0562423095728903
+          ],
+          "trees": [
+            0.9946282804748269,
+            1.0053019180985727
+          ],
+          "flat_layout": [
+            0.8205871425132395,
+            1.0514953183989435
+          ]
+        },
+        "technical_gwh_5_50_95": [
+          12.368674142702,
+          14.407358589784163,
+          16.70392031090995
+        ],
+        "technical_gwh_point": 15.08058458951336,
+        "permitted_incl_permit_gwh_5_50_95": [
+          12.368674142702,
+          14.407358589784163,
+          16.70392031090995
+        ],
+        "permitted_incl_permit_gwh_point": 15.08058458951336,
+        "permitted_no_permit_gwh_5_50_95": [
+          12.368674142702,
+          14.407358589784163,
+          16.70392031090995
+        ],
+        "permitted_no_permit_gwh_point": 15.08058458951336
+      }
+    }
+  },
+  "mesh": {
+    "voorhof_83000_444000.glb": {
+      "buildings": 2,
+      "triangles": 97,
+      "mb": 0.01
+    },
+    "voorhof_83000_445000.glb": {
+      "buildings": 156,
+      "triangles": 36534,
+      "mb": 1.81
+    },
+    "voorhof_83000_446000.glb": {
+      "buildings": 87,
+      "triangles": 11878,
+      "mb": 0.66
+    },
+    "binnenstad_83000_447000.glb": {
+      "buildings": 203,
+      "triangles": 26440,
+      "mb": 1.45
+    },
+    "binnenstad_83000_448000.glb": {
+      "buildings": 127,
+      "triangles": 23138,
+      "mb": 1.21
+    },
+    "voorhof_84000_445000.glb": {
+      "buildings": 940,
+      "triangles": 76117,
+      "mb": 3.95
+    },
+    "binnenstad_84000_446000.glb": {
+      "buildings": 112,
+      "triangles": 28522,
+      "mb": 1.43
+    },
+    "campus_84000_446000.glb": {
+      "buildings": 12,
+      "triangles": 1042,
+      "mb": 0.06
+    },
+    "voorhof_84000_446000.glb": {
+      "buildings": 235,
+      "triangles": 39919,
+      "mb": 2.02
+    },
+    "binnenstad_84000_447000.glb": {
+      "buildings": 3202,
+      "triangles": 462000,
+      "mb": 24.57
+    },
+    "campus_84000_447000.glb": {
+      "buildings": 3,
+      "triangles": 3060,
+      "mb": 0.15
+    },
+    "binnenstad_84000_448000.glb": {
+      "buildings": 532,
+      "triangles": 53964,
+      "mb": 2.87
+    },
+    "campus_85000_445000.glb": {
+      "buildings": 80,
+      "triangles": 37739,
+      "mb": 1.86
+    },
+    "campus_85000_446000.glb": {
+      "buildings": 91,
+      "triangles": 103930,
+      "mb": 5.09
+    },
+    "binnenstad_85000_447000.glb": {
+      "buildings": 44,
+      "triangles": 6705,
+      "mb": 0.37
+    },
+    "campus_85000_447000.glb": {
+      "buildings": 90,
+      "triangles": 17562,
+      "mb": 0.91
+    },
+    "cityjson_mb": {
+      "binnenstad.city.json": 29.6,
+      "campus.city.json": 7.0,
+      "voorhof.city.json": 7.8
+    }
+  },
+  "web_files_mb": {
+    "buildings.json": 2.68,
+    "buurten.geojson": 0.13,
+    "footprints.geojson": 2.52,
+    "tileset.json": 0.01
+  }
+}
