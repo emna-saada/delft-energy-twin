@@ -13,7 +13,6 @@ web/node_modules/
 web/dist/
 
 # editor / OS / local tooling
-.claude/
 .vscode/
 .DS_Store
 Thumbs.db
