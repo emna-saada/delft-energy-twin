@@ -175,7 +175,7 @@ export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
         <li>Zhou et al. (2022) Solar RRL 6, 2100478 — campus benchmark</li>
       </ul>
       <div class="card" style="margin-top:16px"><h3>About</h3>
-        <p class="muted">A portfolio research project by Emna Saada (geoinformatics engineering). Pipeline in Python (laspy, numba, pvlib, geopandas);
+        <p class="muted">A portfolio research project by Emna Saada, geoinformatics engineering student. Pipeline in Python (laspy, numba, pvlib, geopandas);
         site in Vite, CesiumJS, MapLibre and ECharts.</p></div>
       </div>
     </div>`;

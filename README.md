@@ -109,4 +109,4 @@ basemap © OpenStreetMap contributors © CARTO · campus benchmark: Zhou et al. 
 
 ## About
 
-A portfolio research project by Emna Saada (geoinformatics engineering).
+A portfolio research project by Emna Saada, geoinformatics engineering student.
