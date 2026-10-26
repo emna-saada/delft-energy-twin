@@ -1,25 +1,32 @@
 import "./style.css";
-import { AOI_LABEL, AOIS, SCENARIO_LABEL, Scenario, State, legendGradient, load, num, onState, pct, setState, signedPct, state } from "./data";
+import { SCENARIO_LABEL, Scenario, legendGradient, load, num, onState, setState, signedPct, state } from "./data";
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
+const SCENARIO_HINT: Record<Scenario, string> = {
+  technical: "every roof surface that is big and sunny enough",
+  permitted_incl_permit: "heritage rules applied; monuments get a permit",
+  permitted_no_permit: "heritage rules applied; no monuments",
+};
+
 function heroPanel(site: any) {
   const b = site.aoi.binnenstad;
-  const u = b.uncertainty, p = b.pv;
-  const q = (k: string) => u[`${k}_gwh_5_50_95`] as number[];
+  const q = (k: string) => b.uncertainty[`${k}_gwh_5_50_95`] as number[];
   $("hero-panel").innerHTML = `
-    <h1>A LiDAR energy twin of Delft</h1>
-    <p class="finding">Delft's historic centre could produce <b>${num(q("technical")[1], 1)} GWh</b> of solar power a year
-      on its roofs (5–95 %: ${num(q("technical")[0], 1)}–${num(q("technical")[2], 1)}). Heritage rules allow
-      <b>${num(q("permitted_no_permit")[1], 1)}–${num(q("permitted_incl_permit")[1], 1)} GWh</b>, and when net metering ends on
-      1 January 2027 panels on its homes lose <b>${signedPct(p.value_change_2027_pct / 100).replace("−", "")}</b> of their value
-      — ${signedPct(p.value_2027_battery_meur / p.value_2026_meur - 1).replace("−", "")} with a home battery.</p>
-    <p class="muted small">Buildings coloured by annual sun on their roofs, from AHN6 LiDAR flown ${site.data.flights.join(" / ")}.
-      Click a building for its numbers.</p>
-    <div class="ctl"><div class="ctl-title">Scenario</div>
+    <div class="kicker">LiDAR energy digital twin · Delft</div>
+    <h1>How much solar power can Delft's roofs make — and what changes in 2027?</h1>
+    <div class="hero-stats">
+      <div class="sun"><b>${num(q("technical")[1], 1)} GWh</b><span>a year possible on Binnenstad roofs</span></div>
+      <div class="acc"><b>${num(q("permitted_no_permit")[1], 1)}–${num(q("permitted_incl_permit")[1], 1)}</b><span>GWh allowed by heritage rules</span></div>
+      <div class="bad"><b>${signedPct(b.pv.value_change_2027_pct / 100)}</b><span>value of home panels from 2027</span></div>
+    </div>
+    <p class="hint">Roofs are coloured by the sun they get in a year, from laser scans flown ${site.data.flights.join(" / ")}.
+      <b>Click any building</b> to see its numbers.</p>
+    <div class="ctl"><div class="ctl-title"><span class="step">1</span> Scenario</div>
+      <p class="hint">Which roofs count as usable for panels.</p>
       <div class="seg" id="scen">${(Object.keys(SCENARIO_LABEL) as Scenario[]).map((s) =>
-        `<button data-s="${s}" aria-pressed="${s === state.scenario}">${SCENARIO_LABEL[s]}</button>`).join("")}</div>
-      <label class="check"><input type="checkbox" id="battery" /> 5 kWh home battery per dwelling</label>
+        `<button data-s="${s}" aria-pressed="${s === state.scenario}">${SCENARIO_LABEL[s]}<small>${SCENARIO_HINT[s]}</small></button>`).join("")}</div>
+      <label class="check"><input type="checkbox" id="battery" /> Add a 5 kWh home battery per dwelling</label>
     </div>`;
   $("hero-panel").querySelectorAll<HTMLButtonElement>("#scen button").forEach((btn) =>
     btn.addEventListener("click", () => setState({ scenario: btn.dataset.s as Scenario })));
@@ -28,38 +35,23 @@ function heroPanel(site: any) {
     .forEach((btn) => btn.setAttribute("aria-pressed", String(btn.dataset.s === s.scenario))));
 }
 
-function headlineBand(site: any, s: State) {
-  $("headline").innerHTML = AOIS.map((a) => {
-    const r = site.aoi[a], u = r.uncertainty[`${s.scenario}_gwh_5_50_95`], p = r.pv;
-    const val = s.battery ? p.value_2027_battery_meur / p.value_2026_meur - 1 : p.value_change_2027_pct / 100;
-    const row = (k: string, v: string) => `<div class="stat-row"><span>${k}</span><span>${v}</span></div>`;
-    return `<div class="card"><h3>${AOI_LABEL[a]}</h3><div class="muted small">${SCENARIO_LABEL[s.scenario]}</div>
-      <div class="big" style="margin:6px 0">${num(u[1], 1)} <span class="small muted">GWh/yr (${num(u[0], 1)}–${num(u[2], 1)})</span></div>
-      ${row("Buildings with usable roof", `${num(r.heritage[s.scenario].n_buildings_with_pv)} of ${num(p.n_buildings)}`)}
-      ${row("Home electricity covered", pct(r.heritage[s.scenario].residential_coverage))}
-      ${row(`Used on site${s.battery ? " (battery)" : ""}`, pct(s.battery ? p.scr_aggregate_battery : p.scr_aggregate))}
-      ${row(`Value change 2027${s.battery ? " (battery)" : ""}`, signedPct(val))}
-      ${row("Roof sun lost to shading", pct(r.aoi_summary.loss_all_obstructions))}</div>`;
-  }).join("");
-}
-
 async function main() {
   const site = await load<any>("site.json");
   heroPanel(site);
-  headlineBand(site, state);
-  onState((s) => headlineBand(site, s));
-  $("legend3d").innerHTML = `Annual sun on roofs (kWh/m²·yr)<div class="bar" style="background:${legendGradient()}"></div>
-    <div class="ticks"><span>200</span><span>700</span><span>1200</span></div>`;
+  $("legend3d").innerHTML = `<b>Sun on the roof</b> · kWh per m² per year<div class="bar" style="background:${legendGradient()}"></div>
+    <div class="ticks"><span>200 shaded</span><span>700</span><span>1200 full sun</span></div>`;
   $("footer").innerHTML = `Delft Energy Twin · AHN6 (${site.data.flights.join(" / ")}) · ${num(site.data.n_buildings)} buildings processed ·
-    all numbers generated by the project pipeline (results/metrics.json).`;
+    every number on this page is generated by the project pipeline (results/metrics.json).`;
 
   const { initTwin } = await import("./twin");
   const twin = initTwin($("cesium"), $("hero-panel"), $("inspector")).catch((e) => {
     $("cesium").innerHTML = `<p class="muted" style="padding:24px">The 3D view could not start (${e.message}). WebGL is required.</p>`;
   });
-  const [{ initDashboard }, { renderScience }] = await Promise.all([import("./dashboard"), import("./science")]);
+  const [{ renderStory }, { initDashboard }, { renderScience }] =
+    await Promise.all([import("./story"), import("./dashboard"), import("./science")]);
+  renderStory(site);
   renderScience($("science"), $("about"), site);
-  await initDashboard($("map"), $<HTMLSelectElement>("metric"), $("buurt-card"), $("legend2d"), $("dash-lede"));
+  await initDashboard($("map"), $("metric-chips"), $("metric-help"), $("bld-chips"), $("bld-help"), $("buurt-card"), $("legend2d"), $("dash-lede"));
   await twin;
 }
 

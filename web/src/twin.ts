@@ -68,12 +68,15 @@ export async function initTwin(container: HTMLElement, panel: HTMLElement, inspe
 
   // ---------------- controls
   panel.insertAdjacentHTML("beforeend", `
-    <div class="ctl"><div class="ctl-title">Fly to</div>
+    <div class="ctl"><div class="ctl-title"><span class="step">2</span> Fly to a district</div>
+      <p class="hint">Historic centre, university campus, or post-war Voorhof.</p>
       <div class="btn-row">${AOIS.map((a) => `<button data-aoi="${a}">${AOI_LABEL[a]}</button>`).join("")}</div></div>
-    <div class="ctl"><div class="ctl-title">Find an address</div>
+    <div class="ctl"><div class="ctl-title"><span class="step">3</span> Find an address</div>
+      <p class="hint">Any address in Delft (PDOK address register); the building opens in the inspector.</p>
       <input type="search" id="addr" placeholder="e.g. Markt 87" autocomplete="off" aria-label="Address in Delft" />
       <ul class="results" id="addr-results"></ul></div>
-    <div class="ctl"><div class="ctl-title">Sun &amp; shadows</div>
+    <div class="ctl"><div class="ctl-title"><span class="step">4</span> Move the sun</div>
+      <p class="hint">Real shadows for that moment. Try 21 Dec at 10:00: the low winter sun leaves whole streets in shade.</p>
       <div class="time-row">
         <select id="sun-date" aria-label="Date">
           <option value="2,21">21 Mar</option><option value="5,21" selected>21 Jun</option>

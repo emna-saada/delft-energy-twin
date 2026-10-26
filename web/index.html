@@ -7,45 +7,80 @@
   <meta name="description" content="A LiDAR energy digital twin of Delft: rooftop solar potential from AHN6, heritage rules and the end of Dutch net metering." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#top">Delft Energy Twin</a>
     <nav>
       <a href="#twin">3D twin</a>
-      <a href="#dashboard">Neighbourhoods</a>
-      <a href="#science">Method &amp; validation</a>
-      <a href="#about">Data &amp; credits</a>
+      <a href="#context">Why</a>
+      <a href="#year">Sun &amp; demand</a>
+      <a href="#value">2027</a>
+      <a href="#dashboard">Map explorer</a>
+      <a href="#heritage">Heritage</a>
+      <a href="#change">Change</a>
+      <a href="#science">Method</a>
     </nav>
   </header>
 
   <main id="top">
+    <!-- 1. Live 3D twin -->
     <section id="twin" class="hero">
       <div id="cesium" class="cesium" aria-label="3D view of Delft buildings coloured by annual roof irradiation"></div>
       <div class="hero-panel" id="hero-panel"></div>
       <aside class="inspector" id="inspector" hidden></aside>
       <div class="legend" id="legend3d"></div>
+      <a class="scroll-hint" href="#context">Scroll for the story ↓</a>
     </section>
 
-    <section class="band" id="headline"></section>
+    <!-- 2. Context -->
+    <section id="context" class="section"></section>
 
+    <!-- 3. Three districts -->
+    <section id="districts" class="section"></section>
+
+    <!-- 4. Sun and demand over the year -->
+    <section id="year" class="section"></section>
+
+    <!-- 5. What 2027 changes -->
+    <section id="value" class="section"></section>
+
+    <!-- 6. Map explorer -->
     <section id="dashboard" class="section">
       <div class="section-head">
-        <h2>Neighbourhoods</h2>
+        <div class="eyebrow">Map explorer</div>
+        <h2>Explore every neighbourhood and building</h2>
         <p class="lede" id="dash-lede"></p>
       </div>
       <div class="dash">
         <div class="dash-map"><div id="map"></div><div class="legend" id="legend2d"></div></div>
         <div class="dash-side">
-          <label class="field">Show
-            <select id="metric"></select>
-          </label>
-          <div id="buurt-card" class="card muted-card">Click a neighbourhood for its numbers.</div>
+          <div class="ctl-block">
+            <div class="ctl-title"><span class="step">1</span> Colour neighbourhoods by</div>
+            <div class="chips" id="metric-chips"></div>
+            <p class="metric-help" id="metric-help"></p>
+          </div>
+          <div class="ctl-block">
+            <div class="ctl-title"><span class="step">2</span> Buildings layer</div>
+            <div class="chips" id="bld-chips"></div>
+            <p class="metric-help" id="bld-help"></p>
+          </div>
+          <div class="ctl-block">
+            <div class="ctl-title"><span class="step">3</span> Click a neighbourhood</div>
+            <div id="buurt-card" class="card muted-card">Its numbers appear here.</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- 7. Heritage -->
+    <section id="heritage" class="section"></section>
+
+    <!-- 8. Change -->
+    <section id="change" class="section"></section>
+
+    <!-- 9. Method & validation -->
     <section id="science" class="section"></section>
     <section id="about" class="section"></section>
   </main>

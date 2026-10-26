@@ -127,6 +127,49 @@ def write(b: gpd.GeoDataFrame, bu: gpd.GeoDataFrame) -> dict:
 CO2_KG_PER_KWH = None  # no sourced emission factor yet: CO2 avoided is left empty rather than invented
 
 
+def energy_profiles() -> dict:
+    """Per study area: monthly PV vs household demand, an average June and December day, and the value split.
+
+    Production: every PV plane's annual kWh spread over the year with its orientation profile (as in pv.py).
+    Demand: dwellings x CBS delivery per dwelling, shaped by the 2026 E1A profile. Values in GWh / MW / M EUR.
+    """
+    from . import pv, solar
+    cfg = data.load_config()
+    weather, _ = solar.pvgis_tmy(cfg["site"]["lat"], cfg["site"]["lon"], data.RAW / "pvgis_tmy.json")
+    profiles, _ = pv.orientation_profiles(weather, cfg)
+    hh = pv.household_profile(weather.index)
+    planes = pd.read_parquet(city.CITY / "pv_planes.parquet")
+    planes = planes[(planes.kwp > 0) & planes.aoi.notna()]
+    flat = planes.slope_deg < cfg["segmentation"]["flat_slope_deg"]
+    planes = planes.assign(key=[pv.profile_key(f, s, a) for f, s, a in zip(flat, planes.slope_deg, planes.aspect_deg)])
+    b = gpd.read_parquet(city.CITY / "pv_buildings.parquet")
+    pr = json.loads((city.CITY / "pv_summary.json").read_text())["prices_eur_kwh"]
+    local = weather.index.tz_convert("Europe/Amsterdam")
+    out = {}
+    for aoi in ["binnenstad", "campus", "voorhof"]:
+        ba = b[b.aoi == aoi]
+        res_ids = set(ba.identificatie[ba.demand_kwh > 0])
+        pa = planes[planes.identificatie.isin(res_ids)]
+        prod = sum(profiles[k] * kwh for k, kwh in pa.groupby("key").kwh_yr.sum().items())
+        dem = hh * ba.demand_kwh.sum()
+        s = pd.DataFrame({"pv": prod, "demand": dem}, index=local)
+        monthly = s.groupby(s.index.month).sum() / 1e6
+        day = {}
+        for m, name in ((6, "june"), (12, "december")):
+            d = s[s.index.month == m]
+            day[name] = (d.groupby(d.index.hour).mean() / 1e3).round(3).to_dict("list")  # kWh per hour = kW -> MW
+        r = ba[(ba.demand_kwh > 0) & (ba.kwh_yr > 0)]
+        val = {k: float(v) for k, v in {
+            "self_kwh": r.self_consumed_kwh.sum(), "export_kwh": r.export_kwh.sum(),
+            "self_batt_kwh": r.self_consumed_batt_kwh.sum(), "export_batt_kwh": r.export_batt_kwh.sum(),
+            "netted_kwh": np.minimum(r.kwh_yr, r.demand_kwh).sum(), "excess_kwh": (r.kwh_yr - np.minimum(r.kwh_yr, r.demand_kwh)).sum(),
+        }.items()}
+        out[aoi] = {"monthly_gwh": {"pv": monthly.pv.round(3).tolist(), "demand": monthly.demand.round(3).tolist()},
+                    "day_mw": day, "residential_kwh": val}
+    out["prices"] = {"retail": pr["retail_marginal"], "export_2027": pr["export_2027"]}
+    return out
+
+
 def site_summary() -> dict:
     """Every number shown as text or chart on the website, collected from the pipeline outputs."""
     C = city.CITY
@@ -167,6 +210,8 @@ def site_summary() -> dict:
                                        "demolitions", "pv_flat_roofs")},
         "campus": cmp_,
         "heritage_rules": her["rules"], "uncertainty_config": unc["config"],
+        "heritage_buildings": her["buildings"], "heritage_cells": her["usable_cell_categories"],
+        "energy": energy_profiles(),
     }
     return out
 

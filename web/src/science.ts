@@ -1,23 +1,6 @@
 // Method, validation, uncertainty and credits — every value read from data/site.json.
-import * as echarts from "echarts";
+import { ACC, AOI_COL, LINE, TXT, axis, chart } from "./charts";
 import { AOI_LABEL, AOIS, num, pct, signedPct } from "./data";
-
-const TXT = "#9aa3ae", LINE = "#2a303b", ACC = "#4fd1c5";
-const AOI_COL: Record<string, string> = { binnenstad: "#f6ad55", campus: "#4fd1c5", voorhof: "#b794f4" };
-const base = {
-  backgroundColor: "transparent", textStyle: { color: TXT, fontFamily: "Inter, system-ui, sans-serif" },
-  grid: { left: 56, right: 18, top: 36, bottom: 44 },
-  tooltip: { trigger: "axis", backgroundColor: "#161a21", borderColor: LINE, textStyle: { color: "#e7e9ec" } },
-  legend: { textStyle: { color: TXT }, top: 4 },
-};
-const axis = (name: string, extra: object = {}) => ({ name, nameLocation: "middle", nameGap: 32, nameTextStyle: { color: TXT },
-  axisLine: { lineStyle: { color: LINE } }, splitLine: { lineStyle: { color: LINE } }, axisLabel: { color: TXT }, ...extra });
-
-function chart(el: HTMLElement, opt: any) {
-  const c = echarts.init(el, undefined, { renderer: "canvas" });
-  c.setOption({ ...base, ...opt });
-  new ResizeObserver(() => c.resize()).observe(el);
-}
 
 const PIPELINE = `<svg viewBox="0 0 1040 250" role="img" aria-label="Processing pipeline">
   <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -41,16 +24,16 @@ const PIPELINE = `<svg viewBox="0 0 1040 250" role="img" aria-label="Processing 
 </svg>`;
 
 export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
-  const v = site.validation, ch = site.change, c = site.campus;
+  const v = site.validation, c = site.campus;
   const steps = c.zhou_like_steps as any[];
   el.innerHTML = `
-    <div class="section-head"><h2>Method &amp; validation</h2>
+    <div class="section-head"><div class="eyebrow">Method &amp; validation</div><h2>How the twin is built — and how we know it is right</h2>
       <p class="lede">Buildings are reconstructed from the newest Dutch LiDAR (AHN6, flown ${site.data.flights.join(" and ")}),
-      ${num(site.data.points_million)} million points over ${site.data.n_tiles} tiles. Every step is checked against an independent source.</p></div>
+      ${num(site.data.points_million)} million laser points over ${site.data.n_tiles} square-kilometre tiles. Every step is checked against an independent source.</p></div>
     <div class="card pipeline">${PIPELINE}</div>
 
     <h3 style="margin-top:28px">Reconstruction vs Kadaster 3D Basisvoorziening 2025 (roofer on AHN5)</h3>
-    <div class="metric-cards">
+    <div class="kpis">
       <div class="card"><div class="v">${pct(v.all.match_rate, 1)}</div><div class="l">roof planes ≥ 10 m² matched to a reference roof</div></div>
       <div class="card"><div class="v">${num(v.all.slope_median_abs_deg, 2)}°</div><div class="l">median roof-slope error</div></div>
       <div class="card"><div class="v">${num(100 * v.all.dz_median_m, 1)} cm</div><div class="l">median plane-to-reference offset</div></div>
@@ -78,20 +61,6 @@ export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
       <div class="card"><h3>TU Delft campus vs Zhou et al. (2022)</h3><div class="chart" id="c-campus"></div>
         <p class="muted small">Our roof-only estimate moved step by step to the published study's assumptions (Solar RRL 6, 2100478: roofs ≈ ${c.zhou.roofs_gwh} GWh/yr).
         The remaining ×${num(steps[steps.length - 1].ratio_to_zhou_roofs, 2)} reflects per-module shading rules, opaque trees, flat-mounted panels on protected buildings and scope.</p></div>
-    </div>
-
-    <h3 style="margin-top:28px">The city changes: AHN5 (2023) → AHN6 (2025/26)</h3>
-    <div class="grid2">
-      <div class="card"><div class="chart" id="c-change"></div></div>
-      <div class="card">
-        <div class="stat-row"><span>Noise on unchanged roofs (NMAD)</span><span>${num(100 * ch.noise_unchanged_buildings.nmad_m, 1)} cm</span></div>
-        <div class="stat-row"><span>New buildings detected</span><span>${num(ch.validation_new.n_detected_new)}</span></div>
-        <div class="stat-row"><span>… with BAG construction year ≥ 2023</span><span>${pct(ch.validation_new.detected_new_with_bouwjaar_ge_2023, 1)}</span></div>
-        <div class="stat-row"><span>Recall, new buildings ≥ 30 m² on empty sites</span><span>${pct(ch.validation_new.recall_new_ge30m2_empty_site_2023)}</span></div>
-        <div class="stat-row"><span>Demolitions confirmed (2023 BAG → AHN6)</span><span>${num(ch.demolitions.n_confirmed_demolished)}</span></div>
-        <div class="stat-row"><span>PV arrays on flat roofs present in 2023</span><span>${num(ch.pv_flat_roofs.present_2023.n)} (${num(ch.pv_flat_roofs.present_2023.area_m2)} m²)</span></div>
-        <div class="stat-row"><span>… installed 2023–2026</span><span>${num(ch.pv_flat_roofs.installed_2023_2026.n)} (${num(ch.pv_flat_roofs.installed_2023_2026.area_m2)} m²)</span></div>
-      </div>
     </div>
 
     <h3 style="margin-top:28px">Results by study area</h3>
@@ -177,14 +146,6 @@ export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
       label: { show: true, position: "top", color: TXT, formatter: (p: any) => num(p.value, 1) },
       markLine: { symbol: "none", data: [{ yAxis: c.zhou.roofs_gwh, name: "Zhou et al. roofs" }],
         lineStyle: { color: "#f6ad55", type: "dashed" }, label: { color: "#f6ad55", formatter: `Zhou et al. roofs ${c.zhou.roofs_gwh}` } } }],
-  });
-
-  const kinds = [["new_since_2023", "new", "#68d391"], ["raised_or_extended", "raised / extended", "#f6ad55"], ["lowered", "lowered", "#fc8181"]];
-  chart(el.querySelector("#c-change")!, {
-    tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
-    xAxis: { type: "category", data: AOIS.map((a) => AOI_LABEL[a]), axisLabel: { color: TXT }, axisLine: { lineStyle: { color: LINE } } },
-    yAxis: axis("buildings", { nameGap: 36 }),
-    series: kinds.map(([k, name, col]) => ({ name, type: "bar", itemStyle: { color: col }, data: AOIS.map((a) => site.aoi[a].change?.[k] ?? 0) })),
   });
 
   // ---------------- limitations, data, credits
