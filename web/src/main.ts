@@ -24,7 +24,7 @@ function heroPanel(site: any) {
       <b>Click any building</b> to see its numbers.</p>
     <div class="ctl"><div class="ctl-title"><span class="step">1</span> Scenario</div>
       <p class="hint">Which roofs count as usable for panels.</p>
-      <div class="seg" id="scen">${(Object.keys(SCENARIO_LABEL) as Scenario[]).map((s) =>
+      <div class="seg" id="scen" role="group" aria-label="Scenario">${(Object.keys(SCENARIO_LABEL) as Scenario[]).map((s) =>
         `<button data-s="${s}" aria-pressed="${s === state.scenario}">${SCENARIO_LABEL[s]}<small>${SCENARIO_HINT[s]}</small></button>`).join("")}</div>
       <label class="check"><input type="checkbox" id="battery" /> Add a 5 kWh home battery per dwelling</label>
     </div>`;
@@ -35,7 +35,20 @@ function heroPanel(site: any) {
     .forEach((btn) => btn.setAttribute("aria-pressed", String(btn.dataset.s === s.scenario))));
 }
 
+// underline the nav link of the chapter currently in view
+function trackChapter() {
+  const links = new Map([...document.querySelectorAll<HTMLAnchorElement>("nav a")].map((a) => [a.hash.slice(1), a]));
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting && links.has(e.target.id)) {
+      links.forEach((a) => a.removeAttribute("aria-current"));
+      links.get(e.target.id)!.setAttribute("aria-current", "true");
+    }
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main > section").forEach((s) => io.observe(s));
+}
+
 async function main() {
+  trackChapter();
   const site = await load<any>("site.json");
   heroPanel(site);
   $("legend3d").innerHTML = `<b>Sun on the roof</b> · kWh per m² per year<div class="bar" style="background:${legendGradient()}"></div>

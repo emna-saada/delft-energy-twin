@@ -1,24 +1,25 @@
 // Method, validation, uncertainty and credits — every value read from data/site.json.
-import { ACC, AOI_COL, LINE, TXT, axis, chart } from "./charts";
+import { AOI_COL, C, LINE, TXT, axis, chart } from "./charts";
 import { AOI_LABEL, AOIS, num, pct, signedPct } from "./data";
 
+const ACC = C.delft;
 const PIPELINE = `<svg viewBox="0 0 1040 250" role="img" aria-label="Processing pipeline">
   <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M0,0 L10,5 L0,10 z" fill="#9aa3ae"/></marker></defs>
-  <style>.b{fill:#161a21;stroke:#2a303b}.a{fill:#13302d;stroke:#4fd1c5}.t{fill:#e7e9ec;font:600 13px Inter,sans-serif}
-    .s{fill:#9aa3ae;font:11px Inter,sans-serif}.l{stroke:#9aa3ae;stroke-width:1.4;fill:none;marker-end:url(#ar)}</style>
+    <path d="M0,0 L10,5 L0,10 z" fill="${C.ink2}"/></marker></defs>
+  <style>.b{fill:#fff;stroke:${C.rule}}.a{fill:${C.paper};stroke:${C.delft};stroke-width:1.5}.t{fill:${C.ink};font:600 13px 'Public Sans',sans-serif}
+    .s{fill:${C.ink3};font:11px 'Public Sans',sans-serif}.l{stroke:${C.ink2};stroke-width:1.2;fill:none;marker-end:url(#ar)}</style>
   ${[["AHN6 LiDAR", "14 tiles · 25 pts/m²", 10], ["Preprocess", "DSM / DTM / trees 0.5 m", 180], ["Roof planes", "region growing, BAG", 350],
      ["Shadow-aware sun", "horizon scan, Hay–Davies", 520], ["PV & economics", "hourly, 2026 vs 2027", 690], ["Heritage filter", "RCE + BGT, indicative", 860]]
-    .map(([t, s, x]) => `<rect class="${x === 520 || x === 690 ? "a" : "b"}" x="${x}" y="70" width="160" height="62" rx="8"/>
+    .map(([t, s, x]) => `<rect class="${x === 520 || x === 690 ? "a" : "b"}" x="${x}" y="70" width="160" height="62" rx="2"/>
       <text class="t" x="${+x + 12}" y="96">${t}</text><text class="s" x="${+x + 12}" y="116">${s}</text>`).join("")}
   ${[170, 340, 510, 680, 850].map((x) => `<path class="l" d="M${x},101 H${x + 10}"/>`).join("")}
-  <rect class="b" x="350" y="170" width="160" height="56" rx="8"/><text class="t" x="362" y="194">Validation</text>
+  <rect class="b" x="350" y="170" width="160" height="56" rx="2"/><text class="t" x="362" y="194">Validation</text>
   <text class="s" x="362" y="212">3D Basisvoorziening, PVGIS</text><path class="l" d="M430,132 V170"/>
-  <rect class="b" x="180" y="170" width="160" height="56" rx="8"/><text class="t" x="192" y="194">Change 2023→26</text>
+  <rect class="b" x="180" y="170" width="160" height="56" rx="2"/><text class="t" x="192" y="194">Change 2023→26</text>
   <text class="s" x="192" y="212">AHN5 vs AHN6 DSM</text><path class="l" d="M260,132 V170"/>
-  <rect class="b" x="690" y="170" width="160" height="56" rx="8"/><text class="t" x="702" y="194">Uncertainty</text>
+  <rect class="b" x="690" y="170" width="160" height="56" rx="2"/><text class="t" x="702" y="194">Uncertainty</text>
   <text class="s" x="702" y="212">Monte Carlo, 5 factors</text><path class="l" d="M770,132 V170"/>
-  <rect class="b" x="860" y="170" width="160" height="56" rx="8"/><text class="t" x="872" y="194">Web twin</text>
+  <rect class="b" x="860" y="170" width="160" height="56" rx="2"/><text class="t" x="872" y="194">Web twin</text>
   <text class="s" x="872" y="212">3D Tiles, CityJSON, GeoJSON</text><path class="l" d="M940,132 V170"/>
   <text class="s" x="10" y="40">Inputs: AHN6 · BAG · CBS · PVGIS-SARAH3 TMY · MFFBAS/NEDU E1A profile · CBS tariffs · RCE heritage · BGT</text>
 </svg>`;
@@ -86,7 +87,7 @@ export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
     yAxis: axis("This model (kWh/m²·yr)", { min: lo, max: hi, nameGap: 42 }),
     series: [
       { type: "scatter", data: bins.map((b) => [b.pvgis, b.ours, b.tilt_b, b.asp_b, b.n]),
-        symbolSize: (d: number[]) => 5 + Math.sqrt(d[4]) * 0.9, itemStyle: { color: ACC, opacity: 0.8 } },
+        symbolSize: (d: number[]) => 5 + Math.sqrt(d[4]) * 0.9, itemStyle: { color: ACC, opacity: 0.55, borderColor: ACC, borderWidth: 1 } },
       { type: "line", data: [[lo, lo], [hi, hi]], symbol: "none", lineStyle: { color: TXT, type: "dashed" }, tooltip: { show: false } },
     ],
   });
@@ -97,7 +98,7 @@ export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
     xAxis: { type: "category", data: AOIS.map((a) => AOI_LABEL[a]), axisLabel: { color: TXT }, axisLine: { lineStyle: { color: LINE } } },
     yAxis: axis("GWh/yr", { nameGap: 36 }),
     series: scen.map(([k, name], i) => ({
-      name, type: "boxplot", itemStyle: { color: ["#13302d", "#3b2f1c", "#3b1f24"][i], borderColor: [ACC, "#f6ad55", "#fc8181"][i] },
+      name, type: "boxplot", itemStyle: { color: ["#F8EAD6", "#F3E8D2", "#F4DCD6"][i], borderColor: [C.solar, C.permit, C.loss][i], borderWidth: 1.5 },
       data: AOIS.map((a) => { const q = site.aoi[a].uncertainty[`${k}_gwh_5_50_95`]; return [q[0], q[0], q[1], q[2], q[2]]; }),
       tooltip: { formatter: (p: any) => {
         const q = site.aoi[AOIS[p.dataIndex]].uncertainty[`${k}_gwh_5_50_95`];
@@ -145,7 +146,7 @@ export function renderScience(el: HTMLElement, about: HTMLElement, site: any) {
     series: [{ type: "bar", data: steps.map((s) => +s.roof_gwh_yr.toFixed(2)), itemStyle: { color: ACC }, barWidth: 34,
       label: { show: true, position: "top", color: TXT, formatter: (p: any) => num(p.value, 1) },
       markLine: { symbol: "none", data: [{ yAxis: c.zhou.roofs_gwh, name: "Zhou et al. roofs" }],
-        lineStyle: { color: "#f6ad55", type: "dashed" }, label: { color: "#f6ad55", formatter: `Zhou et al. roofs ${c.zhou.roofs_gwh}` } } }],
+        lineStyle: { color: C.loss, type: "dashed" }, label: { color: C.loss, formatter: `Zhou et al. roofs ${c.zhou.roofs_gwh}` } } }],
   });
 
   // ---------------- limitations, data, credits

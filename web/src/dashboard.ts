@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 // unchanged to <base>/maplibre/ by vite.config.ts
 setWorkerUrl(new URL(import.meta.env.BASE_URL + "maplibre/maplibre-gl-worker.mjs", location.href).href);
 import { AOI_LABEL, SCENARIO_LABEL, State, dataUrl, eur, infernoStops, legendGradient, load, num, onState, pct, signedPct, state } from "./data";
+import { C } from "./charts";
 
 type P = Record<string, any>;
 interface Metric {
@@ -40,25 +41,27 @@ const METRICS: Metric[] = [
 ];
 
 interface BldMode { key: string; chip: string; help: string; paint: any; legend: string }
-const CHANGE_COL: [string, string, string][] = [["new_since_2023", "#68d391", "new since 2023"], ["raised_or_extended", "#f6ad55", "raised / extended"],
-  ["lowered", "#fc8181", "lowered"], ["unchanged", "#3a414d", "unchanged"]];
+const CHANGE_COL: [string, string, string][] = [["new_since_2023", C.ok, "new since 2023"], ["raised_or_extended", C.permit, "raised / extended"],
+  ["lowered", C.loss, "lowered"], ["unchanged", C.neutral, "unchanged"]];
+const NO_ROOF = "#E4DFD5";
 const BLD_MODES: BldMode[] = [
   { key: "off", chip: "Off", help: "Buildings hidden — only neighbourhoods are shown.", paint: null, legend: "" },
   { key: "sun", chip: "Roof sun", help: "Each building coloured by the average yearly sun on its roof, after shading — the same colours as the 3D view.",
     paint: ["interpolate", ["linear"], ["coalesce", ["get", "k"], 0], ...infernoStops().flat()],
     legend: `<b>Buildings</b> · roof sun (kWh/m²·yr)<div class="bar" style="background:${legendGradient()}"></div><div class="ticks"><span>200</span><span>1200</span></div>` },
   { key: "heritage", chip: "Heritage", help: "Share of each building's solar potential that the indicative heritage rules allow: red = none, green = all. Grey = no usable roof.",
-    paint: ["case", ["==", ["get", "p"], null], "#3a414d", ["interpolate", ["linear"], ["get", "p"], 0, "#fc8181", 0.5, "#f6ad55", 1, "#68d391"]],
-    legend: `<b>Buildings</b> · share allowed by heritage rules<div class="bar" style="background:linear-gradient(90deg,#fc8181,#f6ad55,#68d391)"></div><div class="ticks"><span>0 %</span><span>100 %</span></div>` },
+    paint: ["case", ["==", ["get", "p"], null], NO_ROOF, ["interpolate", ["linear"], ["get", "p"], 0, C.loss, 0.5, "#D9A441", 1, C.ok]],
+    legend: `<b>Buildings</b> · share allowed by heritage rules<div class="bar" style="background:linear-gradient(90deg,${C.loss},#D9A441,${C.ok})"></div><div class="ticks"><span>0 %</span><span>100 %</span></div>` },
   { key: "monument", chip: "Monuments", help: "National monuments (rijksmonumenten, RCE) — panels need an individual permit.",
-    paint: ["case", ["==", ["get", "m"], 1], "#f6ad55", "#2f3540"],
-    legend: `<b>Buildings</b><div class="cats"><span><i style="background:#f6ad55"></i>national monument</span><span><i style="background:#2f3540"></i>other</span></div>` },
+    paint: ["case", ["==", ["get", "m"], 1], C.delft, "#D3CDC1"],
+    legend: `<b>Buildings</b><div class="cats"><span><i style="background:${C.delft}"></i>national monument</span><span><i style="background:#D3CDC1"></i>other</span></div>` },
   { key: "change", chip: "Change 2023→26", help: "What changed between the 2023 and 2025/26 laser scans.",
     paint: ["match", ["get", "c"], ...CHANGE_COL.slice(0, 3).flatMap(([k, c]) => [k, c]), CHANGE_COL[3][1]],
     legend: `<b>Buildings</b><div class="cats">${CHANGE_COL.map(([, c, l]) => `<span><i style="background:${c}"></i>${l}</span>`).join("")}</div>` },
 ];
-const SEQ = ["#1b2430", "#1f4a52", "#2a7a76", "#4fd1c5", "#b6f2ec"];
-const DIV = ["#fc8181", "#f3b0a0", "#2a303b", "#9ae6b4", "#68d391"];
+// sequential: Delft blue, light to dark; diverging: loss (brick) - neutral - gain (green)
+const SEQ = ["#EEF1F7", "#C3CFE8", "#8BA1D2", "#4E6CB3", "#1F3F8F", "#12275A"];
+const DIV = [C.loss, "#D99A8C", "#F1EDE5", "#9DC2A3", C.ok];
 
 export async function initDashboard(mapEl: HTMLElement, metricChips: HTMLElement, metricHelp: HTMLElement, bldChips: HTMLElement,
   bldHelp: HTMLElement, card: HTMLElement, legend: HTMLElement, lede: HTMLElement) {
@@ -71,7 +74,7 @@ export async function initDashboard(mapEl: HTMLElement, metricChips: HTMLElement
   bldChips.innerHTML = BLD_MODES.map((m) => `<button data-k="${m.key}" aria-pressed="${m.key === "sun"}">${m.chip}</button>`).join("");
 
   const map = new MlMap({
-    container: mapEl, style: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+    container: mapEl, style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
     center: [4.3605, 52.0035], zoom: 12.6, attributionControl: { compact: true },
   });
   map.addControl(new NavigationControl({ showCompass: false }), "top-left");
@@ -79,10 +82,10 @@ export async function initDashboard(mapEl: HTMLElement, metricChips: HTMLElement
 
   map.addSource("buurten", { type: "geojson", data: fc, promoteId: "buurtcode" });
   map.addSource("fp", { type: "geojson", data: dataUrl("footprints.geojson") });
-  map.addLayer({ id: "buurt-fill", type: "fill", source: "buurten", paint: { "fill-color": "#2a303b", "fill-opacity": 0.8 } });
-  map.addLayer({ id: "buurt-line", type: "line", source: "buurten", paint: { "line-color": "#0b0d11", "line-width": 1.2 } });
-  map.addLayer({ id: "fp", type: "fill", source: "fp", minzoom: 13.5, paint: { "fill-color": "#3a414d", "fill-opacity": 0.95 } });
-  map.addLayer({ id: "buurt-sel", type: "line", source: "buurten", paint: { "line-color": "#4fd1c5", "line-width": 3 },
+  map.addLayer({ id: "buurt-fill", type: "fill", source: "buurten", paint: { "fill-color": SEQ[0], "fill-opacity": 0.85 } });
+  map.addLayer({ id: "buurt-line", type: "line", source: "buurten", paint: { "line-color": "#ffffff", "line-width": 1.2 } });
+  map.addLayer({ id: "fp", type: "fill", source: "fp", minzoom: 13.5, paint: { "fill-color": NO_ROOF, "fill-opacity": 0.95 } });
+  map.addLayer({ id: "buurt-sel", type: "line", source: "buurten", paint: { "line-color": C.ink, "line-width": 2.5 },
     filter: ["==", ["get", "buurtcode"], ""] });
 
   const popup = new Popup({ closeButton: false, closeOnClick: false });
@@ -112,7 +115,7 @@ export async function initDashboard(mapEl: HTMLElement, metricChips: HTMLElement
     const pal = current.ramp === "div" ? DIV : SEQ;
     const expr: any[] = ["interpolate", ["linear"], ["to-number", ["get", "_v"]]];
     pal.forEach((c, i) => expr.push(lo + ((hi - lo) * i) / (pal.length - 1), c));
-    map.setPaintProperty("buurt-fill", "fill-color", ["case", ["==", ["get", "_v"], null], "#20252e", expr] as any);
+    map.setPaintProperty("buurt-fill", "fill-color", ["case", ["==", ["get", "_v"], null], NO_ROOF, expr] as any);
     metricHelp.textContent = current.help;
     lastLegend = [lo, hi, pal];
     renderLegend(lo, hi, pal);
@@ -123,7 +126,7 @@ export async function initDashboard(mapEl: HTMLElement, metricChips: HTMLElement
     map.setLayoutProperty("fp", "visibility", bld.paint ? "visible" : "none");
     if (bld.paint) map.setPaintProperty("fp", "fill-color", bld.paint);
     // buildings drawn on top: fade the neighbourhood colours so both read
-    map.setPaintProperty("buurt-fill", "fill-opacity", bld.paint ? ["interpolate", ["linear"], ["zoom"], 13, 0.8, 14.5, 0.35] : 0.8);
+    map.setPaintProperty("buurt-fill", "fill-opacity", bld.paint ? ["interpolate", ["linear"], ["zoom"], 13, 0.85, 14.5, 0.3] : 0.85);
     bldHelp.textContent = bld.help;
     renderLegend(...lastLegend);
   };

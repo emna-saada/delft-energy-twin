@@ -31,8 +31,8 @@ export async function initTwin(container: HTMLElement, panel: HTMLElement, inspe
     shadows: true, requestRenderMode: true, maximumRenderTimeChange: Infinity,
   });
   const scene = viewer.scene;
-  scene.globe.baseColor = Cesium.Color.fromCssColorString("#0e1014");
-  scene.backgroundColor = Cesium.Color.fromCssColorString("#0e1014");
+  scene.globe.baseColor = Cesium.Color.fromCssColorString("#101317");
+  scene.backgroundColor = Cesium.Color.fromCssColorString("#101317");
   scene.globe.depthTestAgainstTerrain = false;
   viewer.shadowMap.softShadows = true;
   viewer.shadowMap.darkness = 0.35;
@@ -121,8 +121,8 @@ export async function initTwin(container: HTMLElement, panel: HTMLElement, inspe
       hierarchy: new Cesium.PolygonHierarchy(Cesium.Cartesian3.fromDegreesArray(fp.rings[0].flat()),
         fp.rings.slice(1).map((h) => new Cesium.PolygonHierarchy(Cesium.Cartesian3.fromDegreesArray(h.flat())))),
       height: 0, extrudedHeight: (b?.h ?? 10) + 0.6,
-      material: Cesium.Color.fromCssColorString("#4fd1c5").withAlpha(0.35),
-      outline: true, outlineColor: Cesium.Color.fromCssColorString("#4fd1c5"),
+      material: Cesium.Color.fromCssColorString("#F2A93B").withAlpha(0.3),
+      outline: true, outlineColor: Cesium.Color.fromCssColorString("#FFFFFF"),
     });
     highlight.show = true;
     scene.requestRender();
