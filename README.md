@@ -9,7 +9,7 @@ net metering on 1 January 2027 — published as an interactive 3D web twin.**
 > Heritage rules allow **10.6–14.4 GWh**, and when net metering ends, panels on its homes lose **34 %** of their annual
 > value — 15 % with a 5 kWh home battery.
 
-Live site: *add your GitHub Pages URL here after the first deploy* · Report-style notes: [PLAN.md](PLAN.md) ·
+**Live site: [emna-saada.github.io/delft-energy-twin](https://emna-saada.github.io/delft-energy-twin/)** · Report-style notes: [PLAN.md](PLAN.md) ·
 All numbers: [`results/metrics.json`](results/metrics.json)
 
 ## What it does
