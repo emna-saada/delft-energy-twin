@@ -186,7 +186,7 @@ Généré le {{ today }} à partir de <code>outputs/kpis.json</code> · Portefeu
 <div class="kpis">
  <div class="kpi"><div class="l">EAD synthétique</div><div class="v">{{ ead_total }}</div><div class="s">{{ n }} crédits · {{ ngov }} gouvernorats</div></div>
  <div class="kpi"><div class="l">EAD en zone d'aléa élevé</div><div class="v">{{ sh_base }} → {{ sh_585 }}</div><div class="s">aujourd'hui → SSP5-8.5 2050 (bande {{ sh_585_band }})</div></div>
- <div class="kpi"><div class="l">EL additionnelle 2050</div><div class="v">{{ el_585 }}</div><div class="s">SSP5-8.5 · bande {{ el_585_band }}</div></div>
+ <div class="kpi"><div class="l">EL additionnelle 2050</div><div class="v">{{ el_585 }}</div><div class="s">SSP5-8.5 · bande {{ el_585_band }} · dont {{ el_vs_today }} de plus qu'aujourd'hui</div></div>
  <div class="kpi"><div class="l">En points de base</div><div class="v">{{ bp_585 }}</div><div class="s">vs {{ bp_base }} aujourd'hui</div></div>
 </div>
 <ul>
@@ -200,7 +200,7 @@ Généré le {{ today }} à partir de <code>outputs/kpis.json</code> · Portefeu
 
 <h2>2. Contexte et origine du projet</h2>
 <p>La supervision des risques climatiques se structure dans le monde depuis les principes du Comité de Bâle de juin 2022. En Tunisie, la Banque Centrale (BCT) a clôturé le 3 novembre 2026 un projet d'assistance technique financé par la KfW sur la gouvernance et la gestion des risques financiers liés au changement climatique, et lancé une feuille de route 2026-2030 organisée en quatre piliers, dont la gestion et la supervision des risques climatiques (source : presse tunisienne, à revérifier sur bct.gov.tn). Les banques manquent cependant d'un outil simple et reproductible reliant chaque crédit à son exposition géographique aux aléas.</p>
-<p>Le projet se situe à l'intersection du risque bancaire (FAAS &amp; Risk) et du changement climatique (CCaSS) : il prolonge des compétences de géoinformatique (télédétection, Google Earth Engine, Python) vers la finance. En une phrase : <i>transformer des pixels satellites et climatiques en indicateurs de risque de crédit compréhensibles par une direction des risques</i>.</p>
+<p>Le projet se situe à l'intersection du risque bancaire et du changement climatique : il prolonge des compétences de géoinformatique (télédétection, Google Earth Engine, Python) vers la finance. En une phrase : <i>transformer des pixels satellites et climatiques en indicateurs de risque de crédit compréhensibles par une direction des risques</i>.</p>
 <h3>Ce que fait l'outil</h3>
 <ol>
 <li>géolocalise chaque crédit d'un portefeuille synthétique réaliste (densité WorldPop, terres cultivées ESA WorldCover, littoral) ;</li>
@@ -216,7 +216,7 @@ Généré le {{ today }} à partir de <code>outputs/kpis.json</code> · Portefeu
 <table><tr><th style="width:30%">Texte</th><th style="width:18%">Date</th><th>Exigence clé</th><th style="width:14%">Statut</th></tr>
 {% for t in reg %}<tr><td><b>{{ t.title }}</b></td><td>{{ t.date }}</td><td>{{ t.requirement }}</td><td><span class="tag {{ 'w' if ('second' in t.status or 'revérif' in t.status or 'non' in t.status) else '' }}">{{ t.status }}</span></td></tr>{% endfor %}
 </table>
-<div class="box"><b>Point d'attention NGFS.</b> Le portail NGFS signale que l'article de Kotz et al. (2024), qui fonde les estimations de pertes physiques de la Phase V, a été rétracté de <i>Nature</i>. ClimaRisk n'utilise donc pas la fonction de dommage NGFS : les scénarios NGFS servent de récit, les aléas proviennent directement des projections CMIP6.</div>
+<div class="box"><b>Point d'attention NGFS.</b> Le NGFS signale que la fonction de dommage PIB de la Phase V (variables « Kotz-Wenz », sorties NiGEM « physical/combined », scénarios REMIND-MAgPIE de dommages intégrés) repose sur Kotz et al. (2024), article rétracté de <i>Nature</i> (déclaration NGFS du 3 décembre 2025) ; les autres variables restent valides. ClimaRisk n'utilise donc pas la fonction de dommage PIB du NGFS : les scénarios NGFS servent de récit, les aléas proviennent directement des projections CMIP6.</div>
 
 <h2>4. Données et méthode</h2>
 <h3>4.1 Formule de base (logique GIEC : aléa × exposition × vulnérabilité)</h3>
@@ -261,10 +261,10 @@ EL_s(i)  = PD_s(i) · LGD_s(i) · EAD(i)        EL additionnelle = EL_s − PD_b
 <h2>8. Sensibilité et validation</h2>
 <div class="two"><div><img src="{{ charts.sensitivity }}"></div><div>
 <p>L'EL additionnelle est proportionnelle à β : doubler β double l'ajustement de PD. Les poids de la matrice de vulnérabilité ont un effet plus modéré, car le score composite est une moyenne pondérée normalisée (une hausse de tous les poids d'un aléa déplace surtout la répartition entre aléas).</p>
-<p>L'incertitude climatique (bandes 10–90 % entre modèles) est du même ordre que l'incertitude sur les hypothèses de crédit : c'est la calibration de β sur des défauts observés après des épisodes de sécheresse ou d'inondation qui réduirait le plus l'incertitude.</p></div></div>
+<p>À titre de comparaison, la dispersion entre modèles climatiques (bande 10–90 %) va de {{ unc.model_lo }} à {{ unc.model_hi }} autour de la médiane, alors que faire varier β de ×0,5 à ×2 déplace l'EL additionnelle de {{ unc.beta_lo }} à {{ unc.beta_hi }}. L'hypothèse de crédit domine donc l'incertitude : c'est la calibration de β sur des défauts observés après des épisodes de sécheresse ou d'inondation qui la réduirait le plus.</p></div></div>
 <h3>Comparaison avec OS-Climate physrisk</h3>
 {% if charts.physrisk %}<img src="{{ charts.physrisk }}">{% endif %}
-<p>Aux mêmes 2 000 localisations, les indicateurs de chaleur de physrisk (jours de température <i>moyenne</i> journalière &gt; 35 °C, modèle ACCESS-CM2) sont très corrélés aux nôtres en rang (Spearman {{ pr.heat_spearman_base }} aujourd'hui, {{ pr.heat_spearman_2050 }} en 2050), mais beaucoup plus faibles en niveau ({{ pr.heat_mean_physrisk_2050 }} contre {{ pr.heat_mean_ours_2050 }} jours en 2050), car une moyenne journalière &gt; 35 °C est bien plus rare qu'un maximum &gt; 35 °C. Pour la sécheresse, les deux approches indiquent une aggravation pour 100 % des actifs, mais leurs classements spatiaux divergent (Spearman {{ pr.drought_spearman_2050 }}) : l'indice SPEI de physrisk est <i>standardisé</i> par rapport au climat local et fait ressortir le nord, alors que notre indicateur (jours secs consécutifs) pénalise d'abord les zones arides du sud. Le choix de l'indicateur est donc structurant et doit être relié à la vulnérabilité réelle de chaque activité.</p>
+<p>Aux mêmes {{ n }} localisations, les indicateurs de chaleur de physrisk (jours de température <i>moyenne</i> journalière &gt; 35 °C, modèle ACCESS-CM2) sont très corrélés aux nôtres en rang (Spearman {{ pr.heat_spearman_base }} aujourd'hui, {{ pr.heat_spearman_2050 }} en 2050), mais beaucoup plus faibles en niveau ({{ pr.heat_mean_physrisk_2050 }} contre {{ pr.heat_mean_ours_2050 }} jours en 2050), car une moyenne journalière &gt; 35 °C est bien plus rare qu'un maximum &gt; 35 °C. Pour la sécheresse, les deux approches indiquent une aggravation pour {{ pr.worsen_ours }} des actifs (ClimaRisk) et {{ pr.worsen_physrisk }} (physrisk), mais leurs classements spatiaux divergent (Spearman {{ pr.drought_spearman_2050 }}) : l'indice SPEI de physrisk est <i>standardisé</i> par rapport au climat local et fait ressortir le nord, alors que notre indicateur (jours secs consécutifs) pénalise d'abord les zones arides du sud. Le choix de l'indicateur est donc structurant et doit être relié à la vulnérabilité réelle de chaque activité.</p>
 <h3>Cohérence spatiale</h3>
 <p>Les zones à forte profondeur de crue (vallée de la Medjerda, Cap Bon, plaines littorales de Nabeul) recoupent qualitativement les inondations historiques connues (Nabeul, septembre 2018 ; crues de la Medjerda). Une validation quantitative contre les surfaces brûlées MODIS (MCD64A1) et les précipitations CHIRPS est prévue via Earth Engine (niveau Community gratuit).</p>
 
@@ -273,10 +273,10 @@ EL_s(i)  = PD_s(i) · LGD_s(i) · EAD(i)        EL additionnelle = EL_s − PD_b
 <li><b>Portefeuille synthétique</b> : répartitions sectorielles, PD et LGD sont des hypothèses illustratives, pas des statistiques BCT.</li>
 <li><b>Résolution</b> : 0,25° (≈ 25 km) pour le climat — un actif hérite du climat de sa maille ; ≈ 1 km pour l'inondation, insuffisant pour le ruissellement urbain et les oueds secondaires.</li>
 <li><b>Modèles climatiques</b> : 5 modèles CMIP6 et des fenêtres de 3 ans par horizon ; la variabilité interannuelle pèse lourd à l'horizon 2030 (par exemple une anomalie positive de précipitations en SSP2-4.5 2030). Une version étendue utiliserait 20 ans par horizon et davantage de modèles.</li>
-<li><b>Aqueduct</b> repose sur des projections CMIP5 et une hydrologie globale ; les ouvrages de protection locaux ne sont pas représentés.</li>
+<li><b>Aqueduct</b> repose sur des projections CMIP5 et une hydrologie globale ; les ouvrages de protection locaux ne sont pas représentés. La référence fluviale est forcée par les observations (WATCH) et les projections par des GCM : la comparaison aujourd'hui / futur n'est donc pas homogène (la baisse apparente du score d'inondation en 2050 en est probablement un artefact). L'appariement modèle CMIP6 n° k ↔ GCM Aqueduct n° k est arbitraire : la bande d'incertitude est un pseudo-ensemble.</li>
 <li><b>Feux de forêt</b> : indicateur de combustible × météo, non calibré sur les surfaces brûlées observées.</li>
 <li><b>Traduction crédit</b> : β, γ et la matrice de vulnérabilité ne sont pas estimés ; PD_base considérée climatiquement neutre.</li>
-<li><b>Fonction de dommage NGFS</b> : non utilisée en raison de la rétractation de Kotz et al. (2024) signalée par le NGFS.</li>
+<li><b>Fonction de dommage NGFS</b> : fonction de dommage PIB non utilisée (Kotz et al., 2024, rétracté ; déclaration NGFS du 3 décembre 2025).</li>
 <li><b>Périmètre</b> : risque physique uniquement ; pas de risque de transition ni d'effets de second ordre.</li>
 </ul>
 <h3>Usages possibles en Pilier 2 / ICAAP</h3>
@@ -294,12 +294,13 @@ EL_s(i)  = PD_s(i) · LGD_s(i) · EAD(i)        EL additionnelle = EL_s − PD_b
 <p>γ (LGD inondation) = {{ gamma }} · zone d'aléa élevé : un aléa matériel pour le secteur (vulnérabilité ≥ {{ mat }}) avec un score ≥ {{ thr }}. Toutes les valeurs sont des <b>hypothèses illustratives</b> documentées dans <code>config/assumptions.yaml</code>.</p>
 <h3>Annexe B — Sources de données et licences</h3>
 <table><tr><th>Jeu de données</th><th>Licence</th></tr>
-<tr><td>NASA NEX-GDDP-CMIP6 (AWS Open Data)</td><td>CC BY 4.0 pour les 5 modèles retenus (à revérifier modèle par modèle)</td></tr>
+<tr><td>NASA NEX-GDDP-CMIP6 (AWS Open Data)</td><td>CC0 (licence globale depuis septembre 2022)</td></tr>
 <tr><td>WRI Aqueduct Floods v2 (via OS-Climate)</td><td>CC BY 4.0</td></tr>
 <tr><td>ESA WorldCover 2021</td><td>CC BY 4.0</td></tr>
 <tr><td>WorldPop 2020</td><td>CC BY 4.0</td></tr>
 <tr><td>geoBoundaries (OpenStreetMap)</td><td>ODbL 1.0</td></tr>
-<tr><td>Natural Earth</td><td>Domaine public</td></tr></table>
+<tr><td>Natural Earth</td><td>Domaine public</td></tr>
+<tr><td>Voix Piper fr_FR-siwis-medium (vidéo)</td><td>Données SIWIS et Hi-Fi TTS, CC BY 4.0 ; logiciel piper-tts GPL-3.0 utilisé en ligne de commande</td></tr></table>
 <p>Code sous licence MIT. Reproduction : <code>make install &amp;&amp; make data &amp;&amp; make demo</code>.</p>
 </body></html>"""
 
@@ -315,8 +316,19 @@ def build_report(out_pdf: Path | None = None) -> Path:
     reg = yaml.safe_load((root / "config/regulatory_matrix.yaml").read_text(encoding="utf-8"))["texts"]
     a = yaml.safe_load((root / "config/assumptions.yaml").read_text(encoding="utf-8"))
     pr = json.loads((out / "physrisk_comparison.json").read_text()) if (out / "physrisk_comparison.json").exists() else {}
+    worsen = {"worsen_ours": f"{100 * pr.get('share_assets_drought_worsening_ours', float('nan')):.0f} %",
+              "worsen_physrisk": f"{100 * pr.get('share_assets_drought_worsening_physrisk', float('nan')):.0f} %"}
     pr = {kk: (f"{v:.2f}" if isinstance(v, float) and abs(v) < 10 else (f"{v:.0f}" if isinstance(v, float) else v))
-          for kk, v in pr.items()}
+          for kk, v in pr.items()} | worsen
+    sens = pd.DataFrame(k["sensitivity"])
+    beta = sens[sens.label.str.startswith("β")]
+    e = k["periods"]["ssp585_2050"]["el_add_tnd"]
+
+    def sp(x):
+        return f"{x:+.0f} %".replace("-", "−")
+
+    unc = {"model_lo": sp(100 * (e["p10"] / e["med"] - 1)), "model_hi": sp(100 * (e["p90"] / e["med"] - 1)),
+           "beta_lo": sp(beta.delta_pct.min()), "beta_hi": sp(beta.delta_pct.max())}
     maps_dir = out / "maps"
     maps = {n: _img_b64(maps_dir / f"map_{f}.png") for n, f in
             [("heat", "heat"), ("drought", "drought"), ("flood", "flood"), ("fire", "fire"),
@@ -343,6 +355,7 @@ def build_report(out_pdf: Path | None = None) -> Path:
         sh_base=pct(P["baseline"]["share_ead_high"]["med"]), sh_585=pct(P["ssp585_2050"]["share_ead_high"]["med"]),
         sh_585_band=f"{pct(P['ssp585_2050']['share_ead_high']['p10'])} – {pct(P['ssp585_2050']['share_ead_high']['p90'])}",
         el_585=mtnd(P["ssp585_2050"]["el_add_tnd"]["med"]),
+        el_vs_today=mtnd(P["ssp585_2050"]["el_add_vs_today_tnd"]["med"]),
         el_585_band=f"{mtnd(P['ssp585_2050']['el_add_tnd']['p10'])} – {mtnd(P['ssp585_2050']['el_add_tnd']['p90'])}",
         bp_585=f"{P['ssp585_2050']['el_add_bp']['med']:.1f} pb".replace(".", ","),
         bp_base=f"{P['baseline']['el_add_bp']['med']:.1f} pb".replace(".", ","),
@@ -357,7 +370,7 @@ def build_report(out_pdf: Path | None = None) -> Path:
                       "band": f"{P[p]['el_add_tnd']['p10'] / 1e6:.2f} – {P[p]['el_add_tnd']['p90'] / 1e6:.2f}".replace(".", ","),
                       "bp": f"{P[p]['el_add_bp']['med']:.1f}".replace(".", ",")} for p in theme.PERIOD_ORDER],
         top=k["top20_ssp585_2050"][:8], vuln=a["vulnerability"], beta=a["beta"], gamma=a["gamma_lgd_flood"],
-        mat=a["materiality_min_vulnerability"], thr=a["high_hazard_threshold"], sector_labels=sl,
+        unc=unc, mat=a["materiality_min_vulnerability"], thr=a["high_hazard_threshold"], sector_labels=sl,
     )
     html = Template(TEMPLATE).render(**ctx)
     (out / "report.html").write_text(html, encoding="utf-8")

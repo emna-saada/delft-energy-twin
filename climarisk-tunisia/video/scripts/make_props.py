@@ -32,6 +32,8 @@ def main() -> None:
     sh5 = 100 * P["ssp585_2050"]["share_ead_high"]["med"]
     el5 = P["ssp585_2050"]["el_add_tnd"]["med"] / 1e6
     bp5 = P["ssp585_2050"]["el_add_bp"]["med"]
+    vt5 = P["ssp585_2050"]["el_add_vs_today_tnd"]["med"] / 1e6
+    n_words = {2000: "deux mille"}.get(k["meta"]["n_loans"], str(k["meta"]["n_loans"]))
     assets = pd.read_parquet(ROOT / "outputs/asset_results.parquet")
     sl = assets.drop_duplicates("sector").set_index("sector")["sector_label"].to_dict()
     top = sorted(k["by_sector"]["ssp585_2050"].items(), key=lambda kv: -kv[1]["el_add_bp_med"])[:2]
@@ -42,7 +44,7 @@ def main() -> None:
                      "la carte des risques climatiques physiques d'un portefeuille de crédits."),
         ("origin", 25, "Inondations de Nabeul en 2018, sécheresses qui frappent les céréales, records de chaleur : "
                        "les actifs financés par les banques tunisiennes sont exposés. En novembre 2026, la Banque "
-                       "Centrale de Tunisie a lancé une feuille de route 2026-2030 sur la finance verte et les risques "
+                       "Centrale de Tunisie a lancé, selon la presse tunisienne, une feuille de route 2026-2030 sur la finance verte et les risques "
                        "climatiques. Ce projet se place entre risque bancaire et changement climatique."),
         ("regulation", 25, "Le cadre s'est construit pas à pas : les principes du Comité de Bâle en 2022, la norme "
                            "IFRS S2 en 2023, les scénarios NGFS de phase cinq en 2024, les orientations de l'Autorité "
@@ -51,11 +53,12 @@ def main() -> None:
         ("method", 25, "Les données sont entièrement ouvertes : projections climatiques CMIP6 de la NASA, cartes "
                        "d'inondation Aqueduct, occupation du sol WorldCover et population WorldPop. Pour chaque crédit, "
                        "on croise aléa, exposition et vulnérabilité du secteur, puis on ajuste la probabilité de défaut "
-                       "et la perte attendue. Le portefeuille de deux mille crédits est cent pour cent synthétique."),
+                       "et la perte attendue. Le portefeuille de " + n_words + " crédits est cent pour cent synthétique."),
         ("results", 45, f"Résultat : la part de l'encours située en zone d'aléa élevé passe de {fr(sh0)} pour cent "
                         f"aujourd'hui à {fr(sh5)} pour cent en 2050, dans le scénario SSP5 8,5. La perte attendue "
                         f"climatique additionnelle atteint {fr(el5)} millions de dinars, soit {fr(bp5, 0)} points de "
-                        f"base de l'encours. {top_txt} sont les secteurs les plus touchés, et l'écart entre modèles "
+                        f"base de l'encours, dont {fr(vt5)} millions de plus qu'aujourd'hui. Ces chiffres portent sur un "
+                        f"portefeuille synthétique. {top_txt} sont les secteurs les plus touchés, et l'écart entre modèles "
                         f"climatiques reste important."),
         ("showcase", 30, "Le tableau de bord permet de choisir le scénario et l'horizon, d'explorer la carte des "
                          "gouvernorats, d'ouvrir la fiche de chaque crédit, puis d'exporter les tableaux et le "
@@ -136,7 +139,7 @@ def main() -> None:
         "kpi": {"share0": sh0, "share5": sh5, "share5_p10": 100 * P["ssp585_2050"]["share_ead_high"]["p10"],
                 "share5_p90": 100 * P["ssp585_2050"]["share_ead_high"]["p90"], "el5": el5, "bp5": bp5,
                 "el5_p10": P["ssp585_2050"]["el_add_tnd"]["p10"] / 1e6,
-                "el5_p90": P["ssp585_2050"]["el_add_tnd"]["p90"] / 1e6,
+                "el5_p90": P["ssp585_2050"]["el_add_tnd"]["p90"] / 1e6, "vt5": vt5,
                 "n": k["meta"]["n_loans"], "ngov": k["meta"]["n_governorates"],
                 "ead": k["meta"]["total_ead_tnd"] / 1e9,
                 "hot0": k["hazard_means"]["baseline"]["hot35_days"],

@@ -26,7 +26,7 @@ export const Origin: React.FC<Props> = () => {
       </div>
       <div style={{ display: 'flex', gap: 30, marginTop: 36, alignItems: 'stretch' }}>
         <Card delay={240} accent={C.teal} style={{ flex: 1.4 }}>
-          <div style={{ fontSize: 22, color: C.teal, fontWeight: 700, letterSpacing: 2 }}>BANQUE CENTRALE DE TUNISIE · NOV. 2026</div>
+          <div style={{ fontSize: 22, color: C.teal, fontWeight: 700, letterSpacing: 2 }}>BANQUE CENTRALE DE TUNISIE · NOV. 2026 · SELON LA PRESSE</div>
           <div style={{ fontSize: 34, fontWeight: 700, marginTop: 8 }}>Feuille de route finance verte & risques climatiques 2026-2030</div>
           <div style={{ fontSize: 22, color: C.mist, marginTop: 10 }}>Issue du projet d’assistance technique BCT–KfW · 4 piliers</div>
         </Card>

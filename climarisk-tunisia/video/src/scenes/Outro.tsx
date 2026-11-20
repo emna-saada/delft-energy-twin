@@ -18,6 +18,7 @@ export const Outro: React.FC<Props> = () => {
         <div style={{ fontSize: 40, color: C.white, fontWeight: 700 }}>Emna Saada</div>
         <div style={{ fontSize: 30, color: C.mist }}>Géoinformatique, MSE — Université de la Manouba</div>
         <div style={{ fontSize: 28, color: '#9FE3EA', fontFamily: '"JetBrains Mono"' }}>github.com/emna-saada/climarisk-tunisia (à publier) · code MIT · données ouvertes</div>
+        <div style={{ fontSize: 18, color: C.mist, marginTop: 10 }}>Voix de synthèse Piper fr_FR-siwis-medium (données SIWIS et Hi-Fi TTS, CC BY 4.0) · NASA NEX-GDDP-CMIP6 · WRI Aqueduct · ESA WorldCover · WorldPop · © OpenStreetMap (geoBoundaries)</div>
       </div>
     </AbsoluteFill>
   );

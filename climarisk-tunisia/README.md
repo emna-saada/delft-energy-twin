@@ -42,11 +42,11 @@ video/        Remotion project (props generated from outputs/kpis.json)
 
 ## Limits
 
-Synthetic portfolio; 0.25° climate grid; 5 models and 3-year windows; Aqueduct relies on CMIP5; β, γ and vulnerability weights are not estimated; physical risk only (no transition risk). The NGFS Phase V damage function (Kotz et al., 2024 — retracted) is deliberately not used. See `docs/methodology.md`.
+Synthetic portfolio; 0.25° climate grid; 5 models and 3-year windows; Aqueduct relies on CMIP5; β, γ and vulnerability weights are not estimated; physical risk only (no transition risk). The NGFS Phase V GDP-damage function (Kotz et al., 2024 — retracted, NGFS statement of 3 Dec 2025) is deliberately not used. See `docs/methodology.md`.
 
 ## Licences
 
-Code: MIT. Data: see `docs/LICENSES_DATA.md` (CC BY 4.0, ODbL, public domain). CLIMADA (GPL-3.0) is not used.
+Code: MIT. Data: see `docs/LICENSES_DATA.md` (CC0, CC BY 4.0, ODbL, public domain). CLIMADA (GPL-3.0) is not used.
 
 ---
 Emna Saada — géoinformatique, MSE (Université de la Manouba).

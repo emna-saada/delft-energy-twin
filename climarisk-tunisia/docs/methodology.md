@@ -24,11 +24,11 @@ data/raw/ ─────┼─> portfolio.py ─> hazards/ (climate, flood, wil
 | Scores | `hazards/scoring.py` | Linear, clipped, fixed physical bounds (see `config/assumptions.yaml`), so scores are monotone and comparable across scenarios. |
 | Composite | `vulnerability.py` | Vulnerability-weighted mean of hazard scores per sector. |
 | Credit | `credit.py` | PD_s = min(1, PD·(1+β·Score)); LGD uplift γ·flood for land / real-estate collateral; EL = PD·LGD·EAD. High-hazard zone = a hazard material for the sector (V ≥ 0.5) with score ≥ 0.6. |
-| Uncertainty | `credit.ensemble_summary` | CMIP6 model *k* paired with Aqueduct GCM *k*; median and 10–90 % across the 5 realisations. |
+| Uncertainty | `credit.ensemble_summary` | CMIP6 model *k* paired with Aqueduct GCM *k* (arbitrary pairing → pseudo-ensemble); median and 10–90 % across the 5 realisations. Flood baseline is WATCH-forced while futures are GCM-forced, so today-vs-future flood changes are not like-for-like. |
 
 ## 2. NGFS ↔ SSP mapping
 
-NGFS Phase V (Nov 2024) is used as narrative only. SSP2-4.5 proxies the physical side of *NDCs / Delayed Transition*; SSP5-8.5 is used as an upper physical stress bound (above *Current Policies*). The NGFS physical damage function (Kotz et al., 2024) is **not** used — the paper has been retracted, as flagged on the NGFS portal (checked 2026-11-20).
+NGFS Phase V (Nov 2024) is used as narrative only. SSP2-4.5 proxies the physical side of *NDCs / Delayed Transition*; SSP5-8.5 is used as an upper physical stress bound (above *Current Policies*). The NGFS GDP-damage function (Kotz et al., 2024; "Kotz-Wenz" variables) is **not** used — the paper was retracted from *Nature* (NGFS statement, 3 Dec 2025); NGFS states other Phase V variables are unaffected.
 
 ## 3. Illustrative results (synthetic portfolio)
 
@@ -40,7 +40,7 @@ NGFS Phase V (Nov 2024) is used as narrative only. SSP2-4.5 proxies the physical
 | SSP5-8.5 · 2030 | 8.7 % | 6.5 M TND | 21.6 |
 | SSP5-8.5 · 2050 | 22.4 % (band 18.7–44.3 %) | 8.8 M TND (band 8.0–10.4) | 29.5 |
 
-Most affected sectors (SSP5-8.5 2050, bp of sector EAD): cereals (84), olives (71), construction (48), citrus (43) — driven by drought and heat. "Today" is non-zero because base PDs are treated as climate-neutral (assumption).
+Most affected sectors (SSP5-8.5 2050, bp of sector EAD): cereals (84), olives (71), construction (48), citrus (43) — driven by drought and heat. "Today" is non-zero because base PDs are treated as climate-neutral (assumption); the increment versus today is reported separately in `kpis.json` (`el_add_vs_today_tnd`, median of per-model differences: +4.8 M TND for SSP5-8.5 2050).
 
 ## 4. Milestone 6 — comparison with OS-Climate physrisk
 

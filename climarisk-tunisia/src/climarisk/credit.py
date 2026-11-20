@@ -6,7 +6,7 @@ EL_s  = PD_s * LGD_s * EAD
 Additional climate EL = EL_s - PD_base * LGD_base * EAD
 
 PD_base is treated as climate-neutral (illustrative assumption): the uplift therefore
-also exists "today". Increments vs today are reported separately.
+also exists "today". Increments vs today are reported separately (``vs_today``).
 """
 from __future__ import annotations
 
@@ -73,9 +73,10 @@ def ensemble_summary(res: pd.DataFrame, by: list[str]) -> pd.DataFrame:
     return pd.concat([med, lo, hi], axis=1).reset_index()
 
 
-def sensitivity(df: pd.DataFrame, assumptions: dict | None = None, period: str = "ssp585_2050",
-                seed: int = 7) -> pd.DataFrame:
+def sensitivity(df: pd.DataFrame, assumptions: dict | None = None, period: str = "ssp585_2050") -> pd.DataFrame:
     """Sensitivity of total additional EL (ensemble median) to beta and to hazard weights."""
+    import copy
+
     a = assumptions or load_yaml("assumptions.yaml")
     sub = df[df["period"] == period]
     rows = []
@@ -87,19 +88,26 @@ def sensitivity(df: pd.DataFrame, assumptions: dict | None = None, period: str =
     for m in a["sensitivity"]["beta_multipliers"]:
         rows.append({"test": "beta", "label": f"β × {m}", "value": m,
                      "el_add": total(apply_credit(sub, a, m))})
-    rng = np.random.default_rng(seed)
     pert = a["sensitivity"]["weight_perturbation"]
     from .hazards import HAZARDS
     FR = {"heat": "chaleur", "drought": "sécheresse", "flood": "inondation", "fire": "feux"}
     for h in HAZARDS:
         for sign in (-1, 1):
-            a2 = load_yaml("assumptions.yaml")
+            a2 = copy.deepcopy(a)
             for s in a2["vulnerability"]:
                 a2["vulnerability"][s][h] = max(0.0, a2["vulnerability"][s][h] * (1 + sign * pert))
             rows.append({"test": "weight", "label": f"poids {FR[h]} {'+' if sign > 0 else '−'}{int(pert*100)} %",
                          "value": sign * pert, "el_add": total(apply_credit(sub, a2))})
-    _ = rng  # reserved for Monte-Carlo extensions
     out = pd.DataFrame(rows)
     out["delta_pct"] = 100 * (out["el_add"] / base - 1)
     out["base"] = base
     return out
+
+
+def vs_today(res: pd.DataFrame) -> pd.DataFrame:
+    """Additional EL relative to today's climate, per period: median and 10-90 % across models
+    (each model's future EL minus the same model's baseline EL)."""
+    tot = res.groupby(["period", "model"])["el_add"].sum().unstack("period")
+    delta = tot.sub(tot["baseline"], axis=0)
+    out = pd.DataFrame({"med": delta.median(), "p10": delta.quantile(0.1), "p90": delta.quantile(0.9)})
+    return out.rename_axis("period").reset_index()

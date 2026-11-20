@@ -25,7 +25,7 @@ years:
   ssp245: [2029, 2030, 2031, 2049, 2050, 2051]
   ssp585: [2029, 2030, 2031, 2049, 2050, 2051]
 
-# Five CMIP6 models (licence per NEX-GDDP-CMIP6 technical note: CC BY 4.0 — see docs/LICENSES_DATA.md)
+# Five CMIP6 models. NEX-GDDP-CMIP6 outputs are under a blanket CC0 licence since Sept 2022 (NASA Tech Note 4) — see docs/LICENSES_DATA.md
 cmip6_models:
   - {name: ACCESS-CM2, member: r1i1p1f1}
   - {name: CNRM-ESM2-1, member: r1i1p1f2}

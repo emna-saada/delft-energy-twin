@@ -167,7 +167,7 @@ with tabs[0]:
         ("accent", "EAD en zone d'aléa élevé", f"{100*sh['med']:.1f} %",
          f"bande {100*sh['p10']:.1f} – {100*sh['p90']:.1f} % · un aléa matériel ≥ {ASSUM['high_hazard_threshold']}"),
         ("red", "EL climatique additionnelle", fmt_tnd(el["med"]) + " TND",
-         f"bande {fmt_tnd(el['p10'])} – {fmt_tnd(el['p90'])} TND"),
+         f"dont {fmt_tnd(P['el_add_vs_today_tnd']['med'])} de plus qu'aujourd'hui · bande {fmt_tnd(el['p10'])} – {fmt_tnd(el['p90'])}"),
         ("teal", "Soit, en points de base", f"{P['el_add_bp']['med']:.1f} pb",
          f"de l'EAD · EL de base {fmt_tnd(K['meta']['el_base_tnd'])} TND"),
     ]
@@ -428,7 +428,8 @@ Chaque indicateur est ramené à un score 0-1 par des bornes physiques fixes (co
 <li>Biais des modèles climatiques ; 5 modèles seulement, 3 années par horizon.</li>
 <li>Aqueduct utilise des projections CMIP5 (RCP4.5/8.5) servant de proxy aux SSP.</li>
 <li>β, γ et la matrice de vulnérabilité sont des hypothèses à calibrer sur des défauts observés.</li>
-<li>La fonction de dommage physique NGFS Phase V (Kotz et al., 2024) a été rétractée : elle n'est pas utilisée.</li>
+<li>La fonction de dommage PIB du NGFS Phase V repose sur Kotz et al. (2024), article rétracté (déclaration NGFS du 3 décembre 2025) : elle n'est pas utilisée.</li>
+<li>Inondation : référence WATCH vs projections GCM non homogènes ; appariement modèles CMIP6 ↔ GCM Aqueduct arbitraire.</li>
 <li>Pas de risque de transition, pas d'effets de second ordre (chaînes d'approvisionnement, macroéconomie).</li>
 </ul></div>""", unsafe_allow_html=True)
         st.markdown("""<div class="card"><h4>Sources de données ouvertes</h4>

@@ -6,7 +6,7 @@ texts:
     title: "BCBS — Principles for the effective management and supervision of climate-related financial risks"
     date: "15 juin 2022"
     url: "https://www.bis.org/bcbs/publ/d532.htm"
-    status: "vérifié"
+    status: "page BIS vérifiée — numérotation des principes à relire dans le PDF"
     requirement: "18 principes : 1-12 pour les banques (gouvernance, contrôle interne, adéquation du capital et de la liquidité, gestion des risques de crédit et autres, analyse de scénarios), 13-18 pour les superviseurs."
     modules: ["credit.py — intégration au risque de crédit (ΔPD, LGD, EL)", "reporting / kpis.json — données et reporting interne", "scenarios.yaml — analyse de scénarios SSP/NGFS"]
     coverage: partielle
@@ -22,9 +22,9 @@ texts:
     title: "NGFS — Scénarios climatiques, Phase V"
     date: "5 novembre 2024"
     url: "https://www.ngfs.net/ngfs-scenarios-portal/data-resources/"
-    status: "vérifié (+ rétractation Kotz et al. 2024 signalée par le NGFS)"
-    requirement: "Scénarios de référence des banques centrales ; fonction de dommage physique fondée sur Kotz et al. (2024), article rétracté."
-    modules: ["scenarios.yaml — correspondance NGFS ↔ SSP2-4.5 / SSP5-8.5", "Pas d'utilisation de la fonction de dommage NGFS"]
+    status: "vérifié (+ déclaration NGFS du 3 déc. 2025 sur la rétractation de Kotz et al. 2024)"
+    requirement: "Scénarios de référence des banques centrales ; fonction de dommage PIB (variables Kotz-Wenz) fondée sur Kotz et al. (2024), article rétracté de Nature ; les autres variables restent valides selon le NGFS."
+    modules: ["scenarios.yaml — correspondance NGFS ↔ SSP2-4.5 / SSP5-8.5", "Pas d'utilisation de la fonction de dommage PIB du NGFS"]
     coverage: narrative
   - id: EBA-ESG-2025
     title: "EBA — Guidelines on the management of ESG risks (EBA/GL/2025/01)"

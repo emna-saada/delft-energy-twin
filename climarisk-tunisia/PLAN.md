@@ -12,7 +12,7 @@ Milestones from brief §9. `[x]` = acceptance criterion met and committed.
 - [x] **M7 Dashboard** — runs locally (free hosting once Emna publishes the repo); 6 tabs of §8 + Reporting tab.
 - [x] **M8 Report** — 10–15 page PDF: context, regulation, method, illustrative results, limits, compliance matrix.
 - [x] **M9 Video** — 1080p MP4, 2–3 min, follows the §10 storyboard, subtitles, figures from `outputs/kpis.json`.
-- [ ] **M10 Final check** — independent sub-agent review: regulatory facts, licences, no personal data, `make demo` reproducibility.
+- [x] **M10 Final check** — independent sub-agent review: regulatory facts, licences, no personal data, `make demo` reproducibility. Verdict "fix before showing" → all fixes applied (see research_log §2b); pipeline re-run is byte-identical.
 
 ## Needs from Emna
 - [ ] Create the public GitHub repo `climarisk-tunisia` (code currently lives in `climarisk-tunisia/` on branch `claude/awesome-galileo-vs1xie` of `delft-energy-twin`).

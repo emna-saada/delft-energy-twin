@@ -11,7 +11,7 @@ import pandas as pd
 
 from . import __version__
 from .config import load_yaml, project_root
-from .credit import aggregate, apply_credit, ensemble_summary, high_hazard_flag, sensitivity
+from .credit import aggregate, apply_credit, ensemble_summary, high_hazard_flag, sensitivity, vs_today
 from .hazards import HAZARDS, asset_hazards
 from .portfolio import generate_portfolio
 
@@ -48,7 +48,6 @@ def run(out_dir: Path | None = None, portfolio: gpd.GeoDataFrame | None = None, 
     by_period = ensemble_summary(res, ["period"])
     by_sector = ensemble_summary(res, ["period", "sector"])
     by_gov = ensemble_summary(res, ["period", "governorate"])
-    agg_med = aggregate(assets.assign(model="median"), ["period"])
     sens = sensitivity(df, a)
     for name, t in {"by_period": by_period, "by_sector": by_sector, "by_governorate": by_gov,
                     "sensitivity": sens}.items():
@@ -57,10 +56,13 @@ def run(out_dir: Path | None = None, portfolio: gpd.GeoDataFrame | None = None, 
     # heatmap sector x hazard: EAD-weighted mean score (ensemble median)
     heat = {}
     for p, g in assets.groupby("period"):
-        w = g["ead_tnd"]
         heat[p] = {s: {h: float(np.average(gs[h], weights=gs["ead_tnd"])) for h in HAZARDS}
                    for s, gs in g.groupby("sector")}
-        _ = w
+    vt = vs_today(res).set_index("period")
+    # EAD conservation: every (period, model) aggregation by sector and by governorate sums to the book
+    conserved = all(
+        np.isclose(aggregate(res, ["period", "model", by]).groupby(["period", "model"])["ead"].sum(), float(pf["ead_tnd"].sum())).all()
+        for by in ("sector", "governorate"))
 
     total_ead = float(pf["ead_tnd"].sum())
     kpis = {
@@ -78,6 +80,7 @@ def run(out_dir: Path | None = None, portfolio: gpd.GeoDataFrame | None = None, 
                 "el_add_tnd": {"med": r.el_add_med, "p10": r.el_add_p10, "p90": r.el_add_p90},
                 "el_add_bp": {"med": r.el_add_bp_med, "p10": r.el_add_bp_p10, "p90": r.el_add_bp_p90},
                 "el_climate_tnd": {"med": r.el_climate_med},
+                "el_add_vs_today_tnd": {k2: float(vt.loc[r.period, k2]) for k2 in ("med", "p10", "p90")},
             } for r in by_period.itertuples()
         },
         "hazard_means": {
@@ -101,7 +104,7 @@ def run(out_dir: Path | None = None, portfolio: gpd.GeoDataFrame | None = None, 
         "top20_ssp585_2050": assets[assets.period == "ssp585_2050"].nlargest(20, "el_add")[
             ["loan_id", "sector_label", "governorate", "ead_tnd", "composite", "el_add"]].to_dict("records"),
         "sensitivity": sens[["label", "el_add", "delta_pct"]].to_dict("records"),
-        "check_total_ead_conserved": bool(np.isclose(agg_med.groupby("period")["ead"].sum().iloc[0], total_ead)),
+        "check_total_ead_conserved": bool(conserved),
     }
     with open(out_dir / "kpis.json", "w", encoding="utf-8") as f:
         json.dump(kpis, f, ensure_ascii=False, indent=2, default=float)

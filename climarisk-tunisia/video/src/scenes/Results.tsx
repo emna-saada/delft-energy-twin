@@ -6,14 +6,18 @@ import { Card, Counter, Title, useAppear } from './common';
 
 const SC: Record<string, string> = { baseline: '#7A8B8F', ssp245: C.teal, ssp585: C.red };
 
-export const Results: React.FC<Props> = ({ kpi, periods, heatmap }) => {
+export const Results: React.FC<Props> = ({ kpi, periods, heatmap, disclaimer }) => {
   const frame = useCurrentFrame();
   const vmax = Math.max(...periods.map((p) => p.p90)) * 1.1;
   const hm = useAppear(560);
   const H = 330;
   return (
     <AbsoluteFill style={{ padding: '140px 100px 150px 100px', fontFamily: FONT, color: C.white }}>
-      <Title size={52} delay={5}>Ce que montre le pipeline</Title>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Title size={52} delay={5}>Ce que montre le pipeline</Title>
+        <div style={{ padding: '8px 18px', borderRadius: 10, border: `1px solid ${C.amber}`, background: 'rgba(217,119,6,0.15)',
+          color: '#FBD38D', fontSize: 20, fontWeight: 600, maxWidth: 640 }}>{disclaimer}</div>
+      </div>
       <div style={{ display: 'flex', gap: 28, marginTop: 30 }}>
         <Card delay={20} style={{ flex: 1 }}>
           <div style={{ fontSize: 22, color: C.mist, letterSpacing: 2, fontWeight: 600 }}>EAD EN ZONE D’ALÉA ÉLEVÉ</div>
@@ -30,7 +34,7 @@ export const Results: React.FC<Props> = ({ kpi, periods, heatmap }) => {
             <Counter from={0} to={kpi.el5} delay={140} dur={60} suffix=" M TND" size={84} />
           </div>
           <div style={{ fontSize: 22, color: C.mist }}>
-            soit <b style={{ color: C.white }}>{kpi.bp5.toFixed(0)} pb</b> de l’EAD · bande {kpi.el5_p10.toFixed(1).replace('.', ',')}–{kpi.el5_p90.toFixed(1).replace('.', ',')} M TND
+            soit <b style={{ color: C.white }}>{kpi.bp5.toFixed(0)} pb</b> de l’EAD · dont <b style={{ color: C.white }}>+{kpi.vt5.toFixed(1).replace('.', ',')} M</b> vs aujourd’hui · bande {kpi.el5_p10.toFixed(1).replace('.', ',')}–{kpi.el5_p90.toFixed(1).replace('.', ',')} M
           </div>
         </Card>
       </div>
