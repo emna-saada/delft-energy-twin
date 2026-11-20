@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+outputs/*.parquet
+video/node_modules/
+video/out/*.mp4
+video/public/capture/
+.pytest_cache/
+.ruff_cache/

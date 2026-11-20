@@ -1,0 +1,45 @@
+# Every coefficient used by the model, with its source or the mention "illustrative assumption".
+# Sensitivity of results to these values is computed in climarisk.credit.sensitivity().
+
+hazard_normalisation:
+  # Fixed physical bounds so scores are comparable across scenarios and monotone in intensity.
+  heat_days_35:      {low: 0,   high: 120, source: "illustrative assumption; >120 d/yr above 35 °C only in the far south"}
+  drought_cdd:       {low: 30,  high: 200, source: "illustrative assumption; consecutive dry days (pr < 1 mm), ETCCDI definition"}
+  drought_prchange:  {low: 0,   high: -30, source: "illustrative assumption; % change of annual precipitation vs 2010-2014 model baseline"}
+  flood_depth_m:     {low: 0,   high: 2.0, source: "illustrative assumption; 2 m depth ~ near-total damage on JRC global depth-damage curves (Huizinga et al., 2017)"}
+  fire_fuel_window_km: 2.0
+
+drought_weights: {cdd: 0.5, prchange: 0.5}
+fire_weights:    {fuel: 0.6, weather: 0.4}
+flood_return_period: 100
+
+# Sector x hazard vulnerability (0 = insensitive, 1 = highly sensitive). Illustrative assumption,
+# qualitatively informed by sectoral exposure (rain-fed agriculture to drought, coastal assets to flood...).
+vulnerability:
+  cereals:      {heat: 0.6, drought: 1.0, flood: 0.3, fire: 0.4}
+  olives:       {heat: 0.5, drought: 0.8, flood: 0.2, fire: 0.4}
+  citrus:       {heat: 0.5, drought: 0.9, flood: 0.4, fire: 0.3}
+  agrifood:     {heat: 0.4, drought: 0.5, flood: 0.5, fire: 0.2}
+  textile:      {heat: 0.5, drought: 0.2, flood: 0.5, fire: 0.1}
+  tourism:      {heat: 0.7, drought: 0.3, flood: 0.8, fire: 0.3}
+  residential:  {heat: 0.3, drought: 0.1, flood: 0.8, fire: 0.3}
+  construction: {heat: 0.6, drought: 0.2, flood: 0.5, fire: 0.1}
+  chemicals:    {heat: 0.4, drought: 0.6, flood: 0.4, fire: 0.1}
+  energy:       {heat: 0.6, drought: 0.4, flood: 0.5, fire: 0.3}
+
+# PD elasticity beta by sector: PD_s = min(1, PD_base * (1 + beta * Score_s)). Illustrative assumption.
+beta:
+  default: 0.5
+  cereals: 0.8
+  olives: 0.7
+  citrus: 0.7
+  tourism: 0.6
+
+# LGD uplift for real-estate / land collateral exposed to flood: LGD_s = min(1, LGD * (1 + gamma * flood_score)).
+gamma_lgd_flood: 0.3
+
+high_hazard_threshold: 0.5   # composite score above which an exposure is "in a high-hazard zone"
+
+sensitivity:
+  beta_multipliers: [0.5, 1.0, 1.5, 2.0]
+  weight_perturbation: 0.25
