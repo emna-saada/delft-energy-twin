@@ -90,12 +90,13 @@ def sensitivity(df: pd.DataFrame, assumptions: dict | None = None, period: str =
     rng = np.random.default_rng(seed)
     pert = a["sensitivity"]["weight_perturbation"]
     from .hazards import HAZARDS
+    FR = {"heat": "chaleur", "drought": "sécheresse", "flood": "inondation", "fire": "feux"}
     for h in HAZARDS:
         for sign in (-1, 1):
             a2 = load_yaml("assumptions.yaml")
             for s in a2["vulnerability"]:
                 a2["vulnerability"][s][h] = max(0.0, a2["vulnerability"][s][h] * (1 + sign * pert))
-            rows.append({"test": "weight", "label": f"poids {h} {'+' if sign > 0 else '−'}{int(pert*100)} %",
+            rows.append({"test": "weight", "label": f"poids {FR[h]} {'+' if sign > 0 else '−'}{int(pert*100)} %",
                          "value": sign * pert, "el_add": total(apply_credit(sub, a2))})
     _ = rng  # reserved for Monte-Carlo extensions
     out = pd.DataFrame(rows)

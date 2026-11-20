@@ -68,11 +68,10 @@ section[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="select"] > div
 .tag {{ display:inline-block; font-size:.72rem; padding:2px 8px; border-radius:999px; background:#E6F2F3;
         color:{T.PETROL}; font-weight:600; margin: 2px 4px 2px 0; }}
 .tag.warn {{ background:#FDEBD3; color:#8A4B07; }}
-.stTabs [data-baseweb="tab-list"] {{ gap: 4px; background:#fff; padding:6px; border-radius:12px; border:1px solid var(--border); }}
-.stTabs [data-baseweb="tab"] {{ height: 40px; border-radius: 8px; padding: 0 16px; font-weight:500; }}
-.stTabs [aria-selected="true"] {{ background: {T.PETROL}; color: #fff !important; }}
-.stTabs [aria-selected="true"] p {{ color:#fff !important; }}
-.stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {{ display:none; }}
+.stTabs [data-baseweb="tab-list"] {{ gap: 6px; }}
+.stTabs button[role="tab"] p {{ font-weight: 500; font-size: .95rem; }}
+.stTabs button[role="tab"][aria-selected="true"] p {{ color: {T.PETROL}; font-weight: 700; }}
+.stTabs [data-baseweb="tab-highlight"] {{ background-color: {T.AMBER}; height: 3px; }}
 div[data-testid="stDataFrame"] {{ border-radius: 12px; overflow: hidden; }}
 @media (prefers-reduced-motion: reduce) {{ * {{ transition: none !important; animation: none !important; }} }}
 </style>
@@ -116,10 +115,10 @@ def fmt_tnd(x: float) -> str:
 
 
 def plot_style(fig, h=380):
-    fig.update_layout(height=h, margin=dict(l=10, r=10, t=40, b=10), paper_bgcolor="white",
+    fig.update_layout(height=h, margin=dict(l=10, r=10, t=48, b=10), paper_bgcolor="white",
                       plot_bgcolor="white", font=dict(family="Fira Sans, sans-serif", color=T.INK, size=13),
                       title_font=dict(size=15), hoverlabel=dict(font_family="Fira Sans"),
-                      legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0))
+                      legend=dict(orientation="h", yanchor="top", y=-0.12, x=0))
     fig.update_xaxes(gridcolor="#F0EEE8", zeroline=False)
     fig.update_yaxes(gridcolor="#F0EEE8", zeroline=False)
     return fig
@@ -154,7 +153,7 @@ st.markdown(f"""
   {K['meta']['n_loans']:,} crédits répartis sur les {K['meta']['n_governorates']} gouvernorats à la chaleur extrême,
   la sécheresse, l'inondation et les feux de forêt — aujourd'hui, en 2030 et en 2050.</p>
 </div>
-""".replace(",", " "), unsafe_allow_html=True)
+""".replace("2,000", "2 000"), unsafe_allow_html=True)
 
 tabs = st.tabs(["Accueil", "Carte", "Analyse", "Fiche crédit", "Reporting", "Réglementation", "Méthode & limites"])
 
@@ -222,7 +221,7 @@ with tabs[1]:
     f = (idx - lo)[:, None]
     rgb = (ramp[lo] * (1 - f) + ramp[hi] * f).astype(int)
     pts["r"], pts["g"], pts["b"] = rgb[:, 0], rgb[:, 1], rgb[:, 2]
-    pts["radius"] = (600 + 4500 * np.sqrt(pts.ead_tnd / pts.ead_tnd.max())) if size_by_ead else 1200
+    pts["radius"] = (1800 + 9000 * np.sqrt(pts.ead_tnd / pts.ead_tnd.max())) if size_by_ead else 2500
     pts["score_txt"] = (pts[layer_choice] * 100).round(0).astype(int).astype(str)
     pts["ead_txt"] = pts.ead_tnd.map(fmt_tnd)
     layers = []
@@ -253,14 +252,14 @@ with tabs[1]:
 with tabs[2]:
     hm = pd.DataFrame(K["heatmap_sector_hazard"][period]).T[HAZ]
     hm.index = hm.index.map(SECTOR_LABELS)
-    hm.columns = [theme.HAZARD_LABELS[h] for h in HAZ]
+    hm.columns = [theme.HAZARD_LABELS[h].replace(" ", "<br>", 1) for h in HAZ]
     l, r = st.columns([1.1, 1])
     with l:
         fig = px.imshow(hm.round(2), text_auto=".2f", aspect="auto", zmin=0, zmax=1,
                         color_continuous_scale=theme.RISK_SCALE)
         fig.update_traces(hovertemplate="%{y} · %{x}<br>Score moyen pondéré EAD : %{z:.2f}<extra></extra>")
         st.plotly_chart(plot_style(fig.update_layout(title=f"Heatmap secteur × aléa · {LABELS[period]}",
-                                                     coloraxis_colorbar=dict(title="score", thickness=10)), 460),
+                                                     coloraxis_colorbar=dict(title="score", thickness=10)).update_xaxes(tickangle=0, title=None), 460),
                         use_container_width=True)
     with r:
         g = BG[BG.period == period].sort_values("el_add_bp_med", ascending=True).tail(24)

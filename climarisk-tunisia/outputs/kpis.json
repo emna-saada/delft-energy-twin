@@ -1546,42 +1546,42 @@
       "delta_pct": 98.41707586826193
     },
     {
-      "label": "poids heat −25 %",
+      "label": "poids chaleur −25 %",
       "el_add": 8475062.112182265,
       "delta_pct": -4.212453404901428
     },
     {
-      "label": "poids heat +25 %",
+      "label": "poids chaleur +25 %",
       "el_add": 9163203.593760097,
       "delta_pct": 3.565116052189432
     },
     {
-      "label": "poids drought −25 %",
+      "label": "poids sécheresse −25 %",
       "el_add": 8462696.650990354,
       "delta_pct": -4.352211341116141
     },
     {
-      "label": "poids drought +25 %",
+      "label": "poids sécheresse +25 %",
       "el_add": 9182652.141054764,
       "delta_pct": 3.784929028842088
     },
     {
-      "label": "poids flood −25 %",
+      "label": "poids inondation −25 %",
       "el_add": 9470077.658825181,
       "delta_pct": 7.033493441895677
     },
     {
-      "label": "poids flood +25 %",
+      "label": "poids inondation +25 %",
       "el_add": 8321382.8805620875,
       "delta_pct": -5.949379502275631
     },
     {
-      "label": "poids fire −25 %",
+      "label": "poids feux −25 %",
       "el_add": 8982010.191260273,
       "delta_pct": 1.517217021487527
     },
     {
-      "label": "poids fire +25 %",
+      "label": "poids feux +25 %",
       "el_add": 8722766.460277267,
       "delta_pct": -1.4128288746159567
     }

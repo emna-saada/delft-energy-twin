@@ -47,3 +47,6 @@ src = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.ruff.lint]
+ignore = ["C408", "PLR1736"]
