@@ -27,7 +27,7 @@ app:                ## Streamlit dashboard on http://localhost:8501
 	$(PY) streamlit run app/streamlit_app.py
 
 video:              ## dashboard capture + animated MP4 -> video/out/climarisk_demo.mp4
-	cd video && npm install && npm run build
+	cd video && npm install && npm run capture && npm run build   # needs `make app` running
 
 demo: run maps report   ## reproduce the demo end-to-end (after `make data`)
 

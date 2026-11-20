@@ -3,15 +3,15 @@
 Milestones from brief §9. `[x]` = acceptance criterion met and committed.
 
 - [x] **M0 Research & framing** — `docs/research_log.md` summarises the §4 texts with links and dates; `CLAUDE.md` and `PLAN.md` created.
-- [ ] **M1 Repo skeleton** — environment installs cleanly (`uv sync`), CI green, `make test` passes.
-- [ ] **M2 Synthetic portfolio** — 2 000 loans in GeoParquet; documented distributions; tests: 24 governorates covered, no coordinate at sea.
-- [ ] **M3 Historical hazards** — 4 hazard rasters over Tunisia produced and extracted per asset; PNG maps; tests on tiny data.
-- [ ] **M4 Projections** — scores for SSP2-4.5 and SSP5-8.5 at 2030 and 2050 on 5 CMIP6 models; uncertainty (median, p10–p90) displayed.
-- [ ] **M5 Credit module** — ΔPD, EL and aggregations; invariant tests; sensitivity analysis.
-- [ ] **M6 physrisk comparison** — same assets against OS-Climate physrisk hazard indicators; gaps explained in `docs/methodology.md`.
-- [ ] **M7 Dashboard** — runs locally (and on a free host once Emna publishes); 6 tabs of §8.
-- [ ] **M8 Report** — 10–15 page PDF: context, regulation, method, illustrative results, limits, compliance matrix.
-- [ ] **M9 Video** — 1080p MP4, 2–3 min, follows the §10 storyboard, subtitles, figures from `outputs/kpis.json`.
+- [x] **M1 Repo skeleton** — environment installs cleanly (`uv sync`), CI green, `make test` passes.
+- [x] **M2 Synthetic portfolio** — 2 000 loans in GeoParquet; documented distributions; tests: 24 governorates covered, no coordinate at sea.
+- [x] **M3 Historical hazards** — 4 hazard rasters over Tunisia produced and extracted per asset; PNG maps; tests on tiny data.
+- [x] **M4 Projections** — scores for SSP2-4.5 and SSP5-8.5 at 2030 and 2050 on 5 CMIP6 models; uncertainty (median, p10–p90) displayed.
+- [x] **M5 Credit module** — ΔPD, EL and aggregations; invariant tests; sensitivity analysis.
+- [x] **M6 physrisk comparison** — same assets against OS-Climate physrisk hazard indicators; gaps explained in `docs/methodology.md`.
+- [x] **M7 Dashboard** — runs locally (free hosting once Emna publishes the repo); 6 tabs of §8 + Reporting tab.
+- [x] **M8 Report** — 10–15 page PDF: context, regulation, method, illustrative results, limits, compliance matrix.
+- [x] **M9 Video** — 1080p MP4, 2–3 min, follows the §10 storyboard, subtitles, figures from `outputs/kpis.json`.
 - [ ] **M10 Final check** — independent sub-agent review: regulatory facts, licences, no personal data, `make demo` reproducibility.
 
 ## Needs from Emna

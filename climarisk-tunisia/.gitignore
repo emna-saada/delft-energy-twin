@@ -4,7 +4,7 @@ __pycache__/
 data/raw/
 outputs/*.parquet
 video/node_modules/
-video/out/*.mp4
-video/public/capture/
+video/public/capture/*.webm
+video/voice_model/*.onnx
 .pytest_cache/
 .ruff_cache/

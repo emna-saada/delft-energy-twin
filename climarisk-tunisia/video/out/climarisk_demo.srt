@@ -1,0 +1,83 @@
+1
+00:00:00,600 --> 00:00:04,057
+Quand le climat change, le risque de crédit change aussi.
+
+2
+00:00:04,057 --> 00:00:05,573
+Voici ClimaRisk Tunisie :
+
+3
+00:00:05,573 --> 00:00:09,940
+la carte des risques climatiques physiques d'un portefeuille de crédits.
+
+4
+00:00:15,599 --> 00:00:21,166
+Inondations de Nabeul en 2018, sécheresses qui frappent les céréales, records de chaleur :
+
+5
+00:00:21,166 --> 00:00:24,938
+les actifs financés par les banques tunisiennes sont exposés.
+
+6
+00:00:24,938 --> 00:00:33,287
+En novembre 2026, la Banque Centrale de Tunisie a lancé une feuille de route 2026-2030 sur la finance verte et les risques climatiques.
+
+7
+00:00:33,287 --> 00:00:37,369
+Ce projet se place entre risque bancaire et changement climatique.
+
+8
+00:00:40,600 --> 00:00:42,872
+Le cadre s'est construit pas à pas :
+
+9
+00:00:42,872 --> 00:00:58,657
+les principes du Comité de Bâle en 2022, la norme IFRS S2 en 2023, les scénarios NGFS de phase cinq en 2024, les orientations de l'Autorité bancaire européenne et le cadre volontaire de publication de Bâle en 2025, puis la feuille de route de la BCT.
+
+10
+00:00:58,657 --> 00:01:02,572
+L'outil prépare ces attentes, sans prétendre à une conformité.
+
+11
+00:01:05,599 --> 00:01:07,893
+Les données sont entièrement ouvertes :
+
+12
+00:01:07,893 --> 00:01:15,185
+projections climatiques CMIP6 de la NASA, cartes d'inondation Aqueduct, occupation du sol WorldCover et population WorldPop.
+
+13
+00:01:15,185 --> 00:01:23,242
+Pour chaque crédit, on croise aléa, exposition et vulnérabilité du secteur, puis on ajuste la probabilité de défaut et la perte attendue.
+
+14
+00:01:23,242 --> 00:01:27,299
+Le portefeuille de deux mille crédits est cent pour cent synthétique.
+
+15
+00:01:30,599 --> 00:01:31,247
+Résultat :
+
+16
+00:01:31,247 --> 00:01:40,049
+la part de l'encours située en zone d'aléa élevé passe de 1,5 pour cent aujourd'hui à 22,4 pour cent en 2050, dans le scénario SSP5 8,5.
+
+17
+00:01:40,049 --> 00:01:47,233
+La perte attendue climatique additionnelle atteint 8,8 millions de dinars, soit 29 points de base de l'encours.
+
+18
+00:01:47,233 --> 00:01:54,935
+Céréaliculture et oléiculture sont les secteurs les plus touchés, et l'écart entre modèles climatiques reste important.
+
+19
+00:02:15,599 --> 00:02:24,771
+Le tableau de bord permet de choisir le scénario et l'horizon, d'explorer la carte des gouvernorats, d'ouvrir la fiche de chaque crédit, puis d'exporter les tableaux et le rapport PDF.
+
+20
+00:02:45,599 --> 00:02:50,363
+Ces chiffres sont illustratifs, à calibrer sur des données bancaires réelles.
+
+21
+00:02:50,363 --> 00:02:54,940
+ClimaRisk Tunisie, un projet open source d'Emna Saada, en géoinformatique.
