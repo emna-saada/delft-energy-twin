@@ -18,6 +18,7 @@ import re
 import subprocess
 import tempfile
 import sys
+import threading
 import time
 from pathlib import Path
 
@@ -28,6 +29,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://nex-gddp-cmip6.s3.us-west-2.amazonaws.com"
+H5_LOCK = threading.Lock()  # HDF5 is not thread-safe: serialise file reads/writes
 BBOX = dict(lat=slice(30.0, 37.75), lon=slice(7.25, 11.75))
 
 
@@ -59,7 +61,7 @@ def subset(url: str, var: str) -> xr.DataArray:
     for attempt in range(4):
         try:
             subprocess.run(["curl", "-sSf", "--retry", "3", "-o", str(tmp), url], check=True)
-            with xr.open_dataset(tmp, engine="h5netcdf") as ds:
+            with H5_LOCK, xr.open_dataset(tmp, engine="h5netcdf") as ds:
                 return ds[var].sel(**BBOX).load()
         except Exception as e:  # network hiccups
             print(f"retry {attempt} {url}: {e}", file=sys.stderr)
@@ -106,7 +108,8 @@ def job(model: str, member: str, scen: str, year: int, keys_cache: dict) -> str:
         attrs={"model": model, "scenario": scen, "year": year, "source": "NASA NEX-GDDP-CMIP6 (AWS Open Data)"},
     )
     out.parent.mkdir(parents=True, exist_ok=True)
-    ds.to_netcdf(out)
+    with H5_LOCK:
+        ds.to_netcdf(out)
     return f"done {out.name}"
 
 

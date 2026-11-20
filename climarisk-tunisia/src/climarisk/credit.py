@@ -36,8 +36,20 @@ def apply_credit(df: pd.DataFrame, assumptions: dict | None = None,
     out["el_base"] = out["pd_base"] * out["lgd_base"] * out["ead_tnd"]
     out["el_climate"] = out["pd_climate"] * out["lgd_climate"] * out["ead_tnd"]
     out["el_add"] = out["el_climate"] - out["el_base"]
-    out["high_hazard"] = out["composite"] >= a["high_hazard_threshold"]
+    out["high_hazard"] = high_hazard_flag(out, a)
     return out
+
+
+def high_hazard_flag(df: pd.DataFrame, a: dict) -> pd.Series:
+    """An exposure is in a high-hazard zone when at least one hazard that is material for its
+    sector (vulnerability >= materiality threshold) scores above the high-hazard threshold."""
+    from .hazards import HAZARDS
+    from .vulnerability import vulnerability_matrix
+
+    V = vulnerability_matrix(a).loc[df["sector"]].to_numpy()
+    material = V >= a["materiality_min_vulnerability"]
+    s = df[list(HAZARDS)].to_numpy()
+    return pd.Series(((s >= a["high_hazard_threshold"]) & material).any(axis=1), index=df.index)
 
 
 def aggregate(res: pd.DataFrame, by: list[str]) -> pd.DataFrame:

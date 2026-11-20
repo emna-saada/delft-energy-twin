@@ -1,0 +1,1590 @@
+{
+  "meta": {
+    "generated": "2026-11-20",
+    "version": "0.1.0",
+    "disclaimer": "Portefeuille 100 % synthétique — chiffres illustratifs, à calibrer sur des données bancaires réelles.",
+    "n_loans": 2000,
+    "n_governorates": 24,
+    "total_ead_tnd": 3000000200.0,
+    "cmip6_models": [
+      "ACCESS-CM2",
+      "CNRM-ESM2-1",
+      "IPSL-CM6A-LR",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0"
+    ],
+    "period_labels": {
+      "baseline": "Aujourd'hui",
+      "ssp245_2030": "SSP2-4.5 · 2030",
+      "ssp245_2050": "SSP2-4.5 · 2050",
+      "ssp585_2030": "SSP5-8.5 · 2030",
+      "ssp585_2050": "SSP5-8.5 · 2050"
+    },
+    "el_base_tnd": 50191310.251707114
+  },
+  "periods": {
+    "baseline": {
+      "share_ead_high": {
+        "med": 0.014511999032533397,
+        "p10": 0.012452345836510278,
+        "p90": 0.014511999032533397
+      },
+      "el_add_tnd": {
+        "med": 4643648.010208156,
+        "p10": 4262686.106646612,
+        "p90": 4787345.163096167
+      },
+      "el_add_bp": {
+        "med": 15.478825668772142,
+        "p10": 14.208952741558523,
+        "p90": 15.957816146466147
+      },
+      "el_climate_tnd": {
+        "med": 54834958.261915274
+      }
+    },
+    "ssp245_2030": {
+      "share_ead_high": {
+        "med": 0.02964149802390013,
+        "p10": 0.015030605664626289,
+        "p90": 0.08309106112726261
+      },
+      "el_add_tnd": {
+        "med": 5228824.108636899,
+        "p10": 5062427.658877528,
+        "p90": 5564982.910640926
+      },
+      "el_add_bp": {
+        "med": 17.429412533495494,
+        "p10": 16.874757737941245,
+        "p90": 18.549941798806966
+      },
+      "el_climate_tnd": {
+        "med": 55420134.360344015
+      }
+    },
+    "ssp245_2050": {
+      "share_ead_high": {
+        "med": 0.16912202205853186,
+        "p10": 0.09216371385575241,
+        "p90": 0.4005228599651427
+      },
+      "el_add_tnd": {
+        "med": 7941379.05178102,
+        "p10": 6800764.138423015,
+        "p90": 9678222.437091602
+      },
+      "el_add_bp": {
+        "med": 26.47126174118595,
+        "p10": 22.669212283462567,
+        "p90": 32.260739306256056
+      },
+      "el_climate_tnd": {
+        "med": 58132689.303488135
+      }
+    },
+    "ssp585_2030": {
+      "share_ead_high": {
+        "med": 0.08657389422840706,
+        "p10": 0.03248201783453215,
+        "p90": 0.1691081753927883
+      },
+      "el_add_tnd": {
+        "med": 6484893.552882231,
+        "p10": 5631495.764564104,
+        "p90": 7585052.231670921
+      },
+      "el_add_bp": {
+        "med": 21.61631040185341,
+        "p10": 18.771651297103595,
+        "p90": 25.28350575333602
+      },
+      "el_climate_tnd": {
+        "med": 56676203.804589346
+      }
+    },
+    "ssp585_2050": {
+      "share_ead_high": {
+        "med": 0.22434581837694545,
+        "p10": 0.18709128752724752,
+        "p90": 0.4433674904421673
+      },
+      "el_add_tnd": {
+        "med": 8847770.314033633,
+        "p10": 7952848.25893424,
+        "p90": 10408896.94001073
+      },
+      "el_add_bp": {
+        "med": 29.492565747274394,
+        "p10": 26.50949242914797,
+        "p90": 34.696320820281045
+      },
+      "el_climate_tnd": {
+        "med": 59039080.56574075
+      }
+    }
+  },
+  "hazard_means": {
+    "baseline": {
+      "hot35_days": 36.22559999999999,
+      "cdd_days": 78.4584,
+      "prchange_pct": 0.0,
+      "flood_exposed_share": 0.1765,
+      "heat": 0.3065777937281471,
+      "drought": 0.14944886299752677,
+      "flood": 0.038503470663290594,
+      "fire": 0.13736185712146334
+    },
+    "ssp245_2030": {
+      "hot35_days": 43.6845,
+      "cdd_days": 76.45666666666668,
+      "prchange_pct": 10.9763765335083,
+      "flood_exposed_share": 0.175,
+      "heat": 0.3690412267861404,
+      "drought": 0.16315633216762526,
+      "flood": 0.029693522799312613,
+      "fire": 0.14023661485569175
+    },
+    "ssp245_2050": {
+      "hot35_days": 59.30616666666667,
+      "cdd_days": 95.8905,
+      "prchange_pct": -13.876626014709473,
+      "flood_exposed_share": 0.1755,
+      "heat": 0.49836592992375284,
+      "drought": 0.4279817937822133,
+      "flood": 0.031146980262745646,
+      "fire": 0.15595548621145378
+    },
+    "ssp585_2030": {
+      "hot35_days": 46.5615,
+      "cdd_days": 87.025,
+      "prchange_pct": -1.967804193496704,
+      "flood_exposed_share": 0.174,
+      "heat": 0.3936777687548154,
+      "drought": 0.2974852813087428,
+      "flood": 0.02690505631093158,
+      "fire": 0.1482312062939377
+    },
+    "ssp585_2050": {
+      "hot35_days": 68.2945,
+      "cdd_days": 95.64,
+      "prchange_pct": -20.503257751464844,
+      "flood_exposed_share": 0.1735,
+      "heat": 0.572336727770144,
+      "drought": 0.5214773082546514,
+      "flood": 0.025138131790895853,
+      "fire": 0.16027348865903113
+    }
+  },
+  "by_sector": {
+    "baseline": {
+      "agrifood": {
+        "el_add_med": 434935.53382269444,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.179880636906663
+      },
+      "cereals": {
+        "el_add_med": 448733.3584718679,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 37.39429072977762
+      },
+      "chemicals": {
+        "el_add_med": 574294.4980984664,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 20.1506629325817
+      },
+      "citrus": {
+        "el_add_med": 106166.26768749548,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 17.694377947915914
+      },
+      "construction": {
+        "el_add_med": 847958.5734674153,
+        "share_ead_high_med": 0.056309965872747954,
+        "el_add_bp_med": 25.695698774346663
+      },
+      "energy": {
+        "el_add_med": 234873.54523009493,
+        "share_ead_high_med": 0.06523740740740741,
+        "el_add_bp_med": 8.699020193707218
+      },
+      "olives": {
+        "el_add_med": 360567.4985358902,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 30.047266505268762
+      },
+      "residential": {
+        "el_add_med": 356974.388558531,
+        "share_ead_high_med": 0.0008781481481481482,
+        "el_add_bp_med": 4.407091216771987
+      },
+      "textile": {
+        "el_add_med": 535220.1698326586,
+        "share_ead_high_med": 0.016616503169614057,
+        "el_add_bp_med": 20.98906742298156
+      },
+      "tourism": {
+        "el_add_med": 723074.7847158022,
+        "share_ead_high_med": 0.005693095238095238,
+        "el_add_bp_med": 17.216066302757195
+      }
+    },
+    "ssp245_2030": {
+      "agrifood": {
+        "el_add_med": 489405.87594697706,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 14.830499065664839
+      },
+      "cereals": {
+        "el_add_med": 489955.9248672491,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 40.82949028272792
+      },
+      "chemicals": {
+        "el_add_med": 663214.6186756985,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 23.270663879150252
+      },
+      "citrus": {
+        "el_add_med": 103637.02449030097,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 17.272837415050162
+      },
+      "construction": {
+        "el_add_med": 995115.479627678,
+        "share_ead_high_med": 0.0647429910648539,
+        "el_add_bp_med": 30.154996258416755
+      },
+      "energy": {
+        "el_add_med": 280240.1890606413,
+        "share_ead_high_med": 0.06710148148148148,
+        "el_add_bp_med": 10.379266261505233
+      },
+      "olives": {
+        "el_add_med": 404101.8923330533,
+        "share_ead_high_med": 0.014162488197926502,
+        "el_add_bp_med": 33.675129631813085
+      },
+      "residential": {
+        "el_add_med": 358003.6206271619,
+        "share_ead_high_med": 0.0008781481481481482,
+        "el_add_bp_med": 4.419797785520517
+      },
+      "textile": {
+        "el_add_med": 595998.8698820771,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 23.372550529788377
+      },
+      "tourism": {
+        "el_add_med": 833261.5626446215,
+        "share_ead_high_med": 0.005693095238095238,
+        "el_add_bp_med": 19.83956101534813
+      }
+    },
+    "ssp245_2050": {
+      "agrifood": {
+        "el_add_med": 859287.570188434,
+        "share_ead_high_med": 0.010363648925635061,
+        "el_add_bp_med": 26.039048840920838
+      },
+      "cereals": {
+        "el_add_med": 969222.6064676887,
+        "share_ead_high_med": 0.5322769488460465,
+        "el_add_bp_med": 80.76821400474904
+      },
+      "chemicals": {
+        "el_add_med": 862942.9231864141,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 30.278667186891177
+      },
+      "citrus": {
+        "el_add_med": 263407.7589370845,
+        "share_ead_high_med": 0.12591,
+        "el_add_bp_med": 43.901293156180756
+      },
+      "construction": {
+        "el_add_med": 1392557.407248544,
+        "share_ead_high_med": 0.2521098472061532,
+        "el_add_bp_med": 42.1986837356021
+      },
+      "energy": {
+        "el_add_med": 403001.2321193027,
+        "share_ead_high_med": 0.16327,
+        "el_add_bp_med": 14.925971559974172
+      },
+      "olives": {
+        "el_add_med": 681406.7232429638,
+        "share_ead_high_med": 0.40965965861695114,
+        "el_add_bp_med": 56.783846283708414
+      },
+      "residential": {
+        "el_add_med": 485350.22653283394,
+        "share_ead_high_med": 0.0008781481481481482,
+        "el_add_bp_med": 5.991978105343629
+      },
+      "textile": {
+        "el_add_med": 935154.1145059159,
+        "share_ead_high_med": 0.051525199069017785,
+        "el_add_bp_med": 36.67278228019725
+      },
+      "tourism": {
+        "el_add_med": 1209600.5142512158,
+        "share_ead_high_med": 0.1917195238095238,
+        "el_add_bp_med": 28.80001224407657
+      }
+    },
+    "ssp585_2030": {
+      "agrifood": {
+        "el_add_med": 650041.9178207128,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 19.6982638106444
+      },
+      "cereals": {
+        "el_add_med": 680980.0591147117,
+        "share_ead_high_med": 0.01668826379890084,
+        "el_add_bp_med": 56.7481018091351
+      },
+      "chemicals": {
+        "el_add_med": 733272.704524402,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 25.728839742428413
+      },
+      "citrus": {
+        "el_add_med": 198420.8605843816,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 33.07014343073026
+      },
+      "construction": {
+        "el_add_med": 1102793.113680776,
+        "share_ead_high_med": 0.14009870297048305,
+        "el_add_bp_med": 33.41795288853692
+      },
+      "energy": {
+        "el_add_med": 312144.45147994737,
+        "share_ead_high_med": 0.15215185185185184,
+        "el_add_bp_med": 11.56090561036842
+      },
+      "olives": {
+        "el_add_med": 506288.34292265074,
+        "share_ead_high_med": 0.2173364855529287,
+        "el_add_bp_med": 42.190660084670824
+      },
+      "residential": {
+        "el_add_med": 382185.72474837146,
+        "share_ead_high_med": 0.0008781481481481482,
+        "el_add_bp_med": 4.718342280844092
+      },
+      "textile": {
+        "el_add_med": 673499.826598353,
+        "share_ead_high_med": 0.0017835329088880566,
+        "el_add_bp_med": 26.41180969367991
+      },
+      "tourism": {
+        "el_add_med": 948908.1876805052,
+        "share_ead_high_med": 0.1917195238095238,
+        "el_add_bp_med": 22.593052087631076
+      }
+    },
+    "ssp585_2050": {
+      "agrifood": {
+        "el_add_med": 946930.5898942805,
+        "share_ead_high_med": 0.25046000055757645,
+        "el_add_bp_med": 28.6949011421311
+      },
+      "cereals": {
+        "el_add_med": 1010239.6957004248,
+        "share_ead_high_med": 0.6601305827892384,
+        "el_add_bp_med": 84.18629053215818
+      },
+      "chemicals": {
+        "el_add_med": 1050957.4943831887,
+        "share_ead_high_med": 0.41781429703758205,
+        "el_add_bp_med": 36.875662740817766
+      },
+      "citrus": {
+        "el_add_med": 259189.51760556852,
+        "share_ead_high_med": 0.0073,
+        "el_add_bp_med": 43.19825293426142
+      },
+      "construction": {
+        "el_add_med": 1570587.2159747728,
+        "share_ead_high_med": 0.344937972764865,
+        "el_add_bp_med": 47.593523154676056
+      },
+      "energy": {
+        "el_add_med": 440437.86189215473,
+        "share_ead_high_med": 0.426352962962963,
+        "el_add_bp_med": 16.31251340341314
+      },
+      "olives": {
+        "el_add_med": 851402.273645292,
+        "share_ead_high_med": 0.7714818570984524,
+        "el_add_bp_med": 70.95013034533238
+      },
+      "residential": {
+        "el_add_med": 484713.55223466846,
+        "share_ead_high_med": 0.0008781481481481482,
+        "el_add_bp_med": 5.984117928823067
+      },
+      "textile": {
+        "el_add_med": 938619.2141181853,
+        "share_ead_high_med": 0.3163516006894131,
+        "el_add_bp_med": 36.808668805946105
+      },
+      "tourism": {
+        "el_add_med": 1251915.276310265,
+        "share_ead_high_med": 0.4545664285714286,
+        "el_add_bp_med": 29.807506578815833
+      }
+    }
+  },
+  "by_governorate": {
+    "baseline": {
+      "Ariana": {
+        "el_add_med": 134475.93302127835,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 11.240038500576174
+      },
+      "Ben Arous": {
+        "el_add_med": 226896.36002166494,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.066040132889055
+      },
+      "Bizerte": {
+        "el_add_med": 123797.64988795022,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 10.279925688174393
+      },
+      "Béja": {
+        "el_add_med": 98185.3087629679,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 16.420238507536197
+      },
+      "El Kef": {
+        "el_add_med": 84404.46457185267,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 26.72498925732925
+      },
+      "Gabès": {
+        "el_add_med": 279025.31591140263,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.875160540008189
+      },
+      "Gafsa": {
+        "el_add_med": 350052.63369218574,
+        "share_ead_high_med": 0.0858210657817011,
+        "el_add_bp_med": 21.584763799049288
+      },
+      "Jendouba": {
+        "el_add_med": 171223.40553508012,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.05813095787611
+      },
+      "Kairouan": {
+        "el_add_med": 201186.43781300806,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 17.306613327937534
+      },
+      "Kasserine": {
+        "el_add_med": 77693.08192282538,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 11.740637545100512
+      },
+      "Kébili": {
+        "el_add_med": 69381.53888327123,
+        "share_ead_high_med": 0.45063598236172225,
+        "el_add_bp_med": 15.909657457692035
+      },
+      "Mahdia": {
+        "el_add_med": 319958.2170271277,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.30267522965007
+      },
+      "Manouba": {
+        "el_add_med": 99112.30609564233,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 11.733988361665324
+      },
+      "Monastir": {
+        "el_add_med": 415436.3665628704,
+        "share_ead_high_med": 0.01520927836751172,
+        "el_add_bp_med": 16.704968652290436
+      },
+      "Médenine": {
+        "el_add_med": 364137.40467044414,
+        "share_ead_high_med": 0.013438000356308486,
+        "el_add_bp_med": 20.464550097054396
+      },
+      "Nabeul": {
+        "el_add_med": 221250.15309458444,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 8.306589067018995
+      },
+      "Sfax": {
+        "el_add_med": 306007.09176621825,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.3015621047373
+      },
+      "Sidi Bouzid": {
+        "el_add_med": 119834.36317552159,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 19.839567955127354
+      },
+      "Siliana": {
+        "el_add_med": 107556.98595043556,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 21.578116727007018
+      },
+      "Sousse": {
+        "el_add_med": 368754.05760673917,
+        "share_ead_high_med": 0.002146782728878051,
+        "el_add_bp_med": 17.406219042960632
+      },
+      "Tataouine": {
+        "el_add_med": 62712.940769486144,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 15.841961868280212
+      },
+      "Tozeur": {
+        "el_add_med": 91461.57272993686,
+        "share_ead_high_med": 0.07827486513069655,
+        "el_add_bp_med": 27.260461008594934
+      },
+      "Tunis": {
+        "el_add_med": 232219.96331858417,
+        "share_ead_high_med": 0.003501034855304833,
+        "el_add_bp_med": 11.42991966365771
+      },
+      "Zaghouan": {
+        "el_add_med": 72696.00035574187,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 24.185000600746505
+      }
+    },
+    "ssp245_2030": {
+      "Ariana": {
+        "el_add_med": 128346.9340697232,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 10.727752155817589
+      },
+      "Ben Arous": {
+        "el_add_med": 230517.85681914625,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.274587429516034
+      },
+      "Bizerte": {
+        "el_add_med": 117200.4021378998,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 9.732102553580338
+      },
+      "Béja": {
+        "el_add_med": 111628.51520363014,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.668443038772303
+      },
+      "El Kef": {
+        "el_add_med": 93271.08640084979,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 29.532428109417776
+      },
+      "Gabès": {
+        "el_add_med": 321321.5263910294,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 15.978434605738991
+      },
+      "Gafsa": {
+        "el_add_med": 408876.286934142,
+        "share_ead_high_med": 0.08872532153379234,
+        "el_add_bp_med": 25.211917372021105
+      },
+      "Jendouba": {
+        "el_add_med": 184050.496620838,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 19.41094420155245
+      },
+      "Kairouan": {
+        "el_add_med": 221342.05982273092,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 19.040455630123702
+      },
+      "Kasserine": {
+        "el_add_med": 84226.69179686469,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 12.727967993239796
+      },
+      "Kébili": {
+        "el_add_med": 78255.09840643812,
+        "share_ead_high_med": 0.46217699273326807,
+        "el_add_bp_med": 17.944424842738684
+      },
+      "Mahdia": {
+        "el_add_med": 385280.39438232867,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 22.039321247165784
+      },
+      "Manouba": {
+        "el_add_med": 119285.39308130153,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 14.122296910153377
+      },
+      "Monastir": {
+        "el_add_med": 486025.48843317555,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 19.543403519685953
+      },
+      "Médenine": {
+        "el_add_med": 437397.1197950273,
+        "share_ead_high_med": 0.1006638915068758,
+        "el_add_bp_med": 24.581751711153373
+      },
+      "Nabeul": {
+        "el_add_med": 247603.53223438002,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 9.295997155464699
+      },
+      "Sfax": {
+        "el_add_med": 366888.1879998211,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 15.94795071580398
+      },
+      "Sidi Bouzid": {
+        "el_add_med": 132260.21723908756,
+        "share_ead_high_med": 0.005466733552201345,
+        "el_add_bp_med": 21.89677066027737
+      },
+      "Siliana": {
+        "el_add_med": 121336.21585836388,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 24.342510213252154
+      },
+      "Sousse": {
+        "el_add_med": 410838.1193507748,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 19.392704023460485
+      },
+      "Tataouine": {
+        "el_add_med": 75175.8074835759,
+        "share_ead_high_med": 0.03232912147039655,
+        "el_add_bp_med": 18.990215750677226
+      },
+      "Tozeur": {
+        "el_add_med": 94309.4166641108,
+        "share_ead_high_med": 0.07827486513069655,
+        "el_add_bp_med": 28.109271456621503
+      },
+      "Tunis": {
+        "el_add_med": 256247.30623232806,
+        "share_ead_high_med": 0.003501034855304833,
+        "el_add_bp_med": 12.612550972829355
+      },
+      "Zaghouan": {
+        "el_add_med": 73108.36534180793,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 24.322188993325618
+      }
+    },
+    "ssp245_2050": {
+      "Ariana": {
+        "el_add_med": 206629.129663617,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 17.27089242349488
+      },
+      "Ben Arous": {
+        "el_add_med": 391501.207971148,
+        "share_ead_high_med": 0.14104121137783,
+        "el_add_bp_med": 22.544965000483607
+      },
+      "Bizerte": {
+        "el_add_med": 269854.7748679553,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 22.408236624462976
+      },
+      "Béja": {
+        "el_add_med": 216584.5683140346,
+        "share_ead_high_med": 0.2956118624707962,
+        "el_add_bp_med": 36.22100203762413
+      },
+      "El Kef": {
+        "el_add_med": 165882.550907433,
+        "share_ead_high_med": 0.30410415861898643,
+        "el_add_bp_med": 52.52339924750749
+      },
+      "Gabès": {
+        "el_add_med": 426756.91258881154,
+        "share_ead_high_med": 0.3293067524627419,
+        "el_add_bp_med": 21.221445998140776
+      },
+      "Gafsa": {
+        "el_add_med": 533964.3477094751,
+        "share_ead_high_med": 0.09925956893691908,
+        "el_add_bp_med": 32.92503244685551
+      },
+      "Jendouba": {
+        "el_add_med": 332612.210934544,
+        "share_ead_high_med": 0.3171774527805404,
+        "el_add_bp_med": 35.07905268251501
+      },
+      "Kairouan": {
+        "el_add_med": 384478.04566514626,
+        "share_ead_high_med": 0.3735366452670706,
+        "el_add_bp_med": 33.073863933076545
+      },
+      "Kasserine": {
+        "el_add_med": 139618.08247511133,
+        "share_ead_high_med": 0.11915163695985614,
+        "el_add_bp_med": 21.09847183962271
+      },
+      "Kébili": {
+        "el_add_med": 82559.05518879545,
+        "share_ead_high_med": 0.46217699273326807,
+        "el_add_bp_med": 18.931351325231645
+      },
+      "Mahdia": {
+        "el_add_med": 572890.6599978026,
+        "share_ead_high_med": 0.11795498097989303,
+        "el_add_bp_med": 32.77125303880116
+      },
+      "Manouba": {
+        "el_add_med": 220580.00870976737,
+        "share_ead_high_med": 0.03396396183079582,
+        "el_add_bp_med": 26.11465071268527
+      },
+      "Monastir": {
+        "el_add_med": 743242.8985629706,
+        "share_ead_high_med": 0.01520927836751172,
+        "el_add_bp_med": 29.88628420822889
+      },
+      "Médenine": {
+        "el_add_med": 536595.459115405,
+        "share_ead_high_med": 0.5448962743283108,
+        "el_add_bp_med": 30.15670599634615
+      },
+      "Nabeul": {
+        "el_add_med": 490039.1784488221,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.397971821397086
+      },
+      "Sfax": {
+        "el_add_med": 559366.6851598376,
+        "share_ead_high_med": 0.022073995831404434,
+        "el_add_bp_med": 24.31463486362249
+      },
+      "Sidi Bouzid": {
+        "el_add_med": 212320.82811334042,
+        "share_ead_high_med": 0.49857371564045383,
+        "el_add_bp_med": 35.151465623209354
+      },
+      "Siliana": {
+        "el_add_med": 218182.28789553652,
+        "share_ead_high_med": 0.3535190809984472,
+        "el_add_bp_med": 43.77179998465987
+      },
+      "Sousse": {
+        "el_add_med": 635252.8722377882,
+        "share_ead_high_med": 0.12005745523169724,
+        "el_add_bp_med": 29.985705685801648
+      },
+      "Tataouine": {
+        "el_add_med": 98547.02114410298,
+        "share_ead_high_med": 0.6629263437627885,
+        "el_add_bp_med": 24.894035139189267
+      },
+      "Tozeur": {
+        "el_add_med": 101288.46439481937,
+        "share_ead_high_med": 0.07827486513069655,
+        "el_add_bp_med": 30.189402519990274
+      },
+      "Tunis": {
+        "el_add_med": 447925.54139323207,
+        "share_ead_high_med": 0.03774404004557793,
+        "el_add_bp_med": 22.04699751158433
+      },
+      "Zaghouan": {
+        "el_add_med": 134979.24411955164,
+        "share_ead_high_med": 0.4785866133480603,
+        "el_add_bp_med": 44.905814407185915
+      }
+    },
+    "ssp585_2030": {
+      "Ariana": {
+        "el_add_med": 165357.32269953494,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.82122906112039
+      },
+      "Ben Arous": {
+        "el_add_med": 315820.2335917088,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.186804964582276
+      },
+      "Bizerte": {
+        "el_add_med": 194654.29209201338,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 16.163728951246103
+      },
+      "Béja": {
+        "el_add_med": 156028.0695583419,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 26.093701270558373
+      },
+      "El Kef": {
+        "el_add_med": 127298.91269865815,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 40.306660217543254
+      },
+      "Gabès": {
+        "el_add_med": 336379.68256057793,
+        "share_ead_high_med": 0.025515547223479217,
+        "el_add_bp_med": 16.727235242722564
+      },
+      "Gafsa": {
+        "el_add_med": 459027.60295728996,
+        "share_ead_high_med": 0.09925956893691908,
+        "el_add_bp_med": 28.304321788903767
+      },
+      "Jendouba": {
+        "el_add_med": 255842.2781708849,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 26.98248729099515
+      },
+      "Kairouan": {
+        "el_add_med": 309473.6289476006,
+        "share_ead_high_med": 0.03433770644387918,
+        "el_add_bp_med": 26.621776744055666
+      },
+      "Kasserine": {
+        "el_add_med": 113207.69340275596,
+        "share_ead_high_med": 0.039110231282442634,
+        "el_add_bp_med": 17.1074497582537
+      },
+      "Kébili": {
+        "el_add_med": 75611.36476867786,
+        "share_ead_high_med": 0.46217699273326807,
+        "el_add_bp_med": 17.338198788039783
+      },
+      "Mahdia": {
+        "el_add_med": 409937.044345905,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 23.449763712833853
+      },
+      "Manouba": {
+        "el_add_med": 169279.63496488324,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 20.04115679266015
+      },
+      "Monastir": {
+        "el_add_med": 550025.5130179789,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 22.116886465534797
+      },
+      "Médenine": {
+        "el_add_med": 428114.9559023217,
+        "share_ead_high_med": 0.5103377231213297,
+        "el_add_bp_med": 24.060093387798045
+      },
+      "Nabeul": {
+        "el_add_med": 356899.4490328183,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 13.39938987564785
+      },
+      "Sfax": {
+        "el_add_med": 426517.751744508,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.539937525162973
+      },
+      "Sidi Bouzid": {
+        "el_add_med": 162688.3324000561,
+        "share_ead_high_med": 0.16090110046571537,
+        "el_add_bp_med": 26.9343962835576
+      },
+      "Siliana": {
+        "el_add_med": 169008.41647094992,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 33.90652226102106
+      },
+      "Sousse": {
+        "el_add_med": 533045.1495768393,
+        "share_ead_high_med": 0.006267113960271303,
+        "el_add_bp_med": 25.161216376951977
+      },
+      "Tataouine": {
+        "el_add_med": 77402.8570473047,
+        "share_ead_high_med": 0.5187866601324691,
+        "el_add_bp_med": 19.552792370980256
+      },
+      "Tozeur": {
+        "el_add_med": 105916.27618738792,
+        "share_ead_high_med": 0.07827486513069655,
+        "el_add_bp_med": 31.568738990607706
+      },
+      "Tunis": {
+        "el_add_med": 338384.59392482653,
+        "share_ead_high_med": 0.003501034855304833,
+        "el_add_bp_med": 16.655367043849147
+      },
+      "Zaghouan": {
+        "el_add_med": 100524.64623422205,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 33.44322407927994
+      }
+    },
+    "ssp585_2050": {
+      "Ariana": {
+        "el_add_med": 191865.36082653826,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 16.03687733682421
+      },
+      "Ben Arous": {
+        "el_add_med": 388558.96716824017,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 22.375533298680427
+      },
+      "Bizerte": {
+        "el_add_med": 249384.39678613897,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 20.708414651425763
+      },
+      "Béja": {
+        "el_add_med": 219987.41185942493,
+        "share_ead_high_med": 0.3295660361265852,
+        "el_add_bp_med": 36.79008414698562
+      },
+      "El Kef": {
+        "el_add_med": 198193.67631138288,
+        "share_ead_high_med": 0.5507178003077644,
+        "el_add_bp_med": 62.754072277577805
+      },
+      "Gabès": {
+        "el_add_med": 554461.7559083578,
+        "share_ead_high_med": 0.5527213235403811,
+        "el_add_bp_med": 27.571856164356397
+      },
+      "Gafsa": {
+        "el_add_med": 616778.2073674607,
+        "share_ead_high_med": 0.11339053052304968,
+        "el_add_bp_med": 38.03145767540291
+      },
+      "Jendouba": {
+        "el_add_med": 353670.79095779854,
+        "share_ead_high_med": 0.3171774527805404,
+        "el_add_bp_med": 37.300002526716845
+      },
+      "Kairouan": {
+        "el_add_med": 422795.978649371,
+        "share_ead_high_med": 0.2823163865622121,
+        "el_add_bp_med": 36.37007841399582
+      },
+      "Kasserine": {
+        "el_add_med": 172747.86169180446,
+        "share_ead_high_med": 0.19124133918654468,
+        "el_add_bp_med": 26.10489866818857
+      },
+      "Kébili": {
+        "el_add_med": 93821.00307164314,
+        "share_ead_high_med": 0.46927862379241314,
+        "el_add_bp_med": 21.51379236079201
+      },
+      "Mahdia": {
+        "el_add_med": 607099.7708567315,
+        "share_ead_high_med": 0.24816863541458112,
+        "el_add_bp_med": 34.728128070058716
+      },
+      "Manouba": {
+        "el_add_med": 219622.77720639177,
+        "share_ead_high_med": 0.029544432079179787,
+        "el_add_bp_med": 26.001323278762076
+      },
+      "Monastir": {
+        "el_add_med": 759950.953214854,
+        "share_ead_high_med": 0.1854579772512237,
+        "el_add_bp_med": 30.558126039288787
+      },
+      "Médenine": {
+        "el_add_med": 590751.4820956651,
+        "share_ead_high_med": 0.6755232367647415,
+        "el_add_bp_med": 33.20027864535701
+      },
+      "Nabeul": {
+        "el_add_med": 486546.52297725104,
+        "share_ead_high_med": 0.0,
+        "el_add_bp_med": 18.26684398555503
+      },
+      "Sfax": {
+        "el_add_med": 664106.6981488905,
+        "share_ead_high_med": 0.12400289497877667,
+        "el_add_bp_med": 28.867489438278074
+      },
+      "Sidi Bouzid": {
+        "el_add_med": 269538.92437811126,
+        "share_ead_high_med": 0.5859056947072682,
+        "el_add_bp_med": 44.624393746883165
+      },
+      "Siliana": {
+        "el_add_med": 247761.49252215048,
+        "share_ead_high_med": 0.4219346218507626,
+        "el_add_bp_med": 49.70598942372826
+      },
+      "Sousse": {
+        "el_add_med": 675095.3095186227,
+        "share_ead_high_med": 0.7131581071493812,
+        "el_add_bp_med": 31.86637974540812
+      },
+      "Tataouine": {
+        "el_add_med": 109152.28370989302,
+        "share_ead_high_med": 0.6629263437627885,
+        "el_add_bp_med": 27.57303827807718
+      },
+      "Tozeur": {
+        "el_add_med": 125806.74487295125,
+        "share_ead_high_med": 0.6436261214270812,
+        "el_add_bp_med": 37.49716696162596
+      },
+      "Tunis": {
+        "el_add_med": 447434.5223352299,
+        "share_ead_high_med": 0.003501034855304833,
+        "el_add_bp_med": 22.02282944133711
+      },
+      "Zaghouan": {
+        "el_add_med": 139483.28748041522,
+        "share_ead_high_med": 0.06956148551315278,
+        "el_add_bp_med": 46.404250233850625
+      }
+    }
+  },
+  "heatmap_sector_hazard": {
+    "baseline": {
+      "agrifood": {
+        "heat": 0.27739918674648895,
+        "drought": 0.12895634294173475,
+        "flood": 0.03376337409022632,
+        "fire": 0.1557109277279325
+      },
+      "cereals": {
+        "heat": 0.3367821467410552,
+        "drought": 0.06839135768306848,
+        "flood": 0.030289442546983528,
+        "fire": 0.17875255808958154
+      },
+      "chemicals": {
+        "heat": 0.4804127533666924,
+        "drought": 0.21025363131196703,
+        "flood": 0.015124309615256435,
+        "fire": 0.11740363819673047
+      },
+      "citrus": {
+        "heat": 0.1067339777777778,
+        "drought": 0.10923482352941176,
+        "flood": 0.040264033502489326,
+        "fire": 0.17120952005530807
+      },
+      "construction": {
+        "heat": 0.28818425867620684,
+        "drought": 0.1373593775362061,
+        "flood": 0.048201585344727425,
+        "fire": 0.12484136129697833
+      },
+      "energy": {
+        "heat": 0.2832290962962963,
+        "drought": 0.18621198126361657,
+        "flood": 0.05570655465983268,
+        "fire": 0.11132994832768725
+      },
+      "olives": {
+        "heat": 0.3763047030794141,
+        "drought": 0.113425688811926,
+        "flood": 0.01075334775714496,
+        "fire": 0.1512285062525471
+      },
+      "residential": {
+        "heat": 0.29614493271604936,
+        "drought": 0.1335798557734205,
+        "flood": 0.04119843303517082,
+        "fire": 0.1533592060952518
+      },
+      "textile": {
+        "heat": 0.2676364862153325,
+        "drought": 0.14053064902203385,
+        "flood": 0.07238664301217716,
+        "fire": 0.15219762944900866
+      },
+      "tourism": {
+        "heat": 0.28476688492063496,
+        "drought": 0.18537086512605044,
+        "flood": 0.0236678638245121,
+        "fire": 0.10257748297062974
+      }
+    },
+    "ssp245_2030": {
+      "agrifood": {
+        "heat": 0.3397613167140539,
+        "drought": 0.13762568116463986,
+        "flood": 0.026599383239560143,
+        "fire": 0.15877319199502
+      },
+      "cereals": {
+        "heat": 0.4055163751632516,
+        "drought": 0.08185820241061115,
+        "flood": 0.02110676586256178,
+        "fire": 0.18247477030311765
+      },
+      "chemicals": {
+        "heat": 0.541414321903053,
+        "drought": 0.23348563501689582,
+        "flood": 0.018538647561176652,
+        "fire": 0.12024154213311544
+      },
+      "citrus": {
+        "heat": 0.15071518981481483,
+        "drought": 0.11132601960784314,
+        "flood": 0.024583810763657094,
+        "fire": 0.17319541561308407
+      },
+      "construction": {
+        "heat": 0.3539237636152274,
+        "drought": 0.15341413131157328,
+        "flood": 0.03498733160832092,
+        "fire": 0.12775960701248804
+      },
+      "energy": {
+        "heat": 0.34802547016460905,
+        "drought": 0.21486474065532896,
+        "flood": 0.0412762454280409,
+        "fire": 0.11374758889956021
+      },
+      "olives": {
+        "heat": 0.42941561437587694,
+        "drought": 0.12462931294193624,
+        "flood": 0.009839258773960436,
+        "fire": 0.15443310627487966
+      },
+      "residential": {
+        "heat": 0.361022622770919,
+        "drought": 0.14841678074022163,
+        "flood": 0.029742370683888412,
+        "fire": 0.1565550819028583
+      },
+      "textile": {
+        "heat": 0.3341799657123511,
+        "drought": 0.14007604791038783,
+        "flood": 0.053822280676660415,
+        "fire": 0.15547862313086508
+      },
+      "tourism": {
+        "heat": 0.3406156600529101,
+        "drought": 0.19398554379161959,
+        "flood": 0.022200756290855685,
+        "fire": 0.10451428097328418
+      }
+    },
+    "ssp245_2050": {
+      "agrifood": {
+        "heat": 0.4690917487307392,
+        "drought": 0.4364731434888497,
+        "flood": 0.027919960013032288,
+        "fire": 0.17781832307882614
+      },
+      "cereals": {
+        "heat": 0.554741952464087,
+        "drought": 0.40834074010198695,
+        "flood": 0.02175398392590702,
+        "fire": 0.20695557894199743
+      },
+      "chemicals": {
+        "heat": 0.6778795729922624,
+        "drought": 0.3186708430240071,
+        "flood": 0.01626489645957072,
+        "fire": 0.12821751309610543
+      },
+      "citrus": {
+        "heat": 0.24314867129629628,
+        "drought": 0.4754833583912398,
+        "flood": 0.025848512192219494,
+        "fire": 0.1971168688062337
+      },
+      "construction": {
+        "heat": 0.48301658352530297,
+        "drought": 0.4287394791953568,
+        "flood": 0.037380903233361275,
+        "fire": 0.14271900925096295
+      },
+      "energy": {
+        "heat": 0.4795605565843622,
+        "drought": 0.4182547721999231,
+        "flood": 0.04322448468005078,
+        "fire": 0.12584366503914998
+      },
+      "olives": {
+        "heat": 0.569949332912593,
+        "drought": 0.3959324647383571,
+        "flood": 0.009328097284644071,
+        "fire": 0.1718847199529479
+      },
+      "residential": {
+        "heat": 0.48865260116598075,
+        "drought": 0.4331063952825795,
+        "flood": 0.03175539252938312,
+        "fire": 0.17516064130287184
+      },
+      "textile": {
+        "heat": 0.46656520895139003,
+        "drought": 0.46353829684867925,
+        "flood": 0.057184152005194444,
+        "fire": 0.17265915131373258
+      },
+      "tourism": {
+        "heat": 0.4616435429894179,
+        "drought": 0.47765493330336084,
+        "flood": 0.023811867141467297,
+        "fire": 0.11517454311704732
+      }
+    },
+    "ssp585_2030": {
+      "agrifood": {
+        "heat": 0.36047034097415065,
+        "drought": 0.30163977274761344,
+        "flood": 0.02404782114074914,
+        "fire": 0.1691126464111391
+      },
+      "cereals": {
+        "heat": 0.4267318562098584,
+        "drought": 0.23711865575206473,
+        "flood": 0.018354510173777303,
+        "fire": 0.1952245133126233
+      },
+      "chemicals": {
+        "heat": 0.6028132796897252,
+        "drought": 0.2783610805393564,
+        "flood": 0.016970878324923826,
+        "fire": 0.12281203411153577
+      },
+      "citrus": {
+        "heat": 0.14631327777777772,
+        "drought": 0.3390338672384266,
+        "flood": 0.021828035412430762,
+        "fire": 0.18622403436001464
+      },
+      "construction": {
+        "heat": 0.3699697513651339,
+        "drought": 0.2836111491560107,
+        "flood": 0.03143158379861909,
+        "fire": 0.13541960368545727
+      },
+      "energy": {
+        "heat": 0.37286025411522633,
+        "drought": 0.32436672720994025,
+        "flood": 0.03746815391797572,
+        "fire": 0.11901673781426712
+      },
+      "olives": {
+        "heat": 0.4703855293083552,
+        "drought": 0.25024865101413296,
+        "flood": 0.008488090206749845,
+        "fire": 0.16283283967838402
+      },
+      "residential": {
+        "heat": 0.3792829859396433,
+        "drought": 0.30489102118872263,
+        "flood": 0.026750044532594858,
+        "fire": 0.16637463714934966
+      },
+      "textile": {
+        "heat": 0.345127848834562,
+        "drought": 0.31343823317990577,
+        "flood": 0.04823148005464602,
+        "fire": 0.16493969655925766
+      },
+      "tourism": {
+        "heat": 0.3710814279100529,
+        "drought": 0.30165853091661043,
+        "flood": 0.021325055901990936,
+        "fire": 0.10975863386254137
+      }
+    },
+    "ssp585_2050": {
+      "agrifood": {
+        "heat": 0.5443572280087612,
+        "drought": 0.49930236451212473,
+        "flood": 0.022120506708627308,
+        "fire": 0.18236018154305234
+      },
+      "cereals": {
+        "heat": 0.6167792240680479,
+        "drought": 0.4391167014761561,
+        "flood": 0.016986190364786793,
+        "fire": 0.21079484001019858
+      },
+      "chemicals": {
+        "heat": 0.7497371854618321,
+        "drought": 0.5682374630461766,
+        "flood": 0.018464435211444558,
+        "fire": 0.13562745288448194
+      },
+      "citrus": {
+        "heat": 0.3124768148148149,
+        "drought": 0.47524589720387567,
+        "flood": 0.01917362076744437,
+        "fire": 0.19735177877196144
+      },
+      "construction": {
+        "heat": 0.5578379809399442,
+        "drought": 0.5128497525311548,
+        "flood": 0.028267592260112776,
+        "fire": 0.14640230795269518
+      },
+      "energy": {
+        "heat": 0.5562588436213992,
+        "drought": 0.568323457660646,
+        "flood": 0.033875351761562957,
+        "fire": 0.1291097450771884
+      },
+      "olives": {
+        "heat": 0.6472573518225773,
+        "drought": 0.5367143799726246,
+        "flood": 0.0086980069164421,
+        "fire": 0.17905474059206242
+      },
+      "residential": {
+        "heat": 0.5602279657064472,
+        "drought": 0.5071736936101776,
+        "flood": 0.02448703570453749,
+        "fire": 0.17953882771328805
+      },
+      "textile": {
+        "heat": 0.5440288891633992,
+        "drought": 0.49740549486854113,
+        "flood": 0.043361093108206995,
+        "fire": 0.17675737525784457
+      },
+      "tourism": {
+        "heat": 0.5392277533068783,
+        "drought": 0.5518170129273952,
+        "flood": 0.022032214570685868,
+        "fire": 0.11831607564129107
+      }
+    }
+  },
+  "top20_ssp585_2050": [
+    {
+      "loan_id": "SYN-00535",
+      "sector_label": "BTP",
+      "governorate": "Sfax",
+      "ead_tnd": 10140800.0,
+      "composite": 0.2845465908239346,
+      "el_add": 63993.65086400049
+    },
+    {
+      "loan_id": "SYN-01498",
+      "sector_label": "BTP",
+      "governorate": "Mahdia",
+      "ead_tnd": 10871400.0,
+      "composite": 0.31487605269981234,
+      "el_add": 59941.69974510209
+    },
+    {
+      "loan_id": "SYN-01945",
+      "sector_label": "Chimie & phosphates",
+      "governorate": "Gafsa",
+      "ead_tnd": 8535200.0,
+      "composite": 0.4794149495815565,
+      "el_add": 47258.37954777642
+    },
+    {
+      "loan_id": "SYN-00337",
+      "sector_label": "BTP",
+      "governorate": "Jendouba",
+      "ead_tnd": 9442900.0,
+      "composite": 0.33732633877898593,
+      "el_add": 46982.41872694524
+    },
+    {
+      "loan_id": "SYN-01367",
+      "sector_label": "BTP",
+      "governorate": "Manouba",
+      "ead_tnd": 8714000.0,
+      "composite": 0.25413112826219786,
+      "el_add": 46288.7307321392
+    },
+    {
+      "loan_id": "SYN-00360",
+      "sector_label": "Tourisme côtier",
+      "governorate": "Monastir",
+      "ead_tnd": 11389200.0,
+      "composite": 0.2730024638333308,
+      "el_add": 46234.47392109566
+    },
+    {
+      "loan_id": "SYN-00704",
+      "sector_label": "Tourisme côtier",
+      "governorate": "Médenine",
+      "ead_tnd": 4560200.0,
+      "composite": 0.5619981594397165,
+      "el_add": 45921.60903781958
+    },
+    {
+      "loan_id": "SYN-01433",
+      "sector_label": "Chimie & phosphates",
+      "governorate": "Gafsa",
+      "ead_tnd": 9056800.0,
+      "composite": 0.47415249232313555,
+      "el_add": 44786.315133515076
+    },
+    {
+      "loan_id": "SYN-01819",
+      "sector_label": "BTP",
+      "governorate": "Sfax",
+      "ead_tnd": 12628900.0,
+      "composite": 0.2712385527438317,
+      "el_add": 44563.83801387448
+    },
+    {
+      "loan_id": "SYN-00313",
+      "sector_label": "Céréaliculture",
+      "governorate": "Zaghouan",
+      "ead_tnd": 2987300.0,
+      "composite": 0.3955854870823393,
+      "el_add": 43047.94614099413
+    },
+    {
+      "loan_id": "SYN-00105",
+      "sector_label": "Tourisme côtier",
+      "governorate": "Médenine",
+      "ead_tnd": 11374200.0,
+      "composite": 0.329142426352874,
+      "el_add": 42683.62175474546
+    },
+    {
+      "loan_id": "SYN-01450",
+      "sector_label": "BTP",
+      "governorate": "Mahdia",
+      "ead_tnd": 12443900.0,
+      "composite": 0.2912682735473293,
+      "el_add": 42320.772296069714
+    },
+    {
+      "loan_id": "SYN-00536",
+      "sector_label": "Oléiculture",
+      "governorate": "Sidi Bouzid",
+      "ead_tnd": 3955700.0,
+      "composite": 0.44482105320265813,
+      "el_add": 41011.455765570616
+    },
+    {
+      "loan_id": "SYN-00652",
+      "sector_label": "BTP",
+      "governorate": "Tunis",
+      "ead_tnd": 7099300.0,
+      "composite": 0.2440279165066247,
+      "el_add": 39040.04243710119
+    },
+    {
+      "loan_id": "SYN-00493",
+      "sector_label": "Textile",
+      "governorate": "Monastir",
+      "ead_tnd": 11220500.0,
+      "composite": 0.29729858545684096,
+      "el_add": 38967.20442672746
+    },
+    {
+      "loan_id": "SYN-00918",
+      "sector_label": "Chimie & phosphates",
+      "governorate": "Sfax",
+      "ead_tnd": 11015900.0,
+      "composite": 0.35983764226389775,
+      "el_add": 38703.31521818609
+    },
+    {
+      "loan_id": "SYN-01385",
+      "sector_label": "Chimie & phosphates",
+      "governorate": "Gafsa",
+      "ead_tnd": 9095300.0,
+      "composite": 0.4626148611583059,
+      "el_add": 38636.52689780184
+    },
+    {
+      "loan_id": "SYN-01388",
+      "sector_label": "Céréaliculture",
+      "governorate": "Kairouan",
+      "ead_tnd": 3445900.0,
+      "composite": 0.42554608597119586,
+      "el_add": 38571.60066659958
+    },
+    {
+      "loan_id": "SYN-01713",
+      "sector_label": "BTP",
+      "governorate": "Siliana",
+      "ead_tnd": 6271300.0,
+      "composite": 0.26854563027639555,
+      "el_add": 37016.519264711766
+    },
+    {
+      "loan_id": "SYN-01896",
+      "sector_label": "BTP",
+      "governorate": "Mahdia",
+      "ead_tnd": 5486200.0,
+      "composite": 0.3534221747379659,
+      "el_add": 36187.79149340998
+    }
+  ],
+  "sensitivity": [
+    {
+      "label": "β × 0.5",
+      "el_add": 4493911.902727613,
+      "delta_pct": -49.20853793413098
+    },
+    {
+      "label": "β × 1.0",
+      "el_add": 8847770.314033633,
+      "delta_pct": 0.0
+    },
+    {
+      "label": "β × 1.5",
+      "el_add": 13201628.725339651,
+      "delta_pct": 49.20853793413096
+    },
+    {
+      "label": "β × 2.0",
+      "el_add": 17555487.13664567,
+      "delta_pct": 98.41707586826193
+    },
+    {
+      "label": "poids heat −25 %",
+      "el_add": 8475062.112182265,
+      "delta_pct": -4.212453404901428
+    },
+    {
+      "label": "poids heat +25 %",
+      "el_add": 9163203.593760097,
+      "delta_pct": 3.565116052189432
+    },
+    {
+      "label": "poids drought −25 %",
+      "el_add": 8462696.650990354,
+      "delta_pct": -4.352211341116141
+    },
+    {
+      "label": "poids drought +25 %",
+      "el_add": 9182652.141054764,
+      "delta_pct": 3.784929028842088
+    },
+    {
+      "label": "poids flood −25 %",
+      "el_add": 9470077.658825181,
+      "delta_pct": 7.033493441895677
+    },
+    {
+      "label": "poids flood +25 %",
+      "el_add": 8321382.8805620875,
+      "delta_pct": -5.949379502275631
+    },
+    {
+      "label": "poids fire −25 %",
+      "el_add": 8982010.191260273,
+      "delta_pct": 1.517217021487527
+    },
+    {
+      "label": "poids fire +25 %",
+      "el_add": 8722766.460277267,
+      "delta_pct": -1.4128288746159567
+    }
+  ],
+  "check_total_ead_conserved": true
+}

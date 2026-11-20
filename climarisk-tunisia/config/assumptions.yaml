@@ -38,7 +38,10 @@ beta:
 # LGD uplift for real-estate / land collateral exposed to flood: LGD_s = min(1, LGD * (1 + gamma * flood_score)).
 gamma_lgd_flood: 0.3
 
-high_hazard_threshold: 0.5   # composite score above which an exposure is "in a high-hazard zone"
+# "High-hazard zone": at least one hazard material for the sector (vulnerability >= 0.5) scores >= 0.6.
+# Illustrative assumption.
+high_hazard_threshold: 0.6
+materiality_min_vulnerability: 0.5
 
 sensitivity:
   beta_multipliers: [0.5, 1.0, 1.5, 2.0]

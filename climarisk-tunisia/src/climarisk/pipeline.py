@@ -11,7 +11,7 @@ import pandas as pd
 
 from . import __version__
 from .config import load_yaml, project_root
-from .credit import aggregate, apply_credit, ensemble_summary, sensitivity
+from .credit import aggregate, apply_credit, ensemble_summary, high_hazard_flag, sensitivity
 from .hazards import HAZARDS, asset_hazards
 from .portfolio import generate_portfolio
 
@@ -42,7 +42,7 @@ def run(out_dir: Path | None = None, portfolio: gpd.GeoDataFrame | None = None, 
            "pd_climate", "lgd_climate", "el_base", "el_climate", "el_add"]
     assets = res.groupby(["loan_id", "period"])[num].median().reset_index()
     assets = assets.merge(pd.DataFrame(pf[PORTFOLIO_COLS]), on="loan_id")
-    assets["high_hazard"] = assets["composite"] >= a["high_hazard_threshold"]
+    assets["high_hazard"] = high_hazard_flag(assets, a)
     assets.to_parquet(out_dir / "asset_results.parquet")
 
     by_period = ensemble_summary(res, ["period"])

@@ -22,7 +22,7 @@ def fuel_grid(path: Path | None = None, window_km: float = 2.0):
     for cls, val in BURNABLE.items():
         w[wc == cls] = val
     px_km = abs(tr.a) * 111.0 * np.cos(np.deg2rad(34.0))
-    size = max(1, int(round(2 * window_km / px_km)) | 1)
+    size = max(1, round(2 * window_km / px_km) | 1)
     return uniform_filter(w, size=size, mode="nearest"), tr
 
 
