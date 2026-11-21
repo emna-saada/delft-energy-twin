@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClimaRisk Tunisie — Results</title>
+<meta name="description" content="Physical climate risk of a synthetic Tunisian loan portfolio: hazard scenarios, expected-loss results, geography, sectors and robustness checks.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="series">Working results · Physical climate risk · Tunisia</p>
+    <h1>ClimaRisk Tunisie</h1>
+    <p class="byline">Emna Saada, Geoinformatics, MSE (Université de la Manouba) · Results generated from <code>outputs/kpis.json</code></p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contents">
+  <div class="wrap">
+    <a href="#summary">1. Summary</a>
+    <a href="#scenarios">2. Scenarios</a>
+    <a href="#geography">3. Geography</a>
+    <a href="#sectors">4. Sectors</a>
+    <a href="#drivers">5. Physical drivers</a>
+    <a href="#robustness">6. Robustness</a>
+    <a href="#exposures">7. Exposures</a>
+    <a href="#method">8. Method and limits</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="notice" role="note">
+    <strong>Synthetic data.</strong> All figures describe a synthetic portfolio of 2,000 loans generated for this study. No client or bank data is used (organic law no. 2004-63). The results illustrate the method; they are not estimates of losses at any Tunisian bank.
+  </div>
+
+  <div class="controls">
+    <label for="period">Scenario shown in sections 3 and 4</label>
+    <select id="period">
+      <option value="baseline">Current climate (2010–2014)</option>
+      <option value="ssp245_2030">SSP2-4.5, 2030</option>
+      <option value="ssp245_2050">SSP2-4.5, 2050</option>
+      <option value="ssp585_2030">SSP5-8.5, 2030</option>
+      <option value="ssp585_2050" selected>SSP5-8.5, 2050</option>
+    </select>
+  </div>
+
+  <section id="summary">
+    <h2>1. Summary</h2>
+    <p class="lede" id="lede">Loading results…</p>
+    <div class="tablewrap">
+    <table class="booktabs" id="summary-table" aria-describedby="summary-caption">
+      <caption id="summary-caption"><span class="label">Table 1.</span> Headline results by scenario. Median of five CMIP6 models; 10th–90th percentile in brackets.</caption>
+      <thead><tr><th>Scenario</th><th class="num">Book in high-hazard zone (%)</th><th class="num">Extra expected loss (M TND)</th><th class="num">bp of exposure</th><th class="num">Change vs current climate (M TND)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section id="scenarios">
+    <h2>2. Scenarios</h2>
+    <div class="grid2">
+      <figure>
+        <div class="chart" id="fig-el" role="img" aria-label="Extra expected loss by scenario with model range"></div>
+        <figcaption><span class="label">Figure 1.</span> Climate-adjusted extra expected loss, million TND. Bars show the median of five climate models; whiskers show the 10th–90th percentile.</figcaption>
+      </figure>
+      <figure>
+        <div class="chart" id="fig-share" role="img" aria-label="Share of exposure in a high-hazard zone by scenario"></div>
+        <figcaption><span class="label">Figure 2.</span> Share of exposure at default in a high-hazard zone, defined as at least one hazard material to the sector with a score of 0.6 or more. Dot: median; line: 10th–90th percentile.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="geography">
+    <h2>3. Geography</h2>
+    <div class="grid2 map-row">
+      <figure>
+        <div class="chart" id="fig-map" role="img" aria-label="Map of extra expected loss by governorate"></div>
+        <figcaption><span class="label">Figure 3.</span> Extra expected loss by governorate, basis points of local exposure, <span class="period-name">SSP5-8.5, 2050</span>.</figcaption>
+      </figure>
+      <div>
+        <div class="tablewrap"><table class="booktabs compact" id="gov-table">
+          <caption><span class="label">Table 2.</span> Governorates ranked by extra expected loss, <span class="period-name">SSP5-8.5, 2050</span>.</caption>
+          <thead><tr><th>Governorate</th><th class="num">bp</th><th class="num">Model range</th><th class="num">High-hazard share (%)</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sectors">
+    <h2>4. Sectors</h2>
+    <div class="grid2">
+      <figure>
+        <div class="chart" id="fig-heat" role="img" aria-label="Average hazard score by sector and hazard"></div>
+        <figcaption><span class="label">Figure 4.</span> Average hazard score (0–1) weighted by exposure, by sector and hazard, <span class="period-name">SSP5-8.5, 2050</span>.</figcaption>
+      </figure>
+      <figure>
+        <div class="chart" id="fig-sectors" role="img" aria-label="Extra expected loss by sector"></div>
+        <figcaption><span class="label">Figure 5.</span> Extra expected loss by sector, basis points of sector exposure, <span class="period-name">SSP5-8.5, 2050</span>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="drivers">
+    <h2>5. Physical drivers</h2>
+    <p>Averages at the 2,000 loan locations, median of five CMIP6 models (NASA NEX-GDDP-CMIP6, 0.25°). Rainfall change is measured against each model's own 2010–2014 run, which removes most of the model's bias. With three years per horizon, the 2030 rainfall figures are dominated by year-to-year variability.</p>
+    <figure>
+      <div class="chart" id="fig-drivers" role="img" aria-label="Heat days, dry spells and rainfall change by scenario"></div>
+      <figcaption><span class="label">Figure 6.</span> Days with maximum temperature above 35 °C, longest dry spell, and change in annual rainfall, by scenario.</figcaption>
+    </figure>
+    <div class="grid2 maps">
+      <figure class="wide"><img src="downloads/map_heat.png" alt="Maps of days above 35 °C per year, 2010–2014 and SSP5-8.5 2050" loading="lazy"><figcaption><span class="label">Figure 7.</span> Days above 35 °C per year, current climate and SSP5-8.5 2050.</figcaption></figure>
+      <figure class="wide"><img src="downloads/map_drought.png" alt="Maps of longest dry spell, 2010–2014 and SSP5-8.5 2050" loading="lazy"><figcaption><span class="label">Figure 8.</span> Longest dry spell (days), current climate and SSP5-8.5 2050.</figcaption></figure>
+      <figure><img src="downloads/map_flood.png" alt="Map of 100-year flood depth" loading="lazy"><figcaption><span class="label">Figure 9.</span> Flood depth for the 100-year event, riverine and coastal (WRI Aqueduct).</figcaption></figure>
+      <figure><img src="downloads/map_fire.png" alt="Map of burnable vegetation" loading="lazy"><figcaption><span class="label">Figure 10.</span> Share of burnable vegetation within 2 km (ESA WorldCover).</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="robustness">
+    <h2>6. Robustness</h2>
+    <div class="grid2">
+      <figure>
+        <div class="chart" id="fig-sens" role="img" aria-label="Sensitivity of extra expected loss to assumptions"></div>
+        <figcaption><span class="label">Figure 11.</span> Change in total extra expected loss (SSP5-8.5, 2050) when one assumption is changed.</figcaption>
+      </figure>
+      <div>
+        <p>The PD elasticity β dominates: halving or doubling it moves the result by roughly −50 % to +100 %, against −10 % to +18 % across climate models. Raising the flood weight slightly lowers the loss, because flood scores are low for most loans and the composite score is a weighted average.</p>
+        <table class="booktabs compact" id="pr-table">
+          <caption><span class="label">Table 3.</span> Spearman rank correlation with OS-Climate physrisk hazard indicators at the same locations.</caption>
+          <thead><tr><th>Indicator</th><th class="num">ρ</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="small">physrisk's drought indicator (SPEI-12) is relative to local climate and flags the wetter north; the ClimaRisk dry-spell indicator is absolute and flags the arid south. Both show drought worsening at every location.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="exposures">
+    <h2>7. Largest exposures</h2>
+    <div class="tablewrap">
+      <table class="booktabs sortable" id="top-table">
+        <caption><span class="label">Table 4.</span> Twenty synthetic loans with the largest extra expected loss, SSP5-8.5, 2050. Click a column heading to sort.</caption>
+        <thead><tr>
+          <th data-key="loan">Loan</th><th data-key="sector">Sector</th><th data-key="governorate">Governorate</th>
+          <th data-key="ead_m" class="num">Exposure (M TND)</th><th data-key="score" class="num">Hazard score</th><th data-key="el_add_k" class="num">Extra EL (k TND)</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="method">
+    <h2>8. Method and limits</h2>
+    <div class="cols">
+      <div>
+        <h3>Method</h3>
+        <p>Four hazards are measured at each loan's location: days above 35 °C and drought (consecutive dry days and rainfall change) from five CMIP6 models; 100-year flood depth from WRI Aqueduct; and burnable vegetation from ESA WorldCover. Each indicator is scaled to a 0–1 score using fixed physical bounds, then weighted by the sensitivity of the loan's sector.</p>
+        <p>The composite score adjusts the probability of default, PD′ = PD × (1 + β × score), and flood depth raises LGD for land and real-estate collateral. Expected loss is PD′ × LGD′ × EAD. "Extra expected loss" is measured against a climate-neutral PD; the change against today's climate is reported separately.</p>
+      </div>
+      <div>
+        <h3>Limits</h3>
+        <ul>
+          <li>Synthetic portfolio; sector shares, PDs and LGDs are documented assumptions.</li>
+          <li>Climate grid of 0.25° (about 25 km); flood data at about 1 km.</li>
+          <li>Five models and three years per horizon.</li>
+          <li>Aqueduct uses CMIP5 projections and an observation-driven baseline, so flood change over time is not like-for-like.</li>
+          <li>β, γ and the vulnerability weights are illustrative, not estimated on defaults.</li>
+          <li>Physical risk only. The NGFS Phase V GDP-damage function (Kotz et al., 2024, retracted) is not used.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Downloads</h3>
+    <ul class="downloads">
+      <li><a href="downloads/report.pdf">Methodology report (PDF, French)</a></li>
+      <li><a href="downloads/climarisk_demo.mp4">Demonstration video (MP4, 3 min, French)</a></li>
+      <li><a href="data/scenarios.json">Scenario results (JSON)</a> · <a href="data/sectors.json">sectors</a> · <a href="data/governorates.json">governorates</a> · <a href="data/top_exposures.json">exposures</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Code: MIT licence. Data: NASA NEX-GDDP-CMIP6 (CC0), WRI Aqueduct Floods (CC BY 4.0), ESA WorldCover (CC BY 4.0), WorldPop (CC BY 4.0), geoBoundaries / © OpenStreetMap contributors (ODbL), Natural Earth. Charts drawn with d3.js.</p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" hidden></div>
+<script src="assets/d3.v7.9.0.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -14,7 +14,7 @@ def main(argv: list[str] | None = None) -> None:
                    help="print the KPIs of one scenario after the run")
     r.add_argument("--horizon", choices=["2030", "2050"], default="2050")
     sub.add_parser("maps", help="render PNG hazard maps")
-    sub.add_parser("report", help="render the PDF report")
+    sub.add_parser("report", help="typeset the PDF report with LaTeX")
     args = ap.parse_args(argv)
 
     if args.cmd == "portfolio":
@@ -29,7 +29,7 @@ def main(argv: list[str] | None = None) -> None:
         from .maps import render_all
         render_all()
     elif args.cmd == "report":
-        from .reporting import build_report
+        from .latex_report import build_report
         print(build_report())
 
 

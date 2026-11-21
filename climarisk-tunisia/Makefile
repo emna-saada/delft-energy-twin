@@ -1,4 +1,4 @@
-.PHONY: install data portfolio run maps report app video demo test lint clean
+.PHONY: install data portfolio run maps report site app video demo test lint clean
 
 PY := uv run
 
@@ -20,8 +20,11 @@ run:                ## full pipeline -> outputs/kpis.json
 maps:
 	$(PY) climarisk maps
 
-report:             ## PDF report -> docs/report.pdf
+report:             ## PDF report typeset with LaTeX (needs pdflatex) -> docs/report.pdf
 	$(PY) climarisk report
+
+site:               ## static results site for GitHub Pages -> site/ (preview: python -m http.server -d site)
+	$(PY) python scripts/build_site.py
 
 app:                ## Streamlit dashboard on http://localhost:8501
 	$(PY) streamlit run app/streamlit_app.py
@@ -29,7 +32,7 @@ app:                ## Streamlit dashboard on http://localhost:8501
 video:              ## dashboard capture + animated MP4 -> video/out/climarisk_demo.mp4
 	cd video && npm install && npm run capture && npm run build   # needs `make app` running
 
-demo: run maps report   ## reproduce the demo end-to-end (after `make data`)
+demo: run maps report site   ## reproduce the demo end-to-end (after `make data`)
 
 test:
 	$(PY) pytest -q

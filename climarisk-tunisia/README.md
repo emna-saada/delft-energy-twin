@@ -8,22 +8,24 @@
 
 ## Results at a glance
 
-**[Read the results →](docs/RESULTS.md)** · [Methodology report (PDF, FR)](docs/report.pdf) · [Demo video](video/out/climarisk_demo.mp4)
+**[Read the results →](docs/RESULTS.md)** · [Results website (`site/`)](site/index.html) · [Methodology report (PDF, FR)](docs/report.pdf) · [Demo video](video/out/climarisk_demo.mp4)
 
 | | |
 |---|---|
-| ![Extra expected loss by scenario](outputs/figures/el_period.png) | ![Sector × hazard](outputs/figures/heatmap.png) |
-| ![Days above 35 °C](outputs/maps/map_heat.png) | ![Extra loss by governorate](outputs/maps/map_el_governorate.png) |
+| ![Extra expected loss by scenario](outputs/paper/en/fig_el.png) | ![Sector × hazard](outputs/paper/en/fig_heatmap.png) |
+| ![Days above 35 °C](outputs/paper/en/fig_heat.png) | ![Extra loss by governorate](outputs/paper/en/fig_gov.png) |
 
 ## Quick start (3 commands)
 
 ```bash
 make install      # uv sync --all-extras
 make data         # open data: NEX-GDDP-CMIP6, Aqueduct, WorldCover, WorldPop, geoBoundaries (~15-30 min)
-make demo         # pipeline -> outputs/kpis.json, maps, docs/report.pdf
+make demo         # pipeline -> outputs/kpis.json, maps, LaTeX report (docs/report.pdf), results site (site/)
 ```
 
-Then `make app` opens the dashboard at http://localhost:8501, and `make video` renders `video/out/climarisk_demo.mp4`.
+Then `python -m http.server -d site` serves the results website, `make app` opens the Streamlit tool at http://localhost:8501, and `make video` renders `video/out/climarisk_demo.mp4`. The report needs `pdflatex` (TeX Live with the French language pack).
+
+**GitHub Pages.** `site/` is committed fully built. In a standalone repository, `.github/workflows/pages.yml` publishes it (Settings → Pages → Source: GitHub Actions). Inside `delft-energy-twin`, the root Pages workflow copies it to `/climarisk/` of the existing site.
 
 ## What it does
 
