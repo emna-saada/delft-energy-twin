@@ -21,9 +21,15 @@ from .config import project_root
 HAZ = ["heat", "drought", "flood", "fire"]
 
 
-def _fig_b64(fig) -> str:
+FIG_DIR = None
+
+
+def _fig_b64(fig, name: str | None = None) -> str:
     import io
 
+    if name and FIG_DIR is not None:  # same figure reused on GitHub and in the LinkedIn visuals
+        FIG_DIR.mkdir(parents=True, exist_ok=True)
+        fig.savefig(FIG_DIR / f"{name}.png", dpi=200, bbox_inches="tight", facecolor="white")
     buf = io.BytesIO()
     fig.savefig(buf, format="png", dpi=200, bbox_inches="tight")
     plt.close(fig)
@@ -44,6 +50,8 @@ def _style():
 
 
 def charts(k: dict, out: Path) -> dict[str, str]:
+    global FIG_DIR
+    FIG_DIR = out / "figures"
     _style()
     labels = k["meta"]["period_labels"]
     res = {}
@@ -62,7 +70,7 @@ def charts(k: dict, out: Path) -> dict[str, str]:
     ax.set_xticks(range(5), [labels[p] for p in ps], fontsize=8.5)
     ax.set_ylabel("M TND")
     ax.set_title("EL climatique additionnelle (médiane et intervalle 10–90 % entre modèles)")
-    res["el_period"] = _fig_b64(fig)
+    res["el_period"] = _fig_b64(fig, "el_period")
 
     # 2. share EAD high
     fig, ax = plt.subplots(figsize=(6.4, 2.6))
@@ -72,15 +80,18 @@ def charts(k: dict, out: Path) -> dict[str, str]:
     ax.bar(range(5), med, color=cols, width=0.62, alpha=0.9)
     ax.errorbar(range(5), med, yerr=[med - lo, hi - med], fmt="none", ecolor=theme.INK, capsize=4, lw=1)
     ax.set_xticks(range(5), [labels[p] for p in ps], fontsize=8.5)
+    for i, v in enumerate(med):
+        ax.text(i, hi[i] + 1.2, f"{v:.1f} %".replace(".", ","), ha="center", fontsize=8.5, color=theme.INK)
     ax.set_ylabel("% de l'EAD")
-    ax.set_title("Part de l'EAD en zone d'aléa élevé")
-    res["share_high"] = _fig_b64(fig)
+    ax.set_title("Part de l'EAD en zone d'aléa élevé (médiane et intervalle 10–90 %)")
+    res["share_high"] = _fig_b64(fig, "share_high")
 
     # 3. heatmap
     hm = pd.DataFrame(k["heatmap_sector_hazard"]["ssp585_2050"]).T[HAZ]
     pf = pd.read_parquet(out / "asset_results.parquet")
     sl = pf.drop_duplicates("sector").set_index("sector")["sector_label"]
     hm.index = hm.index.map(sl)
+    hm = hm.loc[hm.sum(axis=1).sort_values(ascending=False).index]
     fig, ax = plt.subplots(figsize=(5.6, 3.4))
     im = ax.imshow(hm.values, cmap=theme.risk_cmap(), vmin=0, vmax=1, aspect="auto")
     ax.set_xticks(range(4), [theme.HAZARD_LABELS[h] for h in HAZ], fontsize=8.5)
@@ -93,18 +104,23 @@ def charts(k: dict, out: Path) -> dict[str, str]:
     ax.spines[:].set_visible(False)
     fig.colorbar(im, ax=ax, fraction=0.04).outline.set_visible(False)
     ax.set_title("Score moyen d'aléa pondéré par l'EAD · SSP5-8.5 · 2050")
-    res["heatmap"] = _fig_b64(fig)
+    res["heatmap"] = _fig_b64(fig, "heatmap")
 
     # 4. sensitivity
     s = pd.DataFrame(k["sensitivity"])
+    s = s[s.label != "β × 1.0"]
     fig, ax = plt.subplots(figsize=(6.0, 3.2))
-    c = [("#B8323B" if v >= 0 else theme.TEAL) for v in s.delta_pct]
-    ax.barh(s.label, s.delta_pct, color=c)
+    c = [(theme.SCENARIO_COLORS["ssp585"] if v >= 0 else theme.SCENARIO_COLORS["ssp245"]) for v in s.delta_pct]
+    ax.barh(s.label, s.delta_pct, color=c, height=0.62)
+    for yi, v in enumerate(s.delta_pct):
+        ax.text(v + (2 if v >= 0 else -2), yi, f"{v:+.0f} %".replace("-", "−"), va="center",
+                ha="left" if v >= 0 else "right", fontsize=7.5, color=theme.MUTED)
+    ax.set_xlim(-65, 115)
     ax.axvline(0, color=theme.INK, lw=0.8)
     ax.invert_yaxis()
     ax.set_xlabel("Variation de l'EL additionnelle (%)")
     ax.set_title("Sensibilité · SSP5-8.5 · 2050")
-    res["sensitivity"] = _fig_b64(fig)
+    res["sensitivity"] = _fig_b64(fig, "sensitivity")
 
     # 5. sector mix
     pfb = pf[pf.period == "baseline"]
@@ -113,7 +129,7 @@ def charts(k: dict, out: Path) -> dict[str, str]:
     ax.barh(mix.index, mix.values, color=theme.PETROL)
     ax.set_xlabel("EAD (M TND)")
     ax.set_title("Répartition sectorielle de l'EAD synthétique")
-    res["sector_mix"] = _fig_b64(fig)
+    res["sector_mix"] = _fig_b64(fig, "sector_mix")
 
     # 6. physrisk comparison
     pc = out / "physrisk_comparison.csv"
@@ -130,7 +146,7 @@ def charts(k: dict, out: Path) -> dict[str, str]:
         axes[1].set_ylabel("physrisk : mois SPEI-12 < −1,5")
         axes[1].set_title("Sécheresse · SSP5-8.5 2050", fontsize=9)
         fig.tight_layout()
-        res["physrisk"] = _fig_b64(fig)
+        res["physrisk"] = _fig_b64(fig, "physrisk")
     return res
 
 

@@ -16,6 +16,14 @@ from .hazards.wildfire import fuel_grid
 from .portfolio import load_governorates
 
 
+def _clip(arr, transform, govs):
+    """Blank pixels outside Tunisia (rasters extend into Algeria, Libya and the sea)."""
+    from rasterio.features import geometry_mask
+
+    outside = geometry_mask([govs.union_all()], out_shape=arr.shape, transform=transform)
+    return np.where(outside, np.nan, arr)
+
+
 def _frame(ax, govs):
     govs.boundary.plot(ax=ax, color="#ffffff", linewidth=0.6)
     govs.boundary.plot(ax=ax, color=theme.INK, linewidth=0.25, alpha=0.6)
@@ -67,17 +75,21 @@ def hazard_rasters(out: Path, govs: gpd.GeoDataFrame) -> list[Path]:
         tr = s.transform
     with rasterio.open(d / "inuncoast_historical_nosub_hist_0.tif") as s:
         coast = s.read(6)
-    depth = np.maximum(river, coast)
-    depth = np.where(depth > 0.02, depth, np.nan)
+    depth = np.fmax(np.nan_to_num(river, nan=0.0), np.nan_to_num(coast, nan=0.0))  # NaN-safe merge
+    depth = _clip(np.where(depth > 0.02, depth, np.nan), tr, govs)
     extent = ext or (tr.c, tr.c + tr.a * depth.shape[1], tr.f + tr.e * depth.shape[0], tr.f)
-    fig, ax = plt.subplots(figsize=(4.2, 5.6))
+    fig, ax = plt.subplots(figsize=(5.2, 5.6))
     govs.plot(ax=ax, color="#EEF2F3", edgecolor="none")
-    im = ax.imshow(depth, extent=extent, cmap="Blues", vmin=0, vmax=2, interpolation="nearest")
+    im = ax.imshow(depth, extent=extent, cmap="Blues", vmin=0, vmax=1.5, interpolation="nearest", zorder=2)
     _frame(ax, govs)
+    for name, (x, y) in {"Medjerda": (9.35, 36.62), "Cap Bon": (11.05, 36.62), "Sousse": (10.62, 35.83),
+                         "Tunis": (10.18, 36.9)}.items():
+        ax.annotate(name, (x, y), fontsize=7.5, color=theme.INK, ha="center",
+                    bbox={"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.75})
     cb = fig.colorbar(im, ax=ax, orientation="horizontal", fraction=0.04, pad=0.02)
     cb.set_label("Profondeur d'eau, crue centennale (m) — WRI Aqueduct", color=theme.MUTED, fontsize=8)
     cb.outline.set_visible(False)
-    ax.set_title(theme.HAZARD_LABELS["flood"] + " · référence")
+    ax.set_title(theme.HAZARD_LABELS["flood"] + " · crue centennale, référence")
     fig.savefig(out / "map_flood.png")
     plt.close(fig)
     paths.append(out / "map_flood.png")
@@ -87,7 +99,7 @@ def hazard_rasters(out: Path, govs: gpd.GeoDataFrame) -> list[Path]:
     extent = (tr.c, tr.c + tr.a * g.shape[1], tr.f + tr.e * g.shape[0], tr.f)
     fig, ax = plt.subplots(figsize=(4.2, 5.6))
     govs.plot(ax=ax, color="#F3F1EC", edgecolor="none")
-    im = ax.imshow(np.where(g > 0.05, g, np.nan), extent=extent, cmap="YlOrBr", vmin=0, vmax=0.8)
+    im = ax.imshow(_clip(np.where(g > 0.05, g, np.nan), tr, govs), extent=extent, cmap="YlOrBr", vmin=0, vmax=0.8, zorder=2)
     _frame(ax, govs)
     cb = fig.colorbar(im, ax=ax, orientation="horizontal", fraction=0.04, pad=0.02)
     cb.set_label("Part de végétation combustible (rayon 2 km) — ESA WorldCover", color=theme.MUTED, fontsize=8)

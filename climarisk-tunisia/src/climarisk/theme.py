@@ -10,14 +10,17 @@ BORDER = "#E3E0D8"
 AMBER = "#D97706"
 
 # Hazard identity colours (distinct hue + lightness, readable on white)
-HAZARD_COLORS = {"heat": "#D1495B", "drought": "#B7791F", "flood": "#2B6CB0", "fire": "#7B2D5B"}
+# Validated with the dataviz palette checker (light surface): lightness band, chroma, CVD; heat/drought and
+# flood/fire sit in the 6-8 CVD floor band, so every use carries direct labels.
+HAZARD_COLORS = {"heat": "#D1495B", "drought": "#C98500", "flood": "#2A78D6", "fire": "#8E44AD"}
 HAZARD_LABELS = {"heat": "Chaleur extrême", "drought": "Sécheresse", "flood": "Inondation", "fire": "Feux de forêt"}
 
 # Sequential risk scale, low -> high (perceptually ordered, colour-blind friendly endpoints)
 RISK_SCALE = ["#FFF4D6", "#FDD58A", "#F7A456", "#E2683C", "#B8323B", "#6E1434"]
 
 PERIOD_ORDER = ["baseline", "ssp245_2030", "ssp245_2050", "ssp585_2030", "ssp585_2050"]
-SCENARIO_COLORS = {"baseline": "#7A8B8F", "ssp245": TEAL, "ssp585": "#B8323B"}
+# SSP2-4.5 / SSP5-8.5 pass all checks; "today" is a neutral reference grey, always direct-labelled.
+SCENARIO_COLORS = {"baseline": "#A3ACAE", "ssp245": "#008C9E", "ssp585": "#C2343F"}
 
 FONT_UI = "Fira Sans"
 FONT_NUM = "Fira Code"

@@ -6,6 +6,15 @@
 
 ![Portfolio composite hazard score today, SSP2-4.5 2050, SSP5-8.5 2050](outputs/maps/map_portfolio.png)
 
+## Results at a glance
+
+**[Read the results →](docs/RESULTS.md)** · [Methodology report (PDF, FR)](docs/report.pdf) · [Demo video](video/out/climarisk_demo.mp4)
+
+| | |
+|---|---|
+| ![Extra expected loss by scenario](outputs/figures/el_period.png) | ![Sector × hazard](outputs/figures/heatmap.png) |
+| ![Days above 35 °C](outputs/maps/map_heat.png) | ![Extra loss by governorate](outputs/maps/map_el_governorate.png) |
+
 ## Quick start (3 commands)
 
 ```bash
