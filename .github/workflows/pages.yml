@@ -31,8 +31,6 @@ jobs:
       - run: npm run typecheck
       # web/public/data is produced by the Python pipeline and committed; tiles are already meshopt-compressed
       - run: npm run build
-      # ClimaRisk Tunisie results site (static, committed fully built) served at /climarisk/
-      - run: cp -r ../climarisk-tunisia/site dist/climarisk
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
