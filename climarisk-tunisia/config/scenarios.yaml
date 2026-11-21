@@ -1,0 +1,34 @@
+# NGFS narrative <-> CMIP6 SSP mapping (physical risk only).
+# NGFS Phase V (Nov 2024) long-term scenarios are built on IAM pathways; for physical
+# hazards the usual practice is to proxy them with the CMIP6 SSP with the closest
+# end-of-century warming. Mapping is an analytical choice, documented in docs/methodology.md.
+scenarios:
+  baseline:
+    label: "Aujourd'hui (référence 2010-2014)"
+    ssp: historical
+  ssp245:
+    label: "SSP2-4.5"
+    ngfs_proxy: ["NDCs", "Delayed Transition (physical side)"]
+    note: "Intermediate warming, ~2.7 °C by 2100 (IPCC AR6 best estimate)."
+  ssp585:
+    label: "SSP5-8.5"
+    ngfs_proxy: ["Current Policies (upper physical bound)"]
+    note: "High-end warming used as a physical stress bound; NGFS Current Policies is below SSP5-8.5."
+
+horizons:
+  "2030": [2029, 2030, 2031]
+  "2050": [2049, 2050, 2051]
+
+# Years streamed from NEX-GDDP-CMIP6 (per model)
+years:
+  historical: [2010, 2011, 2012, 2013, 2014]
+  ssp245: [2029, 2030, 2031, 2049, 2050, 2051]
+  ssp585: [2029, 2030, 2031, 2049, 2050, 2051]
+
+# Five CMIP6 models. NEX-GDDP-CMIP6 outputs are under a blanket CC0 licence since Sept 2022 (NASA Tech Note 4) — see docs/LICENSES_DATA.md
+cmip6_models:
+  - {name: ACCESS-CM2, member: r1i1p1f1}
+  - {name: CNRM-ESM2-1, member: r1i1p1f2}
+  - {name: MPI-ESM1-2-HR, member: r1i1p1f1}
+  - {name: MRI-ESM2-0, member: r1i1p1f1}
+  - {name: IPSL-CM6A-LR, member: r1i1p1f1}

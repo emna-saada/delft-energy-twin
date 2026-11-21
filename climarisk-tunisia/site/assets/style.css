@@ -1,0 +1,103 @@
+/* ClimaRisk Tunisie results site.
+   Layout: a single 1100px reading column, numbered sections, figures with captions, rule-based tables. */
+:root {
+  --ink: #1a1a1a;
+  --ink-2: #4d4d4d;
+  --ink-3: #767676;
+  --rule: #cfcfcf;
+  --rule-strong: #1a1a1a;
+  --paper: #ffffff;
+  --shade: #f4f4f2;
+  --ssp245: #1f5f99;
+  --ssp585: #b23a2e;
+  --today: #9a9a9a;
+  --link: #1f5f99;
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 17px; line-height: 1.55; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+a { color: var(--link); }
+code { font-family: Menlo, Consolas, monospace; font-size: .85em; }
+
+.masthead { border-bottom: 3px double var(--rule-strong); padding-block: 36px 22px; }
+.series { font-family: var(--sans); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px; }
+.masthead h1 { font-weight: 700; font-size: 40px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -.01em; }
+.byline { font-family: var(--sans); font-size: 14px; color: var(--ink-2); margin: 0; }
+
+.toc { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+.toc .wrap { display: flex; flex-wrap: wrap; gap: 4px 22px; padding-block: 10px; font-family: var(--sans); font-size: 13px; }
+.toc a { color: var(--ink-2); text-decoration: none; }
+.toc a:hover { color: var(--ink); text-decoration: underline; }
+
+main { padding-block: 26px 40px; }
+section { padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--rule); scroll-margin-top: 56px; }
+h2 { font-size: 24px; font-weight: 700; margin: 6px 0 14px; }
+h3 { font-size: 17px; font-weight: 700; margin: 18px 0 6px; }
+p { max-width: 72ch; margin: 0 0 12px; }
+.lede { font-size: 19px; line-height: 1.5; }
+.small { font-size: 14px; color: var(--ink-2); }
+
+.notice { font-family: var(--sans); font-size: 14px; line-height: 1.5; border-left: 3px solid var(--ink); background: var(--shade); padding: 10px 14px; margin-bottom: 18px; max-width: 900px; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; margin: 6px 0 4px; }
+.controls select { font: inherit; padding: 5px 8px; border: 1px solid var(--ink-3); border-radius: 2px; background: var(--paper); color: var(--ink); }
+.controls select:focus-visible, .sortable th:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 28px 40px; align-items: start; }
+.grid2 > * { min-width: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 0 40px; }
+figure { margin: 0; }
+figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--ink-2); margin-top: 8px; max-width: 70ch; }
+.label { font-weight: 700; color: var(--ink); }
+.chart { position: relative; min-height: 260px; }
+.chart svg { display: block; overflow: visible; font-family: var(--sans); }
+.maps { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.maps figure.wide { grid-column: 1 / -1; max-width: 640px; }
+.maps img { width: 100%; height: auto; display: block; }
+
+.axis text { fill: var(--ink-2); font-size: 11px; }
+.axis path, .axis line { stroke: var(--ink-3); }
+.grid line { stroke: #e6e6e6; }
+.grid path { display: none; }
+.vlab { fill: var(--ink); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.vlab.dim { fill: var(--ink-3); }
+.rlab { fill: var(--ink); font-size: 12px; }
+
+table.booktabs { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 13.5px; font-variant-numeric: tabular-nums; border-top: 2px solid var(--rule-strong); border-bottom: 2px solid var(--rule-strong); margin: 4px 0 6px; }
+table.booktabs caption { caption-side: top; text-align: left; font-size: 13px; color: var(--ink-2); padding-bottom: 8px; line-height: 1.45; }
+table.booktabs th { text-align: left; font-weight: 700; padding: 7px 10px 6px; border-bottom: 1px solid var(--rule-strong); vertical-align: bottom; }
+table.booktabs td { padding: 5px 10px; border-bottom: 1px solid #ececec; }
+table.booktabs tbody tr:last-child td { border-bottom: 0; }
+table.booktabs .num { text-align: right; white-space: nowrap; }
+table.booktabs tr.sel td { background: var(--shade); font-weight: 700; }
+table.compact { font-size: 13px; }
+table.compact td { padding: 4px 10px; }
+.tablewrap { overflow-x: auto; }
+.sortable th { cursor: pointer; user-select: none; }
+.sortable th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
+.sortable th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
+.bp-range { color: var(--ink-3); }
+
+.downloads { font-family: var(--sans); font-size: 14px; padding-left: 18px; }
+.downloads li { margin-bottom: 6px; }
+ul { padding-left: 20px; }
+li { margin-bottom: 4px; }
+
+.colophon { border-top: 1px solid var(--rule); padding-block: 18px 30px; font-family: var(--sans); font-size: 12.5px; color: var(--ink-3); }
+.colophon p { max-width: none; }
+
+.tip { position: absolute; pointer-events: none; background: var(--paper); border: 1px solid var(--ink-3); box-shadow: 0 2px 6px rgba(0,0,0,.12); padding: 6px 9px; font-family: var(--sans); font-size: 12.5px; line-height: 1.45; color: var(--ink); z-index: 20; max-width: 260px; font-variant-numeric: tabular-nums; }
+.tip b { font-weight: 700; }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .masthead h1 { font-size: 30px; }
+  .toc { position: static; }
+}
+@media print {
+  .toc, .controls { display: none; }
+  section { break-inside: avoid-page; }
+}

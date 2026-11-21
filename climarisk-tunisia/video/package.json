@@ -1,0 +1,23 @@
+{
+  "name": "climarisk-video",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Animated demo video for ClimaRisk Tunisie (Remotion). Figures come from ../outputs/kpis.json.",
+  "scripts": {
+    "props": "../.venv/bin/python scripts/make_props.py",
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts ClimaRisk out/climarisk_demo.mp4 --props=public/props.json --codec=h264 --crf=20 --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium/chrome-linux/chrome}",
+    "build": "npm run props && npm run render",
+    "capture": "node scripts/record_dashboard.js && ffmpeg -y -loglevel error -i public/capture/dashboard.webm -c:v libx264 -pix_fmt yuv420p -r 30 -crf 20 public/capture/dashboard.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.545",
+    "remotion": "4.0.545",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3",
+    "@types/react": "18.3.12"
+  }
+}

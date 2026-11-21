@@ -1,0 +1,52 @@
+[project]
+name = "climarisk"
+version = "0.1.0"
+description = "Physical climate risk of a synthetic Tunisian bank loan portfolio: geospatial hazard scoring, CMIP6/NGFS scenarios, portfolio aggregation."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Emna Saada" }]
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "geopandas>=1.0",
+  "shapely>=2.0",
+  "pyarrow>=15",
+  "rasterio>=1.3",
+  "xarray>=2024.1",
+  "h5netcdf>=1.3",
+  "scipy>=1.11",
+  "pyyaml>=6",
+  "requests>=2.31",
+  "zarr>=2.17,<3",
+  "fsspec>=2024.2",
+  "aiohttp>=3.9",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.38", "plotly>=5.20", "pydeck>=0.9"]
+report = ["jinja2>=3.1", "weasyprint>=62"]
+video = ["playwright>=1.45", "piper-tts>=1.8"]  # piper-tts is GPL-3.0, used as an external CLI only
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+climarisk = "climarisk.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/climarisk"]
+
+[tool.ruff]
+line-length = 110
+src = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff.lint]
+ignore = ["C408", "PLR1736"]

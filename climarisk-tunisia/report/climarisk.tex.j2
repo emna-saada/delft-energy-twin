@@ -1,0 +1,260 @@
+% ClimaRisk Tunisie -- document de travail. Généré par src/climarisk/latex_report.py à partir de outputs/kpis.json.
+% Ne pas éditer les chiffres à la main : modifier le gabarit ou relancer le pipeline.
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{mathptmx}
+\usepackage[scaled=0.9]{helvet}
+\usepackage{microtype}
+\usepackage[a4paper,top=2.6cm,bottom=2.6cm,left=2.7cm,right=2.7cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{enumitem}
+\usepackage[labelfont=bf,font=small,labelsep=period,justification=justified,singlelinecheck=false]{caption}
+\usepackage[authoryear,round]{natbib}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{\VAR{figdir}/}}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt}
+\setlist{itemsep=2pt,topsep=4pt}
+\frenchsetup{StandardItemLabels=true}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\itshape ClimaRisk Tunisie -- risque climatique physique d'un portefeuille de crédits}
+\fancyhead[R]{\small\thepage}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\small\thepage}}
+\newcommand{\num}[1]{#1}
+
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\small DOCUMENT DE TRAVAIL \quad\textperiodcentered\quad \VAR{date}}\\[1.6em]
+{\LARGE\bfseries Risque climatique physique d'un portefeuille\\[0.25em] de crédits bancaires en Tunisie}\\[0.8em]
+{\large Scoring géospatial des aléas, scénarios CMIP6 et NGFS,\\ agrégation au niveau du portefeuille}\\[1.4em]
+{\large Emna Saada}\\[0.2em]
+{\small Élève ingénieure en géoinformatique, MSE, Université de la Manouba}
+\end{center}
+\vspace{1.2em}
+
+\begin{quote}
+\small
+\noindent\textbf{Résumé.} Ce document présente une méthode reproductible, fondée uniquement sur des données ouvertes, pour relier chaque crédit d'un portefeuille bancaire à son exposition aux aléas climatiques physiques : chaleur extrême, sécheresse, inondation et feux de forêt. La méthode est appliquée à un portefeuille \emph{synthétique} de \VAR{n} crédits répartis sur les \VAR{ngov} gouvernorats tunisiens. Sous le scénario SSP5-8.5, la part de l'encours située en zone d'aléa élevé passe de \VAR{sh0}\,\% dans le climat actuel à \VAR{sh5}\,\% en 2050 (intervalle entre modèles : \VAR{sh5lo}--\VAR{sh5hi}\,\%). La perte attendue additionnelle atteint \VAR{el5}~M~TND, soit \VAR{bp5}~points de base de l'encours et \VAR{vt5}~M~TND de plus que dans le climat actuel. La céréaliculture et l'oléiculture sont les secteurs les plus touchés. L'élasticité de la probabilité de défaut à l'aléa pèse davantage sur le résultat que le choix du modèle climatique. Les montants sont illustratifs et ne décrivent aucune banque.
+
+\medskip
+\noindent\textbf{Mots-clés :} risque climatique physique, risque de crédit, CMIP6, NGFS, géoinformatique, Tunisie.
+\end{quote}
+\vspace{0.6em}
+
+\section{Introduction}
+
+Les banques tunisiennes financent des exploitations agricoles, des industries, des promoteurs immobiliers et des établissements hôteliers dont les actifs sont exposés à la chaleur, au manque d'eau, aux crues et aux incendies. Le Comité de Bâle a publié en 2022 dix-huit principes pour la gestion et la supervision des risques financiers liés au climat \citep{bcbs2022}, et la Banque centrale de Tunisie a lancé en novembre 2026 une feuille de route 2026--2030 sur la finance verte et les risques climatiques, à l'issue d'un projet d'assistance technique mené avec la KfW.\footnote{Information rapportée par la presse tunisienne (Tustex, L'Économiste Maghrébin, La Presse, 4--5 novembre 2026), à vérifier sur le site de la BCT.} Les établissements disposent pourtant rarement d'un outil simple qui rattache chaque engagement à la géographie des aléas.
+
+Ce travail propose un tel outil et en documente les choix. Il répond à trois questions : quelle part de l'encours se trouve aujourd'hui, puis en 2030 et en 2050, dans une zone d'aléa élevé ; quel ajustement de la perte attendue en résulte, sous des hypothèses explicites ; et quels secteurs et gouvernorats concentrent cet ajustement. Le portefeuille étudié est entièrement synthétique, conformément à la loi organique n\textsuperscript{o}~2004-63 sur la protection des données personnelles : les résultats valent pour la méthode, non pour un établissement particulier.
+
+La section~\ref{sec:cadre} situe le travail dans le cadre réglementaire. Les sections~\ref{sec:donnees} et~\ref{sec:methode} décrivent les données et la méthode. La section~\ref{sec:resultats} présente les résultats, la section~\ref{sec:robustesse} leur robustesse et la section~\ref{sec:limites} leurs limites.
+
+\section{Cadre réglementaire}\label{sec:cadre}
+
+Le tableau~\ref{tab:cadre} résume les textes de référence. L'outil se présente comme une aide à la préparation des futures attentes prudentielles ; il ne prétend à aucune conformité. Le statut de vérification indiqué correspond à la consultation des sources le 20~novembre~2026.
+
+\begin{table}[ht]
+\centering\small
+\caption{Textes de référence et modules concernés.}\label{tab:cadre}
+\begin{tabular}{@{}p{4.3cm}p{2.6cm}p{6.6cm}@{}}
+\toprule
+Texte & Date & Usage dans ce travail \\
+\midrule
+\BLOCK{for t in reg}\VAR{t.title} & \VAR{t.date} & \VAR{t.use} \\
+\BLOCK{endfor}\bottomrule
+\end{tabular}
+\end{table}
+
+Deux points méritent attention. D'une part, le cadre de publication du Comité de Bâle de juin 2025 est volontaire, son adoption étant laissée à chaque juridiction \citep{bcbs2025}. D'autre part, la fonction de dommage économique des scénarios NGFS de phase V repose sur \citet{kotz2024}, article rétracté de \emph{Nature} ; le NGFS précise que seules les variables de dommage sur le PIB sont concernées \citep{ngfs2025}. Ce travail utilise donc les scénarios NGFS comme cadre narratif et tire les aléas directement des projections climatiques.
+
+\section{Données}\label{sec:donnees}
+
+Toutes les données sont ouvertes et téléchargeables sans compte (tableau~\ref{tab:donnees}).
+
+\begin{table}[ht]
+\centering\small
+\caption{Sources de données.}\label{tab:donnees}
+\begin{tabular}{@{}p{3.0cm}p{5.2cm}p{2.3cm}p{2.6cm}@{}}
+\toprule
+Variable & Source & Résolution & Licence \\
+\midrule
+Chaleur, sécheresse & NASA NEX-GDDP-CMIP6, 5 modèles \citep{thrasher2022} & 0,25° & CC0 \\
+Inondation & WRI Aqueduct Floods v2 \citep{ward2020} & 30\,'' (env. 1 km) & CC BY 4.0 \\
+Végétation, cultures & ESA WorldCover 2021 \citep{zanaga2022} & 10 m (lu à 320 m) & CC BY 4.0 \\
+Population & WorldPop 2020 \citep{tatem2017} & 1 km & CC BY 4.0 \\
+Limites administratives & geoBoundaries \citep{runfola2020} & -- & ODbL 1.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Les cinq modèles CMIP6 retenus sont ACCESS-CM2, CNRM-ESM2-1, MPI-ESM1-2-HR, MRI-ESM2-0 et IPSL-CM6A-LR. La période de référence couvre 2010--2014 (simulation historique des mêmes modèles) ; chaque horizon futur est représenté par une fenêtre de trois ans centrée sur 2030 et sur 2050, pour les scénarios SSP2-4.5 et SSP5-8.5.
+
+Le portefeuille synthétique comprend \VAR{n} crédits pour un encours de \VAR{ead}~Md~TND. Il couvre dix secteurs inspirés de la structure de l'économie tunisienne. Les crédits sont localisés selon la densité de population, les terres cultivées pour l'agriculture et une bande littorale de 3~km pour le tourisme ; un contrôle automatique vérifie qu'aucun point ne tombe en mer. Les probabilités de défaut de base vont de 1 à 8\,\% selon le secteur.
+
+\section{Méthode}\label{sec:methode}
+
+Pour chaque crédit $i$, chaque aléa $h$ et chaque scénario $s$, l'indicateur physique $x_{i,h,s}$ est ramené à un score compris entre 0 et 1 par des bornes fixes $a_h$ et $b_h$, identiques pour tous les scénarios :
+\begin{equation}
+S_{i,h,s} = \min\!\left(1,\ \max\!\left(0,\ \frac{x_{i,h,s} - a_h}{b_h - a_h}\right)\right).
+\end{equation}
+La chaleur est mesurée par le nombre de jours où la température maximale dépasse 35\,°C ; la sécheresse combine la plus longue séquence sèche et la variation des précipitations par rapport à la référence du même modèle ; l'inondation utilise la profondeur d'eau de la crue centennale ; le feu croise la part de végétation combustible et une météo de feu dérivée des deux premiers aléas.
+
+Les scores sont agrégés en un score composite pondéré par la vulnérabilité $V_{k,h}$ du secteur $k$ de l'emprunteur :
+\begin{equation}
+C_{i,s} = \frac{\sum_h V_{k(i),h}\, S_{i,h,s}}{\sum_h V_{k(i),h}}.
+\end{equation}
+Le score composite ajuste la probabilité de défaut, et la profondeur d'inondation la perte en cas de défaut pour les garanties foncières et immobilières :
+\begin{align}
+PD_{i,s} &= \min\!\left(1,\ PD_i\,(1 + \beta_k\, C_{i,s})\right), \\
+LGD_{i,s} &= \min\!\left(1,\ LGD_i\,(1 + \gamma\, S_{i,\text{inond},s})\right), \\
+EL_{i,s} &= PD_{i,s}\, LGD_{i,s}\, EAD_i .
+\end{align}
+La perte attendue additionnelle est $EL_{i,s} - PD_i\,LGD_i\,EAD_i$. La probabilité de défaut de base étant traitée comme neutre vis-à-vis du climat, cet ajustement existe déjà dans le climat actuel ; la variation par rapport au climat actuel est donc présentée séparément. Un crédit est dit en zone d'aléa élevé lorsqu'au moins un aléa matériel pour son secteur ($V_{k,h} \geq 0{,}5$) atteint un score de 0,6. Les paramètres $\beta$, $\gamma$ et $V$ sont des hypothèses illustratives (annexe~\ref{app:hyp}).
+
+L'incertitude climatique est représentée en appariant chaque modèle CMIP6 à un modèle de l'ensemble Aqueduct, ce qui fournit cinq réalisations ; les résultats sont la médiane et l'intervalle entre les 10\textsuperscript{e} et 90\textsuperscript{e} centiles.
+
+\section{Résultats}\label{sec:resultats}
+
+\subsection{Vue d'ensemble}
+
+Le tableau~\ref{tab:resultats} et la figure~\ref{fig:scen} présentent les résultats par scénario. La part de l'encours en zone d'aléa élevé est faible dans le climat actuel (\VAR{sh0}\,\%) et augmente nettement en 2050 dans les deux scénarios. L'écart entre modèles est important pour cet indicateur, qui dépend d'un seuil, mais aucun modèle ne laisse la part revenir près de son niveau actuel.
+
+\begin{table}[ht]
+\centering\small
+\begin{threeparttable}
+\caption{Résultats par scénario (médiane de cinq modèles ; intervalle 10--90\,\% entre crochets).}\label{tab:resultats}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & Encours en zone & EL additionnelle & EL additionnelle & Variation vs \\
+Scénario & d'aléa élevé (\%) & (M TND) & (pb de l'EAD) & climat actuel (M TND) \\
+\midrule
+\BLOCK{for r in rows}\VAR{r.label} & \VAR{r.share} & \VAR{r.el} & \VAR{r.bp} & \VAR{r.vt} \\
+\BLOCK{endfor}\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Note :} portefeuille synthétique de \VAR{n} crédits, encours de \VAR{ead}~Md~TND. La variation par rapport au climat actuel est la médiane des écarts calculés modèle par modèle.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{fig_el.pdf}\\[-0.2em]{\small (a) Perte attendue additionnelle}\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}\centering\includegraphics[width=\linewidth]{fig_share.pdf}\\[-0.2em]{\small (b) Encours en zone d'aléa élevé}\end{minipage}
+\caption{Résultats par scénario. Barres : médiane de cinq modèles climatiques ; traits : intervalle entre les 10\textsuperscript{e} et 90\textsuperscript{e} centiles.}\label{fig:scen}
+\end{figure}
+
+\subsection{Les moteurs physiques}
+
+La hausse est d'abord portée par la chaleur. Aux emplacements des crédits, le nombre moyen de jours au-dessus de 35\,°C passe de \VAR{hot0} à \VAR{hot5} par an en 2050 sous SSP5-8.5, et la zone chaude remonte du sud vers le centre du pays (figure~\ref{fig:heat}). La plus longue séquence sèche s'allonge de \VAR{cdd0} à \VAR{cdd5} jours et les précipitations annuelles reculent de \VAR{pr5}\,\% en médiane (figure~\ref{fig:drought}). À l'horizon 2030, les fenêtres de trois ans sont dominées par la variabilité interannuelle : un scénario affiche même des précipitations en hausse, ce qui ne doit pas être interprété comme une tendance.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.86\textwidth]{fig_heat.pdf}
+\caption{Nombre de jours par an où la température maximale dépasse 35\,°C, référence 2010--2014 et SSP5-8.5 en 2050. Médiane de cinq modèles CMIP6 (NEX-GDDP), grille de 0,25°.}\label{fig:heat}
+\vspace{1.2em}
+\includegraphics[width=0.86\textwidth]{fig_drought.pdf}
+\caption{Plus longue séquence sèche annuelle (jours avec moins de 1~mm de précipitations), référence 2010--2014 et SSP5-8.5 en 2050. Médiane de cinq modèles CMIP6.}\label{fig:drought}
+\end{figure}
+
+L'inondation et le feu sont des aléas plus localisés (figure~\ref{fig:floodfire}). La crue centennale concerne surtout la vallée de la Medjerda, les environs de Tunis et les plaines littorales du Sahel ; la végétation combustible se concentre dans les forêts du Nord-Ouest (Kroumirie, Mogods) et sur la Dorsale.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.40\textwidth}\centering\includegraphics[width=\linewidth]{fig_flood.pdf}\\[-0.2em]{\small (a) Inondation}\end{minipage}\hspace{1.5em}
+\begin{minipage}[t]{0.40\textwidth}\centering\includegraphics[width=\linewidth]{fig_fire.pdf}\\[-0.2em]{\small (b) Combustible}\end{minipage}
+\caption{(a) Profondeur d'eau de la crue centennale, fluviale et côtière (WRI Aqueduct, climat de référence). (b) Part de végétation combustible dans un rayon de 2~km (ESA WorldCover 2021).}\label{fig:floodfire}
+\end{figure}
+
+\subsection{Secteurs et territoires}
+
+La chaleur relève le score de presque tous les secteurs ; la sécheresse les distingue ensuite, car la matrice de vulnérabilité rend l'agriculture pluviale beaucoup plus sensible au manque d'eau (figure~\ref{fig:sectors}a). Rapportée à l'encours de chaque secteur, la perte attendue additionnelle atteint \VAR{sec1}~pb pour la céréaliculture et \VAR{sec2}~pb pour l'oléiculture en 2050 sous SSP5-8.5, contre \VAR{secres}~pb pour l'immobilier résidentiel (figure~\ref{fig:sectors}b).
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.52\textwidth}\centering\includegraphics[width=\linewidth]{fig_heatmap.pdf}\\[-0.2em]{\small (a) Score moyen par secteur et aléa}\end{minipage}\hfill
+\begin{minipage}[t]{0.46\textwidth}\centering\includegraphics[width=\linewidth]{fig_sectors.pdf}\\[-0.2em]{\small (b) Perte attendue additionnelle}\end{minipage}
+\caption{Exposition sectorielle, SSP5-8.5, 2050. (a) Score d'aléa moyen pondéré par l'exposition. (b) Perte attendue additionnelle en points de base de l'encours du secteur.}\label{fig:sectors}
+\end{figure}
+
+Sur le plan géographique, l'intérieur du Nord-Ouest et du Centre concentre la perte additionnelle par dinar prêté : \VAR{govs} (figure~\ref{fig:geo}). Ce sont les gouvernorats où la céréaliculture rencontre l'assèchement le plus marqué.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[b]{0.30\textwidth}\centering\includegraphics[width=\linewidth]{fig_gov.pdf}\\[-0.2em]{\small (a)}\end{minipage}\hfill
+\begin{minipage}[b]{0.66\textwidth}\centering\includegraphics[width=\linewidth]{fig_portfolio.pdf}\\[-0.2em]{\small (b)}\end{minipage}
+\caption{(a) Perte attendue additionnelle par gouvernorat, en points de base de l'encours local, SSP5-8.5, 2050. (b) Score composite des \VAR{n} crédits synthétiques ; la taille des points est proportionnelle à l'exposition.}\label{fig:geo}
+\end{figure}
+
+\section{Robustesse}\label{sec:robustesse}
+
+La figure~\ref{fig:sens} montre l'effet d'une variation des hypothèses sur la perte attendue additionnelle en 2050 sous SSP5-8.5. Diviser ou doubler l'élasticité $\beta$ déplace le résultat de \VAR{bmin} à \VAR{bmax}\,\%, alors que la dispersion entre modèles climatiques n'est que de \VAR{mlo} à \VAR{mhi}\,\% autour de la médiane. Une variation de 25\,\% des poids de vulnérabilité modifie le résultat de moins de \VAR{wmax}\,\%. Un résultat surprend à première vue : augmenter le poids de l'inondation réduit légèrement la perte. Les scores d'inondation étant faibles pour la plupart des crédits, un poids plus élevé tire la moyenne pondérée vers le bas. La calibration de $\beta$ sur des défauts observés après des épisodes de sécheresse ou d'inondation réduirait l'incertitude bien davantage que l'ajout de modèles climatiques.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.42\textwidth}\centering\includegraphics[width=\linewidth]{fig_sensitivity.pdf}\\[-0.2em]{\small (a) Sensibilité}\end{minipage}\hfill
+\begin{minipage}[t]{0.56\textwidth}\centering\includegraphics[width=\linewidth]{fig_physrisk.pdf}\\[-0.2em]{\small (b) Comparaison avec OS-Climate physrisk}\end{minipage}
+\caption{(a) Variation de la perte attendue additionnelle (SSP5-8.5, 2050) lorsqu'une hypothèse change. (b) Indicateurs de ClimaRisk et de physrisk aux mêmes emplacements, 2050 : chaleur (modèle ACCESS-CM2) et sécheresse (ensemble multi-modèles).}\label{fig:sens}
+\end{figure}
+
+Les indicateurs ont par ailleurs été comparés aux indicateurs d'aléa publiés par la bibliothèque OS-Climate \emph{physrisk} aux mêmes emplacements. Pour la chaleur, les classements concordent (corrélation de Spearman de \VAR{rho_h0} dans le climat actuel et de \VAR{rho_h5} en 2050), bien que les niveaux diffèrent : physrisk compte les jours où la température \emph{moyenne} dépasse 35\,°C, ce qui est beaucoup plus rare. Pour la sécheresse, les deux approches indiquent une aggravation partout, mais leurs classements s'opposent (\VAR{rho_d5}) : l'indice SPEI utilisé par physrisk est normalisé par le climat local et met en avant le nord, plus humide, tandis que la durée des séquences sèches est absolue et met en avant le sud aride. Le choix de l'indicateur doit donc suivre l'activité financée.
+
+\section{Limites}\label{sec:limites}
+
+\begin{itemize}
+\item Le portefeuille est synthétique ; les parts sectorielles, probabilités de défaut et pertes en cas de défaut sont des hypothèses documentées, non des statistiques de la BCT.
+\item La grille climatique de 0,25° (environ 25~km) attribue à chaque crédit le climat de sa maille ; la résolution d'environ 1~km des cartes d'inondation ne représente ni le ruissellement urbain ni les petits oueds.
+\item Cinq modèles et trois années par horizon ne suffisent pas à séparer tendance et variabilité à l'horizon 2030 ; une version opérationnelle utiliserait des fenêtres de vingt ans et davantage de modèles.
+\item Les projections Aqueduct reposent sur CMIP5 et sur une référence forcée par les observations : l'évolution de l'aléa inondation dans le temps n'est pas comparable terme à terme, et l'appariement des modèles est arbitraire.
+\item Les paramètres $\beta$, $\gamma$ et la matrice de vulnérabilité ne sont pas estimés.
+\item Seul le risque physique est traité, sans risque de transition ni effets de second ordre.
+\end{itemize}
+
+\section{Conclusion}
+
+Avec des données ouvertes et une méthode transparente, il est possible de rattacher chaque crédit d'un portefeuille à son exposition aux aléas physiques et d'en tirer des indicateurs lisibles par une direction des risques. Sur le portefeuille synthétique étudié, la chaleur élève l'exposition de l'ensemble du portefeuille et la sécheresse concentre la perte additionnelle sur l'agriculture pluviale de l'intérieur du pays. La principale source d'incertitude n'est pas climatique mais réside dans la traduction de l'aléa en probabilité de défaut, qui devra être calibrée sur des données bancaires réelles. Les usages naturels de l'outil sont la cartographie de matérialité, l'analyse de scénarios exploratoire dans le cadre de l'ICAAP \citep{ecb2020,eba2025} et la préparation des futures attentes de la BCT.
+
+\begin{thebibliography}{99}\small
+\setlength{\itemsep}{2pt}
+\bibitem[BCBS(2022)]{bcbs2022} Basel Committee on Banking Supervision (2022). \emph{Principles for the effective management and supervision of climate-related financial risks}. Banque des règlements internationaux, juin 2022.
+\bibitem[BCBS(2025)]{bcbs2025} Basel Committee on Banking Supervision (2025). \emph{A framework for the voluntary disclosure of climate-related financial risks}. Banque des règlements internationaux, juin 2025.
+\bibitem[EBA(2025)]{eba2025} European Banking Authority (2025). \emph{Guidelines on the management of ESG risks} (EBA/GL/2025/01). Janvier 2025.
+\bibitem[ECB(2020)]{ecb2020} Banque centrale européenne (2020). \emph{Guide relatif aux risques liés au climat et à l'environnement}. Novembre 2020.
+\bibitem[ISSB(2023)]{ifrs2023} International Sustainability Standards Board (2023). \emph{IFRS S2 Climate-related Disclosures}. Juin 2023.
+\bibitem[Kotz et~al.(2024)]{kotz2024} Kotz, M., Levermann, A. et Wenz, L. (2024). The economic commitment of climate change. \emph{Nature}, 628, 551--557. Article rétracté.
+\bibitem[NGFS(2024)]{ngfs2024} Network for Greening the Financial System (2024). \emph{NGFS long-term scenarios, Phase V}. Novembre 2024.
+\bibitem[NGFS(2025)]{ngfs2025} Network for Greening the Financial System (2025). \emph{Statement regarding physical risk estimates in Phase V of the NGFS long-term scenarios}. Décembre 2025.
+\bibitem[Runfola et~al.(2020)]{runfola2020} Runfola, D. et al. (2020). geoBoundaries: A global database of political administrative boundaries. \emph{PLOS ONE}, 15(4), e0231866.
+\bibitem[Tatem(2017)]{tatem2017} Tatem, A. J. (2017). WorldPop, open data for spatial demography. \emph{Scientific Data}, 4, 170004.
+\bibitem[Thrasher et~al.(2022)]{thrasher2022} Thrasher, B., Wang, W., Michaelis, A., Melton, F., Lee, T. et Nemani, R. (2022). NASA Global Daily Downscaled Projections, CMIP6. \emph{Scientific Data}, 9, 262.
+\bibitem[Ward et~al.(2020)]{ward2020} Ward, P. J. et al. (2020). \emph{Aqueduct Floods Methodology}. World Resources Institute, note technique.
+\bibitem[Zanaga et~al.(2022)]{zanaga2022} Zanaga, D. et al. (2022). \emph{ESA WorldCover 10 m 2021 v200}. Zenodo.
+\end{thebibliography}
+
+\appendix
+\section{Hypothèses}\label{app:hyp}
+
+\begin{table}[ht]
+\centering\small
+\caption{Matrice de vulnérabilité sectorielle $V_{k,h}$ et élasticité $\beta_k$ (hypothèses illustratives).}\label{tab:hyp}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Secteur & Chaleur & Sécheresse & Inondation & Feux & $\beta$ \\
+\midrule
+\BLOCK{for v in vuln}\VAR{v.name} & \VAR{v.heat} & \VAR{v.drought} & \VAR{v.flood} & \VAR{v.fire} & \VAR{v.beta} \\
+\BLOCK{endfor}\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent Bornes de normalisation : chaleur 0--120 jours au-dessus de 35\,°C ; séquence sèche 30--200 jours ; variation des précipitations 0 à $-30$\,\% ; profondeur d'inondation 0--2~m. Hausse de la perte en cas de défaut liée à l'inondation : $\gamma = \VAR{gamma}$. Zone d'aléa élevé : score $\geq \VAR{thr}$ sur un aléa de vulnérabilité $\geq \VAR{mat}$. Les fichiers \texttt{config/assumptions.yaml} et \texttt{config/portfolio.yaml} du dépôt contiennent l'ensemble des paramètres ; la commande \texttt{make demo} reproduit les résultats.
+
+\end{document}

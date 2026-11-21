@@ -1,0 +1,15 @@
+{
+  "n_assets": 2000,
+  "heat_spearman_base": 0.6644732497011244,
+  "heat_spearman_2050": 0.8815642175528576,
+  "heat_mean_ours_base": 36.22559999999999,
+  "heat_mean_physrisk_base": 0.24204781452007593,
+  "heat_mean_ours_2050": 68.2945,
+  "heat_mean_physrisk_2050": 2.466083123408258,
+  "drought_spearman_change": -0.2476414865907768,
+  "drought_spearman_2050": -0.6503578741065861,
+  "drought_months_physrisk_base": 0.6421458333333334,
+  "drought_months_physrisk_2050": 4.475054166666667,
+  "share_assets_drought_worsening_ours": 1.0,
+  "share_assets_drought_worsening_physrisk": 1.0
+}

@@ -1,0 +1,28 @@
+# Synthetic portfolio generation parameters. 100 % synthetic — no real client, no real bank data.
+# n_share = share of loan count, ead_share = share of total EAD. Sector shares and PD ranges are ILLUSTRATIVE ASSUMPTIONS inspired by the structure of the
+# Tunisian economy (agriculture, tourism, textile, phosphates). They are not BCT statistics.
+seed: 2026
+n_loans: 2000
+total_ead_tnd: 3000000000   # illustrative book size (3 bn TND)
+currency: TND
+
+sectors:
+  cereals:            {label: "Céréaliculture",               n_share: 0.08, ead_share: 0.04, pd: [0.04, 0.08], ead_median: 180000,  ead_sigma: 0.8, collateral: land,        location: cropland, govs: {Béja: 3, Jendouba: 3, Siliana: 3, El Kef: 3, Bizerte: 2, Zaghouan: 1.5, Kairouan: 1, Manouba: 1}}
+  olives:             {label: "Oléiculture",                   n_share: 0.08, ead_share: 0.04, pd: [0.03, 0.07], ead_median: 220000,  ead_sigma: 0.8, collateral: land,        location: cropland, govs: {Sfax: 4, Sidi Bouzid: 3, Kairouan: 2.5, Mahdia: 2, Sousse: 1.5, Monastir: 1, Kasserine: 1, Médenine: 1, Gafsa: 0.5}}
+  citrus:             {label: "Agrumes",                       n_share: 0.04, ead_share: 0.02, pd: [0.03, 0.06], ead_median: 200000,  ead_sigma: 0.7, collateral: land,        location: cropland, govs: {Nabeul: 6, Bizerte: 1.5, Manouba: 1, Ben Arous: 1, Ariana: 0.5}}
+  agrifood:           {label: "Agroalimentaire",               n_share: 0.12, ead_share: 0.11, pd: [0.02, 0.05], ead_median: 900000,  ead_sigma: 1.0, collateral: industrial,  location: population}
+  textile:            {label: "Textile",                       n_share: 0.10, ead_share: 0.085, pd: [0.03, 0.07], ead_median: 700000,  ead_sigma: 1.0, collateral: industrial,  location: population, govs: {Monastir: 5, Sousse: 3, Nabeul: 2.5, Tunis: 2, Ben Arous: 2, Mahdia: 2, Ariana: 1}}
+  tourism:            {label: "Tourisme côtier",               n_share: 0.12, ead_share: 0.14, pd: [0.04, 0.08], ead_median: 2500000, ead_sigma: 0.9, collateral: real_estate, location: coast,      govs: {Sousse: 4, Nabeul: 4, Médenine: 4, Monastir: 3, Mahdia: 2, Tunis: 1, Bizerte: 1}}
+  residential:        {label: "Immobilier résidentiel",        n_share: 0.22, ead_share: 0.27, pd: [0.01, 0.03], ead_median: 150000,  ead_sigma: 0.6, collateral: real_estate, location: population}
+  construction:       {label: "BTP",                           n_share: 0.10, ead_share: 0.11, pd: [0.04, 0.08], ead_median: 800000,  ead_sigma: 1.1, collateral: industrial,  location: population}
+  chemicals:          {label: "Chimie & phosphates",           n_share: 0.07, ead_share: 0.095, pd: [0.02, 0.05], ead_median: 4000000, ead_sigma: 1.0, collateral: industrial,  location: population, govs: {Gafsa: 5, Gabès: 5, Sfax: 3, Tozeur: 0.5}}
+  energy:             {label: "Énergie",                       n_share: 0.07, ead_share: 0.09, pd: [0.01, 0.03], ead_median: 5000000, ead_sigma: 1.0, collateral: industrial,  location: population, govs: {Gabès: 3, Sfax: 2, Bizerte: 2, Tunis: 1, Ben Arous: 1, Kébili: 1, Tataouine: 1.5, Médenine: 1}}
+
+# LGD by collateral type (illustrative, before any climate adjustment)
+lgd:
+  land:        [0.35, 0.55]
+  industrial:  [0.40, 0.60]
+  real_estate: [0.20, 0.40]
+
+maturity_years: [1, 20]
+coast_buffer_km: 3.0

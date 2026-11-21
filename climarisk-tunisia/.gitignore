@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+outputs/*.parquet
+video/node_modules/
+video/public/capture/*.webm
+video/voice_model/*.onnx
+.pytest_cache/
+.ruff_cache/
