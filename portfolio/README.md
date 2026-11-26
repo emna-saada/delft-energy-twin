@@ -1,5 +1,7 @@
 # Emna Saada · portfolio
 
+![Portfolio hero](docs/preview.png)
+
 A story-driven, game-like portfolio: React + Vite, **GSAP** (ScrollTrigger, Flip, SplitText),
 **Lenis** smooth scrolling and components from **React Bits** (SplitText, CountUp, DecryptedText,
 ShinyText, ScrollVelocity, SpotlightCard, Magnet, ClickSpark, Particles — MIT + Commons Clause, see reactbits.dev).
