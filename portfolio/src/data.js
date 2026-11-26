@@ -357,7 +357,7 @@ export const experience = [
     where: 'Manouba',
     role: 'Founder & Chairwoman',
     org: 'IEEE MSE Student Branch',
-    text: 'Founded the branch and led it for two years; in 2025 also founded Blue MSE, a UN SDG initiative.',
+    text: 'Founded the IEEE student branch at MSE and led it for two years, building its team and events.',
     tags: ['Leadership', 'Community']
   }
 ];
@@ -390,7 +390,6 @@ export const coursework = ['Machine learning', 'Image processing', 'Remote sensi
 export const awards = [
   { t: 'Winner, TCB SCALE', d: '1 of 6 winning teams among 200 · 10,000 TND funding · 2025' },
   { t: 'Founder & Chairwoman', d: 'IEEE MSE Student Branch · 2023 – 2025' },
-  { t: 'Founder, Blue MSE', d: 'UN Sustainable Development Goals initiative · 2025' },
   { t: 'Freelance translator', d: 'English · Arabic · French' }
 ];
 
