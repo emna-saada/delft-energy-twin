@@ -5,13 +5,15 @@ export const links = {
   email: 'emnasaada171@gmail.com',
   linkedin: 'https://www.linkedin.com/in/emnasaada',
   github: 'https://github.com/emna-saada',
-  cv: null // set back to './Emna_Saada_CV.pdf' once the new CV is in public/
+  cv: './Emna_Saada_CV.pdf'
 };
 
 export const nav = [
+  { id: 'journey', label: 'Journey' },
   { id: 'build', label: 'What I build' },
   { id: 'quest', label: 'Main quest' },
   { id: 'projects', label: 'Projects' },
+  { id: 'badges', label: 'Certificates' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' }
@@ -21,7 +23,7 @@ export const heroStats = [
   { to: 178, label: 'wetland videos analysed' },
   { to: 442, suffix: 'M', label: 'LiDAR points processed' },
   { to: 2239, separator: ',', label: 'papers in my RAG agent' },
-  { to: 6, label: 'research-grade projects' }
+  { to: 8, label: 'certificates earned' }
 ];
 
 export const domains = [
@@ -273,10 +275,10 @@ export const moreProjects = [
   {
     id: 'federated',
     cat: 'ai',
-    tag: 'Capstone · MSE',
+    tag: 'Capstone · MSE × Efrei · 17/20',
     title: 'Federated learning at the edge',
-    text: 'Raised global accuracy from 49.0% to 80.1% (macro-F1 72.9%) across distributed clients, without centralising their data.',
-    bullets: ['49.0% → 80.1% accuracy', 'macro-F1 72.9%'],
+    text: 'Co-supervised by Dr. Faten Chakchouk (Efrei Research Lab, Paris). Raised global accuracy from 49.0% to 80.1% (macro-F1 72.9%) across distributed edge clients, without centralising their data.',
+    bullets: ['49.0% → 80.1% accuracy', 'Graded 17/20'],
     stack: 'Academic project · 2025 – 2026',
     links: [],
     refs: [{ t: 'McMahan et al. (2017), FedAvg (background)', href: 'https://arxiv.org/abs/1602.05629' }]
@@ -353,12 +355,20 @@ export const experience = [
     tags: ['Regex', 'Levenshtein', 'ELK']
   },
   {
+    when: 'Summer 2024',
+    where: 'India',
+    role: 'Summer Intern',
+    org: 'Trimbak Infotech',
+    text: 'My first international professional experience, with an Indian company, the same summer I earned four NVIDIA Deep Learning Institute certificates.',
+    tags: ['International', 'Professional English']
+  },
+  {
     when: '2023 — 2025',
     where: 'Manouba',
-    role: 'Founder & Chairwoman',
+    role: 'Co-founder, Vice-Chair & Chair',
     org: 'IEEE MSE Student Branch',
-    text: 'Founded the IEEE student branch at MSE and led it for two years, building its team and events.',
-    tags: ['Leadership', 'Community']
+    text: 'Co-founded the IEEE Student Branch at MSE, served as both Vice-Chair and Chair, and represented the branch at the TSYP congress.',
+    tags: ['Leadership', 'Community', 'Public speaking']
   }
 ];
 
@@ -366,7 +376,8 @@ export const skills = [
   { group: 'Computer vision', items: ['YOLOv9 (Ultralytics)', 'Faster R-CNN', 'EfficientNet', 'ResNet', 'U-Net', 'Transfer learning', 'Video frame sampling', 'mAP50 / mAP50-95'] },
   { group: 'Evaluation & statistics', items: ['Grouped k-fold', 'Locked test sets', 'McNemar', 'Holm-Bonferroni', 'Macro-F1', 'Spatial-block validation', 'Mann-Kendall · Sen'] },
   { group: 'Programming', items: ['Python', 'PyTorch', 'scikit-learn', 'NumPy', 'pandas', 'SHAP', 'Git', 'Unit tests + CI', 'FastAPI', 'SQL'] },
-  { group: 'Earth observation', items: ['Sentinel-2', 'Landsat', 'Google Earth Engine', 'AlphaEarth', 'Airborne LiDAR', 'rasterio', 'GeoPandas', 'QGIS'] }
+  { group: 'Earth observation', items: ['Sentinel-2', 'Landsat', 'Google Earth Engine', 'AlphaEarth', 'Airborne LiDAR', 'rasterio', 'GeoPandas', 'QGIS'] },
+  { group: 'People skills', items: ['Team leadership', 'Coordinating volunteers', 'Public speaking', 'Live event moderation', 'Citizen-debate facilitation', 'Technical writing (EN · FR)', 'EN–AR–FR translation', 'Project management'] }
 ];
 
 export const method = [
@@ -381,22 +392,32 @@ export const education = [
     when: '2022 — 2027',
     title: 'Engineering Degree in Geoinformatics',
     org: 'Manouba School of Engineering (MSE), University of Manouba',
-    note: 'Final year · taught in English · GPA 15/20 (Bien)'
+    note: 'Final year · taught in English · 2-year integrated preparatory cycle · cumulative average 14.20/20 (Bien) · capstone 17/20'
   }
 ];
 
-export const coursework = ['Machine learning', 'Image processing', 'Remote sensing', '3D imagery', 'Geostatistics', 'Spatio-temporal analytics', 'Big data & cloud'];
+export const coursework = ['Machine learning', 'Artificial intelligence', 'Image processing', 'Stochastic image modelling', '3D imagery', 'Information fusion', 'Data mining', 'Probability & statistics'];
+
+export const topGrades = [
+  { c: 'Capstone project', g: '17' },
+  { c: 'Software engineering', g: '17.11' },
+  { c: 'GIS programming', g: '16.40' },
+  { c: 'Remote sensing', g: '16.35' },
+  { c: 'Image processing', g: '16.00' }
+];
 
 export const awards = [
   { t: 'Winner, TCB SCALE', d: '1 of 6 winning teams among 200 · 10,000 TND funding · 2025' },
-  { t: 'Founder & Chairwoman', d: 'IEEE MSE Student Branch · 2023 – 2025' },
-  { t: 'Freelance translator', d: 'English · Arabic · French' }
+  { t: 'IEEE MSE Student Branch', d: 'Co-founder, then Vice-Chair and Chair · 2023 – 2025' },
+  { t: 'TSYP congress', d: 'Represented our IEEE Student Branch at the national congress' },
+  { t: 'Translator & moderator', d: 'Freelance EN · AR · FR translator; moderated an international event with live interviews' }
 ];
 
 export const languages = [
   { l: 'Arabic', lv: 'Native', p: 100 },
-  { l: 'English', lv: 'C1', p: 85 },
-  { l: 'French', lv: 'B2', p: 70 }
+  { l: 'English', lv: 'C2', p: 96, note: '3 years at Bourguiba School' },
+  { l: 'French', lv: 'C1', p: 86 },
+  { l: 'German', lv: 'studied', p: null, note: '2 years at Bourguiba School' }
 ];
 
 export const achievements = {
@@ -407,5 +428,130 @@ export const achievements = {
   orbit: { t: 'Ten years from orbit', d: '20 seasonal composites scanned' },
   city: { t: '442 million points tamed', d: 'Delft rebuilt in 3D' },
   curious: { t: 'Curious mind', d: 'You opened a deep dive' },
+  journey: { t: 'The tour begins', d: 'From high school clubs to research labs' },
+  badges: { t: 'Badge collector', d: '8 certificates on the wall' },
   final: { t: 'Final level reached', d: 'Next quest: PFE, Feb 2027' }
 };
+
+// ---------------------------------------------------------------------------
+// The tour: how Emna built herself, from high school to research
+// gains feed the skill meters in the Journey section
+// ---------------------------------------------------------------------------
+export const meters = [
+  { key: 'social', label: 'Social', color: '#ff4f7b' },
+  { key: 'lang', label: 'Languages', color: '#ffb020' },
+  { key: 'lead', label: 'Leadership', color: '#3a3fe0' },
+  { key: 'tech', label: 'Tech & research', color: '#19d3c5' }
+];
+
+export const phases = {
+  school: { label: 'High school', sub: 'Finding my voice', color: '#ffb020' },
+  uni: { label: 'University', sub: 'Building teams', color: '#3a3fe0' },
+  global: { label: 'Going global', sub: 'Skills without borders', color: '#ff4f7b' },
+  research: { label: 'Research', sub: 'Asking real questions', color: '#19d3c5' }
+};
+
+export const journey = [
+  {
+    phase: 'school', when: 'High school · 3 years', icon: 'speech',
+    title: 'English at Bourguiba School',
+    text: 'Three years of English courses alongside high school. Today it is the language I research, write and present in, at C2.',
+    gains: { lang: 3 }, gain: '+ English'
+  },
+  {
+    phase: 'school', when: 'High school · 2 years', icon: 'globe',
+    title: 'German at Bourguiba School',
+    text: 'Two more years for German, because curiosity does not stop at one language.',
+    gains: { lang: 2 }, gain: '+ German'
+  },
+  {
+    phase: 'school', when: 'High school', icon: 'people',
+    title: 'Secretary of my hometown youth club',
+    text: 'My first role with responsibility: helping run the youth club of my hometown and the activities it offered young people.',
+    gains: { social: 3, lead: 2 }, gain: '+ Organisation'
+  },
+  {
+    phase: 'school', when: 'High school', icon: 'spark',
+    title: 'Spark club, funded by BIAT',
+    text: 'Member of Spark, a club backed by BIAT: teamwork and initiative outside the classroom.',
+    gains: { social: 2, lead: 1 }, gain: '+ Teamwork'
+  },
+  {
+    phase: 'school', when: '2020', icon: 'mic',
+    title: 'Citizen-debate facilitator · GIZ',
+    text: 'Facilitated and documented a citizens’ group at the 1st Tunisian Citizen Debate on the Future of Digital, part of a global dialogue in 70+ countries for UN75 that fed into the Internet Governance Forum 2020.',
+    gains: { social: 3, lead: 2, lang: 1 }, gain: '+ Facilitation',
+    cert: './certificates/giz-citizen-debate-2020.jpg'
+  },
+  {
+    phase: 'uni', when: '2022', icon: 'school',
+    title: 'Manouba School of Engineering',
+    text: 'A two-year integrated preparatory cycle, then geoinformatics engineering taught in English: machine learning, image processing, 3D imagery.',
+    gains: { tech: 3 }, gain: '+ Engineering'
+  },
+  {
+    phase: 'uni', when: '2023 — 2025', icon: 'ieee',
+    title: 'Co-founded IEEE MSE Student Branch',
+    text: 'Co-founded our school’s IEEE Student Branch, then served as Vice-Chair and Chair: recruiting, coordinating volunteers, running events.',
+    gains: { lead: 4, social: 3 }, gain: '+ Leadership'
+  },
+  {
+    phase: 'uni', when: 'IEEE years', icon: 'flag',
+    title: 'TSYP congress',
+    text: 'Represented our branch at TSYP, the national congress of IEEE students and young professionals in Tunisia.',
+    gains: { social: 2, lead: 1 }, gain: '+ Network'
+  },
+  {
+    phase: 'global', when: 'Summer 2024', icon: 'plane',
+    title: 'Internship with an Indian company',
+    text: 'A summer internship with Trimbak Infotech, India: my first international professional experience.',
+    gains: { tech: 2, lang: 1, social: 1 }, gain: '+ International'
+  },
+  {
+    phase: 'global', when: 'Jan — Jul 2024', icon: 'chip',
+    title: '5 NVIDIA Deep Learning Institute certificates',
+    text: 'Deep learning, transformers for NLP, accelerated computing with CUDA Python and AI for predictive maintenance.',
+    gains: { tech: 4 }, gain: '+ Deep learning'
+  },
+  {
+    phase: 'global', when: 'Dec 2024 — Feb 2025', icon: 'board',
+    title: 'Google project management',
+    text: 'Foundations of Project Management and Project Initiation, via Coursera: structure for the teams I was already leading.',
+    gains: { lead: 2 }, gain: '+ Project management'
+  },
+  {
+    phase: 'global', when: '2025', icon: 'trophy',
+    title: 'TCB SCALE winner',
+    text: '1 of 6 winning teams among 200 in an entrepreneurship programme, with 10,000 TND of funding.',
+    gains: { lead: 2, social: 1 }, gain: '+ Entrepreneurship'
+  },
+  {
+    phase: 'global', when: 'Along the way', icon: 'mic',
+    title: 'Translator and live moderator',
+    text: 'Freelance English–Arabic–French translator; moderated an international event, including live interviews.',
+    gains: { lang: 3, social: 2 }, gain: '+ Public speaking'
+  },
+  {
+    phase: 'research', when: '2025 — 2026', icon: 'lab',
+    title: 'Research with Efrei Paris',
+    text: 'A federated-learning capstone graded 17/20, then a research internship that beat a Nature benchmark baseline on bird detection.',
+    gains: { tech: 5, lead: 1 }, gain: '+ Research'
+  },
+  {
+    phase: 'research', when: 'Feb 2027', icon: 'target',
+    title: 'Next: my PFE',
+    text: 'Six months on bird detection, tracking and behaviour recognition. Everything above comes with me.',
+    gains: {}, gain: 'Ready', next: true
+  }
+];
+
+export const badges = [
+  { issuer: 'NVIDIA DLI', kind: 'nvidia', title: 'Getting Started with Deep Learning', date: 'Jan 2024', href: './certificates/nvidia-getting-started-deep-learning.pdf' },
+  { issuer: 'NVIDIA DLI', kind: 'nvidia', title: 'Building Transformer-Based NLP Applications', date: 'Jun 2024', href: './certificates/nvidia-transformer-nlp.pdf' },
+  { issuer: 'NVIDIA DLI', kind: 'nvidia', title: 'Fundamentals of Deep Learning', date: 'Jun 2024', href: './certificates/nvidia-fundamentals-deep-learning.pdf' },
+  { issuer: 'NVIDIA DLI', kind: 'nvidia', title: 'Applications of AI for Predictive Maintenance', date: 'Jun 2024', href: './certificates/nvidia-predictive-maintenance.pdf' },
+  { issuer: 'NVIDIA DLI', kind: 'nvidia', title: 'Fundamentals of Accelerated Computing with CUDA Python', date: 'Jul 2024', href: './certificates/nvidia-cuda-python.pdf' },
+  { issuer: 'Google · Coursera', kind: 'google', title: 'Foundations of Project Management', date: 'Dec 2024', href: 'https://coursera.org/verify/CYXGEDM6JKPW' },
+  { issuer: 'Google · Coursera', kind: 'google', title: 'Project Initiation: Starting a Successful Project', date: 'Feb 2025', href: 'https://coursera.org/verify/R5M9T5D3YZ6D' },
+  { issuer: 'GIZ · Missions Publiques', kind: 'giz', title: 'Facilitator, Tunisian Citizen Debate on the Future of Digital', date: '2020', href: './certificates/giz-citizen-debate-2020.jpg' }
+];

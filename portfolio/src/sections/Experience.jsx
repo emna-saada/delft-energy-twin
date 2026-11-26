@@ -21,7 +21,7 @@ export default function Experience() {
   return (
     <section className="exp" id="experience" ref={root}>
       <div className="wrap">
-        <SectionHead eyebrow="Experience · chapter 04" title="Where I earned" accent="my XP." />
+        <SectionHead eyebrow="Experience · chapter 06" title="Where I earned" accent="my XP." />
         <div className="timeline">
           <span className="timeline__line" ref={line} />
           {experience.map(e => (

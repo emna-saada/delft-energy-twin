@@ -22,18 +22,18 @@ const THEMES = {
   },
   // Portfolio palette: cream paper and deep lagoon
   paper: {
-    surface: '#fbf8f1',
-    border: 'rgba(16, 41, 43, 0.12)',
-    shadow: '0 1px 2px rgba(16, 41, 43, 0.05), 0 22px 40px -24px rgba(16, 41, 43, 0.25)',
-    light: '#e2583e',
+    surface: '#ffffff',
+    border: 'rgba(20, 25, 58, 0.12)',
+    shadow: '0 1px 2px rgba(20, 25, 58, 0.05), 0 22px 40px -24px rgba(20, 25, 58, 0.25)',
+    light: '#ff4f7b',
     fill: 0.3,
     edge: 0.8
   },
   deep: {
-    surface: '#0f3538',
-    border: 'rgba(87, 214, 191, 0.16)',
+    surface: '#1a1e4a',
+    border: 'rgba(25, 211, 197, 0.16)',
     shadow: '0 24px 48px -24px rgba(0, 0, 0, 0.5)',
-    light: '#57d6bf',
+    light: '#19d3c5',
     fill: 0.8,
     edge: 1
   }

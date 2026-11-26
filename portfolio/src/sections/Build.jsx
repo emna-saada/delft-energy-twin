@@ -41,7 +41,7 @@ function IsoPoints() {
       {pts.map((p, i) => (
         <circle key={i} cx={p.x} cy={p.y} r={p.roof ? 2.4 : 1.6} fill={p.roof ? '#e9b949' : `hsl(${172 + p.b * 6} 45% ${30 + p.b * 6}%)`} style={{ animationDelay: `${(i % 60) * 0.02}s` }} />
       ))}
-      <text x="20" y="285" fontFamily="JetBrains Mono, monospace" fontSize="12" fill="#57d6bf">
+      <text x="20" y="285" fontFamily="JetBrains Mono, monospace" fontSize="12" fill="#19d3c5">
         AHN6 · 442,000,000 points
       </text>
     </svg>
@@ -116,7 +116,7 @@ export default function Build() {
       <div className="build__inner">
         <div className="build__copy">
           <div className="shead__eyebrow">
-            <span>What I build · chapter 01</span>
+            <span>What I build · chapter 02</span>
             <i />
           </div>
           <div className="build__count">

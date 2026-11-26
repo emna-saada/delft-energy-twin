@@ -35,8 +35,13 @@ export default function Hero({ ready }) {
 
   return (
     <section className="hero" id="top" ref={root}>
+      <div className="hero__mesh" aria-hidden>
+        <i />
+        <i />
+        <i />
+      </div>
       <div className="hero__particles" aria-hidden>
-        <Particles particleCount={140} particleSpread={12} speed={0.06} particleColors={['#0e5e5b', '#e2583e', '#c8962f']} particleBaseSize={70} alphaParticles lightMode glow={0.2} moveParticlesOnHover particleHoverFactor={0.6} clickBurst={false} intro={false} />
+        <Particles particleCount={140} particleSpread={12} speed={0.06} particleColors={['#3a3fe0', '#ff4f7b', '#ffb020', '#19d3c5']} particleBaseSize={70} alphaParticles lightMode glow={0.2} moveParticlesOnHover particleHoverFactor={0.6} clickBurst={false} intro={false} />
       </div>
 
       <div className="hero__copy">
@@ -51,7 +56,7 @@ export default function Hero({ ready }) {
         </h1>
         <p className="hero__lead">
           I teach machines to <em className="serif">watch wetlands</em>: from birds in video frames to habitats seen from orbit and cities rebuilt from laser
-          points. Final-year engineer at MSE, Tunisia, working with{' '}
+          points. Final-year engineer at MSE, IEEE branch co-founder and trilingual translator, working with{' '}
           <DecryptedText text="rigorous, reproducible evaluation." animateOn="view" speed={35} maxIterations={14} sequential className="hl" encryptedClassName="hl hl--enc" />
         </p>
         <div className="hero__sign" aria-hidden>
@@ -59,7 +64,7 @@ export default function Hero({ ready }) {
         </div>
         <div className="hero__actions">
           <Magnet padding={60} magnetStrength={3}>
-            <button className="btn btn--ink" onClick={() => go('#build')}>
+            <button className="btn btn--ink" onClick={() => go('#journey')}>
               ▶ Press start
             </button>
           </Magnet>
@@ -101,7 +106,7 @@ export default function Hero({ ready }) {
         <div className="hero__chip hero__chip--b">YOLOv9 · mAP50-95 0.626</div>
       </div>
 
-      <button className="hero__scroll" onClick={() => go('#build')} aria-label="Scroll to begin">
+      <button className="hero__scroll" onClick={() => go('#journey')} aria-label="Scroll to begin">
         <span>Scroll to begin the story</span>
         <i />
       </button>

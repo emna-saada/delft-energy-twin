@@ -55,7 +55,7 @@ export function IchkeulViz() {
     <div className="viz viz--ichkeul" ref={root}>
       <div className="viz__screen">
         <svg viewBox="0 0 400 260" role="img" aria-label="Schematic map: marsh ring around the lake shrinks in summer composites">
-          <rect width="400" height="260" fill="#e7dcc4" />
+          <rect width="400" height="260" fill="#ffe9cc" />
           <g opacity="0.25" stroke="#8b7a55">
             {Array.from({ length: 12 }, (_, i) => (
               <path key={i} d={`M0 ${i * 24} H400`} strokeWidth="0.5" />
@@ -67,7 +67,7 @@ export function IchkeulViz() {
           <g style={{ transform: `scale(${waterScale})`, transformOrigin: '205px 132px', transition: 'transform .5s ease' }}>
             <path d="M112 130 C112 80 180 64 226 72 C286 82 304 110 298 146 C290 190 236 200 180 194 C136 190 112 166 112 130Z" fill="#2f7f86" />
           </g>
-          <circle cx="292" cy="58" r="5" fill="#e2583e" />
+          <circle cx="292" cy="58" r="5" fill="#ff4f7b" />
           <text x="300" y="62" fontSize="10" fontFamily="JetBrains Mono, monospace" fill="#3a3a2a">
             Jebel Ichkeul
           </text>

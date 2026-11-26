@@ -17,7 +17,7 @@ function Birds() {
       <g className="bird bird--heron" transform="translate(150 250)">
         <path d="M-30 20 Q0 -6 34 10 Q20 34 -18 34 Z" fill="#5d6b70" />
         <path d="M24 8 Q34 -40 14 -66 Q8 -76 20 -82" stroke="#5d6b70" strokeWidth="7" fill="none" strokeLinecap="round" />
-        <path d="M20 -82 L46 -78" stroke="#c8962f" strokeWidth="4" strokeLinecap="round" />
+        <path d="M20 -82 L46 -78" stroke="#ffb020" strokeWidth="4" strokeLinecap="round" />
         <path d="M-4 32 L-10 96 M8 32 L18 96" stroke="#3b4548" strokeWidth="3" />
       </g>
       {/* flamingo, feeding (head down) */}
@@ -30,7 +30,7 @@ function Birds() {
       {/* duck, swimming */}
       <g className="bird bird--duck" transform="translate(612 336)">
         <path d="M-40 0 Q-30 -26 10 -16 Q30 -40 46 -22 Q50 -10 36 -6 Q40 14 -4 14 Q-36 14 -40 0Z" fill="#3e5a4f" />
-        <path d="M46 -22 l14 4 l-12 6" fill="#c8962f" />
+        <path d="M46 -22 l14 4 l-12 6" fill="#ffb020" />
       </g>
       {/* flying bird */}
       <g className="bird bird--flyer" transform="translate(540 104)">
@@ -115,15 +115,15 @@ export default function DetectionScene({ auto = false, running: runningProp, com
           return <path key={i} d={`M${x} 452 Q${x + 6} ${452 - h / 2} ${x + 12 - (i % 2) * 20} ${452 - h}`} fill="none" />;
         })}
       </g>
-      <rect className="scanline" x="-40" y="0" width="6" height="450" fill="#57d6bf" opacity="0" />
+      <rect className="scanline" x="-40" y="0" width="6" height="450" fill="#19d3c5" opacity="0" />
       {BIRDS.map(b => {
         const [x, y, w, h] = b.box;
         const tag = `${b.label} ${b.conf.toFixed(2)}`;
         return (
           <g className="det" key={b.id} opacity="0">
-            <rect x={x} y={y} width={w} height={h} fill="none" stroke="#57d6bf" strokeWidth="3" rx="3" />
-            <rect x={x - 1.5} y={y - 24} width={tag.length * 8.6 + 14} height="24" fill="#0a2e30" rx="3" />
-            <text x={x + 6} y={y - 7} fill="#57d6bf" fontFamily="JetBrains Mono, monospace" fontSize="14">
+            <rect x={x} y={y} width={w} height={h} fill="none" stroke="#19d3c5" strokeWidth="3" rx="3" />
+            <rect x={x - 1.5} y={y - 24} width={tag.length * 8.6 + 14} height="24" fill="#12153a" rx="3" />
+            <text x={x + 6} y={y - 7} fill="#19d3c5" fontFamily="JetBrains Mono, monospace" fontSize="14">
               {tag}
             </text>
           </g>

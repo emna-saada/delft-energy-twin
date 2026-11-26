@@ -9,6 +9,9 @@ import SideRail from './components/SideRail.jsx';
 import TopBar from './components/TopBar.jsx';
 import DeepDive, { DeepDiveProvider } from './components/DeepDive.jsx';
 import Hero from './sections/Hero.jsx';
+import Journey from './sections/Journey.jsx';
+import Badges from './sections/Badges.jsx';
+import Cursor from './components/Cursor.jsx';
 import Build from './sections/Build.jsx';
 import Quest from './sections/Quest.jsx';
 import Projects from './sections/Projects.jsx';
@@ -53,21 +56,24 @@ export default function App() {
   return (
     <GameProvider lenis={lenis}>
       <DeepDiveProvider>
-        <ClickSpark sparkColor="#e2583e" sparkSize={9} sparkRadius={22} sparkCount={9} duration={450}>
+        <ClickSpark sparkColor="#ffb020" sparkSize={9} sparkRadius={22} sparkCount={9} duration={450}>
           <Loader onDone={() => setReady(true)} />
           <SideRail />
           <TopBar />
           <main>
             <Hero ready={ready} />
+            <Journey />
             <Build />
             <Quest />
             <Projects />
             <MoreProjects />
+            <Badges />
             <Experience />
             <Skills />
           </main>
           <Contact />
           <DeepDive />
+          <Cursor />
         </ClickSpark>
       </DeepDiveProvider>
     </GameProvider>

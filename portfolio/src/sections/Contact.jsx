@@ -34,7 +34,7 @@ export default function Contact() {
       </div>
       <div className="wrap contact__inner">
         <div className="contact__copy">
-          <span className="eyebrow eyebrow--lagoon">Next quest · chapter 06</span>
+          <span className="eyebrow eyebrow--lagoon">Next quest · chapter 08</span>
           <h2 className="contact__title">
             Bird detection → tracking → <em className="serif">behaviour.</em>
           </h2>
@@ -44,7 +44,7 @@ export default function Contact() {
           </p>
           <div className="contact__mail">
             <a href={`mailto:${links.email}`}>
-              <ShinyText text={links.email} color="#cfe9e2" shineColor="#ffffff" speed={3} />
+              <ShinyText text={links.email} color="#dfe2ff" shineColor="#ffffff" speed={3} />
             </a>
             <button className="btn btn--small btn--ghost-dark" onClick={copy}>
               {copied ? 'Copied ✓' : 'Copy'}

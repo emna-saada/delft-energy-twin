@@ -127,7 +127,7 @@ export default function Quest() {
       <div className="wrap">
         <SectionHead
           dark
-          eyebrow="Main quest · chapter 02 · Jul – Aug 2026"
+          eyebrow="Main quest · chapter 03 · Jul – Aug 2026"
           title="Can a detector beat a Nature benchmark,"
           accent="honestly?"
           intro="My summer research internship at MSE with the Efrei Research Lab. The mission: reproduce, then improve, the baselines of Visual WetlandBirds (Scientific Data, 2025), in a team of two."
@@ -215,7 +215,7 @@ export default function Quest() {
         </Level>
 
         <div className="quest__loot" data-reveal>
-          <SpotlightCard className="loot" spotlightColor="rgba(87, 214, 191, 0.22)" theme="deep">
+          <SpotlightCard className="loot" spotlightColor="rgba(25, 211, 197, 0.22)" theme="deep">
             <span className="eyebrow">Engineering loot</span>
             <ul>
               {wetland.engineering.map(e => (

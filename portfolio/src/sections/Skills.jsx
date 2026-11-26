@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SpotlightCard from '../bits/SpotlightCard.jsx';
 import { SectionHead, useReveal } from '../components/ui.jsx';
-import { awards, coursework, education, languages, method, skills } from '../data.js';
+import { awards, coursework, education, languages, method, skills, topGrades } from '../data.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,8 +62,8 @@ function MethodWheel() {
           })}
         </g>
         <circle cx="150" cy="150" r="52" className="hub" />
-        <rect x="128" y="132" width="44" height="36" rx="3" fill="none" stroke="#57d6bf" strokeWidth="3" />
-        <circle cx="150" cy="150" r="5" fill="#e2583e" />
+        <rect x="128" y="132" width="44" height="36" rx="3" fill="none" stroke="#19d3c5" strokeWidth="3" />
+        <circle cx="150" cy="150" r="5" fill="#ff4f7b" />
       </svg>
     </div>
   );
@@ -74,11 +74,11 @@ export default function Skills() {
   return (
     <section className="skills" id="skills" ref={root}>
       <div className="wrap">
-        <SectionHead eyebrow="Inventory · chapter 05" title="Tools in my" accent="backpack." />
+        <SectionHead eyebrow="Inventory · chapter 07" title="Tools in my" accent="backpack." />
         <div className="skills__grid">
           {skills.map(g => (
             <div data-reveal key={g.group}>
-              <SpotlightCard className="scard" spotlightColor="rgba(14, 94, 91, 0.16)" theme="paper">
+              <SpotlightCard className="scard" spotlightColor="rgba(58, 63, 224, 0.16)" theme="paper">
                 <h4>{g.group}</h4>
                 <div className="chips">
                   {g.items.map(s => (
@@ -121,6 +121,14 @@ export default function Skills() {
                 </div>
               </div>
             ))}
+            <div className="grades">
+              {topGrades.map(g => (
+                <div key={g.c}>
+                  <b>{g.g}</b>
+                  <span>{g.c}</span>
+                </div>
+              ))}
+            </div>
             <div className="chips">
               {coursework.map(c => (
                 <span className="chip chip--soft" key={c}>
@@ -134,13 +142,12 @@ export default function Skills() {
             </div>
             <div className="langs">
               {languages.map(l => (
-                <div key={l.l}>
+                <div key={l.l} className={l.p ? '' : 'is-studied'}>
                   <span>
                     {l.l} <small>{l.lv}</small>
                   </span>
-                  <i>
-                    <b style={{ width: `${l.p}%` }} />
-                  </i>
+                  <i>{l.p ? <b style={{ width: `${l.p}%` }} /> : <em>{l.note}</em>}</i>
+                  {l.p && l.note ? <small className="langs__note">{l.note}</small> : null}
                 </div>
               ))}
             </div>

@@ -58,7 +58,7 @@ export default function MoreProjects() {
         </div>
         <div className="more__grid" ref={grid}>
           {shown.map(p => (
-            <SpotlightCard key={p.id} className="mcard" data-flip-id={p.id} spotlightColor="rgba(226, 88, 62, 0.16)" theme="paper">
+            <SpotlightCard key={p.id} className="mcard" data-flip-id={p.id} spotlightColor="rgba(255, 79, 123, 0.16)" theme="paper">
               <div className="mcard__top">
                 <span className="mcard__icon">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">

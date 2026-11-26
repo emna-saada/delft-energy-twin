@@ -69,7 +69,7 @@ export default function Projects() {
     <section className="projects" id="projects" ref={root}>
       <div className="wrap">
         <SectionHead
-          eyebrow="Featured projects · chapter 03"
+          eyebrow="Featured projects · chapter 04"
           title="Then I zoomed out:"
           accent="orbit, cities, agents."
           intro="Three personal projects with one habit: validate against an independent reference before believing a number."
