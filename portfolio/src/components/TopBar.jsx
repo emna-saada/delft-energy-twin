@@ -40,9 +40,11 @@ export default function TopBar() {
           </a>
         ))}
       </nav>
-      <a className="btn btn--small btn--ink topbar__cv" href={links.cv} target="_blank" rel="noreferrer">
-        CV ↓
-      </a>
+      {links.cv && (
+        <a className="btn btn--small btn--ink topbar__cv" href={links.cv} target="_blank" rel="noreferrer">
+          CV ↓
+        </a>
+      )}
       <button className="topbar__burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(o => !o)}>
         <span />
         <span />

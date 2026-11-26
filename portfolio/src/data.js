@@ -5,7 +5,7 @@ export const links = {
   email: 'emnasaada171@gmail.com',
   linkedin: 'https://www.linkedin.com/in/emnasaada',
   github: 'https://github.com/emna-saada',
-  cv: './Emna_Saada_CV.pdf'
+  cv: null // set back to './Emna_Saada_CV.pdf' once the new CV is in public/
 };
 
 export const nav = [

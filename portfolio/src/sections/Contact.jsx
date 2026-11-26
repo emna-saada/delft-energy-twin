@@ -66,11 +66,13 @@ export default function Contact() {
                 GitHub ↗
               </a>
             </Magnet>
-            <Magnet padding={50} magnetStrength={3}>
-              <a className="btn btn--ghost-dark" href={links.cv} target="_blank" rel="noreferrer">
-                CV (PDF) ↓
-              </a>
-            </Magnet>
+            {links.cv && (
+              <Magnet padding={50} magnetStrength={3}>
+                <a className="btn btn--ghost-dark" href={links.cv} target="_blank" rel="noreferrer">
+                  CV (PDF) ↓
+                </a>
+              </Magnet>
+            )}
           </div>
         </div>
         <div className="contact__script" aria-hidden>
